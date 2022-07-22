@@ -25,6 +25,8 @@
 
 cd fcr && go build -o fcr.bin && cd ../
 
+rm -rf ../doggy-sdk-flutter/doggy
+
 java -jar openapi-generator-cli.jar generate -g dart -o ../doggy-sdk-flutter/doggy \
   -c configs/flutter.json \
   -i swagger.json \

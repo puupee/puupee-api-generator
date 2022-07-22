@@ -6,8 +6,7 @@ java -jar openapi-generator-cli.jar generate -g go -o ../doggy-sdk-go/doggy \
   --release-note update
 
 cd ../doggy-sdk-go/
-mv doggy/go.mod .
-mv doggy/go.sum .
+go mod tidy
 git add .
 git commit -a -m "update"
 git push origin master
