@@ -1,0 +1,15 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  all:
+    cmds:
+      - sh generate_flutter.sh
+      - sh generate_go.sh
+  flutter:
+    cmds:
+      - sh generate_flutter.sh
+  go:
+    cmds:
+      - sh generate_go.sh

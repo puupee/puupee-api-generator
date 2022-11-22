@@ -27,7 +27,7 @@ cd fcr && go build -o fcr.bin && cd ../
 
 rm -rf ../doggy-sdk-flutter/doggy
 
-java -jar openapi-generator-cli.jar generate -g dart -o ../doggy-sdk-flutter/doggy \
+java -jar openapi-generator-cli.jar generate -g dart -o ../doggy-sdk-flutter \
   -c configs/flutter.json \
   -i swagger.json \
   --skip-validate-spec \
@@ -36,19 +36,19 @@ java -jar openapi-generator-cli.jar generate -g dart -o ../doggy-sdk-flutter/dog
   --release-note update
 
 fcr/fcr.bin \
-  "../doggy-sdk-flutter/doggy/lib/model/extension_enum_field_dto.dart" \
+  "../doggy-sdk-flutter/lib/model/extension_enum_field_dto.dart" \
   "json[r'value'] == null ? null : Map<String, dynamic>.fromJson(json[r'value'])" \
   "json[r'value']"
 fcr/fcr.bin \
-  "../doggy-sdk-flutter/doggy/lib/model/extension_property_dto.dart" \
+  "../doggy-sdk-flutter/lib/model/extension_property_dto.dart" \
   "defaultValue: json[r'defaultValue'] == null ? null : Map<String, dynamic>.fromJson(json[r'defaultValue'])" \
   "defaultValue: json[r'defaultValue']"
 fcr/fcr.bin \
-  "../doggy-sdk-flutter/doggy/lib/model/method_parameter_api_description_model.dart" \
+  "../doggy-sdk-flutter/lib/model/method_parameter_api_description_model.dart" \
   "defaultValue: json[r'defaultValue'] == null ? null : Map<String, dynamic>.fromJson(json[r'defaultValue'])" \
   "defaultValue: json[r'defaultValue']"
 fcr/fcr.bin \
-  "../doggy-sdk-flutter/doggy/lib/model/parameter_api_description_model.dart" \
+  "../doggy-sdk-flutter/lib/model/parameter_api_description_model.dart" \
   "defaultValue: json[r'defaultValue'] == null ? null : Map<String, dynamic>.fromJson(json[r'defaultValue'])" \
   "defaultValue: json[r'defaultValue']"
 
@@ -57,6 +57,7 @@ fcr/fcr.bin \
 #   -i swagger.json
 
 cd ../doggy-sdk-flutter/
+flutter pub get
 git add .
 git commit -a -m "update"
 git push origin master
