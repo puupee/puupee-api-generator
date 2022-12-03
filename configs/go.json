@@ -1,6 +1,5 @@
 {
-    "packageName": "doggy",
+    "packageName": "puupee",
     "packageVersion": "1.0.0",
-    "enumClassPrefix": true,
-    "isGoSubmodule": true
+    "enumClassPrefix": true
 }

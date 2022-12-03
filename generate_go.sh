@@ -1,13 +1,13 @@
-java -jar openapi-generator-cli.jar generate -g go -o ../doggy-sdk-go/doggy \
+java -jar openapi-generator-cli.jar generate -g go -o ../puupee-api-go \
   -c configs/go.json \
   -i swagger.json \
-  --git-user-id mr-doggy \
-  --git-repo-id doggy-sdk-go \
+  --git-user-id puupee \
+  --git-repo-id puupee-api-go \
   --release-note update
 
-cd ../doggy-sdk-go/
+cd ../puupee-api-go/
 go mod tidy
 git add .
 git commit -a -m "update"
 git push origin master
-cd ../doggy-sdk-generator/
+cd ../puupee-api-generator/

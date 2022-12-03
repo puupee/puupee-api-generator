@@ -7,9 +7,12 @@ tasks:
     cmds:
       - sh generate_flutter.sh
       - sh generate_go.sh
-  flutter:
+  dart:
     cmds:
-      - sh generate_flutter.sh
+      - rm -rf ../puupee-api-dart/*
+      - java -jar openapi-generator-cli.jar generate -g dart -o ../puupee-api-dart -c configs/dart.json -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-dart --release-note update
+      - sh fix-dart.sh
+      - cd ../puupee-api-dart/ && flutter pub get && git add . && git commit -a -m "update" && git push origin master
   go:
     cmds:
       - sh generate_go.sh

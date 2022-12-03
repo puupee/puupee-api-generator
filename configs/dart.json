@@ -1,0 +1,7 @@
+{
+    "pubLibrary": "puupee_api",
+    "pubName": "puupee_api",
+    "pubAuthor": "jerloo",
+    "pubDescription": "Api for puupee app service.",
+    "pubHomepage": "https://github.com/puupee/puupee-api-dart"
+}
