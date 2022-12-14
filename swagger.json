@@ -1019,7 +1019,7 @@
         }
       }
     },
-    "/api/app/app/storage-object-or-credentials": {
+    "/api/app/app/upload-credentials": {
       "get": {
         "tags": [
           "App"
@@ -1032,11 +1032,6 @@
         "parameters": [
           {
             "in": "query",
-            "name": "rapidCode",
-            "type": "string"
-          },
-          {
-            "in": "query",
             "name": "key",
             "type": "string"
           }
@@ -1045,7 +1040,334 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/StorageObjectOrCredentialsDto"
+              "$ref": "#/definitions/StorageObjectCredentials"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/app/by-developer": {
+      "get": {
+        "tags": [
+          "App"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "developerAccount",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AppDtoPagedResultDto"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/app-feature": {
+      "post": {
+        "tags": [
+          "AppFeature"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateOrUpdateAppFeatureDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AppFeatureDto"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "AppFeature"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AppFeatureDto"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/app-feature/{id}": {
+      "delete": {
+        "tags": [
+          "AppFeature"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "AppFeature"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateOrUpdateAppFeatureDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AppFeatureDto"
             }
           },
           "403": {
@@ -1455,6 +1777,270 @@
         }
       }
     },
+    "/api/app/app-sdk": {
+      "post": {
+        "tags": [
+          "AppSdk"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateOrUpdateAppSdkDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AppSdkDto"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "AppSdk"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AppSdkDto"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/app-sdk/{id}": {
+      "delete": {
+        "tags": [
+          "AppSdk"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "AppSdk"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateOrUpdateAppSdkDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AppSdkDto"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
     "/api/app/app-user-score": {
       "post": {
         "tags": [
@@ -1475,7 +2061,7 @@
             "in": "body",
             "name": "body",
             "schema": {
-              "$ref": "#/definitions/CreateUpdateAppUserScoreDto"
+              "$ref": "#/definitions/CreateOrUpdateAppUserScoreDto"
             }
           }
         ],
@@ -3623,7 +4209,7 @@
             "in": "body",
             "name": "body",
             "schema": {
-              "$ref": "#/definitions/CreateUpdatePuupeeDto"
+              "$ref": "#/definitions/CreateOrUpdatePuupeeDto"
             }
           }
         ],
@@ -5306,6 +5892,26 @@
         }
       }
     },
+    "/api/Test/datetime": {
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/TestDateTime"
+            }
+          }
+        }
+      }
+    },
     "/api/identity/users/{id}": {
       "get": {
         "tags": [
@@ -6471,16 +7077,13 @@
           "format": "date-time",
           "type": "string"
         },
-        "appId": {
-          "type": "string"
-        },
         "name": {
           "type": "string"
         },
         "displayName": {
           "type": "string"
         },
-        "fromework": {
+        "framework": {
           "type": "string"
         },
         "appType": {
@@ -6498,8 +7101,26 @@
         "gitRepositoryType": {
           "type": "string"
         },
-        "latestRelease": {
-          "$ref": "#/definitions/AppReleaseDto"
+        "latestReleases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AppReleaseDto"
+          }
+        },
+        "creator": {
+          "$ref": "#/definitions/IdentityUserDto"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AppFeatureDto"
+          }
+        },
+        "sdks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AppSdkDto"
+          }
         }
       }
     },
@@ -6515,6 +7136,57 @@
         "totalCount": {
           "format": "int64",
           "type": "integer"
+        }
+      }
+    },
+    "AppFeatureDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "details": {
+          "type": "string"
+        },
+        "screenshotKeys": {
+          "type": "string"
         }
       }
     },
@@ -6613,6 +7285,57 @@
         "totalCount": {
           "format": "int64",
           "type": "integer"
+        }
+      }
+    },
+    "AppSdkDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "privacy": {
+          "type": "string"
+        },
+        "privacyUrl": {
+          "type": "string"
+        },
+        "homePage": {
+          "type": "string"
         }
       }
     },
@@ -6866,37 +7589,6 @@
     "BindDeviceDto": {
       "type": "object",
       "properties": {
-        "id": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "creationTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "creatorId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "lastModificationTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "lastModifierId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "isDeleted": {
-          "type": "boolean"
-        },
-        "deleterId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "deletionTime": {
-          "format": "date-time",
-          "type": "string"
-        },
         "token": {
           "type": "string"
         },
@@ -7027,9 +7719,6 @@
     "CreateOrUpdateAppDto": {
       "type": "object",
       "properties": {
-        "appId": {
-          "type": "string"
-        },
         "name": {
           "type": "string"
         },
@@ -7052,6 +7741,38 @@
           "type": "string"
         },
         "gitRepositoryType": {
+          "type": "string"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AppFeatureDto"
+          }
+        },
+        "sdks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AppSdkDto"
+          }
+        }
+      }
+    },
+    "CreateOrUpdateAppFeatureDto": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "details": {
+          "type": "string"
+        },
+        "screenshotKeys": {
           "type": "string"
         }
       }
@@ -7105,7 +7826,27 @@
         }
       }
     },
-    "CreateUpdateAppUserScoreDto": {
+    "CreateOrUpdateAppSdkDto": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "privacy": {
+          "type": "string"
+        },
+        "privacyUrl": {
+          "type": "string"
+        },
+        "homePage": {
+          "type": "string"
+        }
+      }
+    },
+    "CreateOrUpdateAppUserScoreDto": {
       "type": "object",
       "properties": {
         "appId": {
@@ -7120,7 +7861,7 @@
         }
       }
     },
-    "CreateUpdatePuupeeDto": {
+    "CreateOrUpdatePuupeeDto": {
       "required": [
         "id",
         "name"
@@ -7276,7 +8017,9 @@
           "type": "integer"
         },
         "lastModifierDeviceToken": {
-          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifierDevice": {
           "type": "string"
         }
       }
@@ -8778,7 +9521,9 @@
           "type": "string"
         },
         "lastModifierDeviceToken": {
-          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifierDevice": {
           "type": "string"
         }
       }
@@ -9294,6 +10039,18 @@
         },
         "concurrencyStamp": {
           "type": "string"
+        }
+      }
+    },
+    "TestDateTime": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "puupee": {
+          "$ref": "#/definitions/PuupeeDto"
         }
       }
     },
