@@ -3,5 +3,8 @@
     "pubName": "puupee_api_client",
     "pubAuthor": "jerloo",
     "pubDescription": "Api for puupee app service.",
-    "pubHomepage": "https://github.com/puupee/puupee-api-dart"
+    "pubHomepage": "https://github.com/puupee/puupee-api-dart",
+    "serializationLibrary": "json_serializable",
+    "finalProperties": false,
+    "useEnumExtension": true
 }
