@@ -7592,6 +7592,12 @@
         "token": {
           "type": "string"
         },
+        "tpnsToken": {
+          "type": "string"
+        },
+        "isPhysicalDevice": {
+          "type": "boolean"
+        },
         "name": {
           "type": "string"
         },
@@ -8258,6 +8264,12 @@
         },
         "token": {
           "type": "string"
+        },
+        "tpnsToken": {
+          "type": "string"
+        },
+        "isPhysicalDevice": {
+          "type": "boolean"
         },
         "name": {
           "type": "string"

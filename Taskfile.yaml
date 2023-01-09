@@ -15,3 +15,8 @@ tasks:
   go:
     cmds:
       - sh generate_go.sh
+  axios:
+    cmds:
+      - rm -rf ../puupee-api-axios/*
+      - java -jar openapi-generator-cli.jar generate -g typescript-axios -o ../puupee-api-axios -c configs/axios.json -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-axios --release-note update
+      - cd ../puupee-api-axios/ && flutter pub get && flutter pub run build_runner build && git add . && git commit -a -m "update" && git push origin master
