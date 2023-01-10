@@ -7,6 +7,8 @@ tasks:
     cmds:
       - task dart
       - task go
+      - task axios
+      - task python
   dart:
     cmds:
       - rm -rf ../puupee-api-dart/*
@@ -19,4 +21,9 @@ tasks:
     cmds:
       - rm -rf ../puupee-api-axios/*
       - java -jar openapi-generator-cli.jar generate -g typescript-axios -o ../puupee-api-axios -c configs/axios.json -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-axios --release-note update
-      - cd ../puupee-api-axios/ && flutter pub get && flutter pub run build_runner build && git add . && git commit -a -m "update" && git push origin master
+      - cd ../puupee-api-axios/ && yarn install && git add . && git commit -a -m "update" && git push origin master
+  python:
+    cmds:
+      - rm -rf ../puupee-api-python/*
+      - java -jar openapi-generator-cli.jar generate -g python -o ../puupee-api-python -c configs/python.json -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-python --release-note update
+      - cd ../puupee-api-python/ && pip install && git add . && git commit -a -m "update" && git push origin master
