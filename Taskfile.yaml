@@ -21,9 +21,10 @@ tasks:
     cmds:
       - rm -rf ../puupee-api-axios/*
       - java -jar openapi-generator-cli.jar generate -g typescript-axios -o ../puupee-api-axios -c configs/axios.json -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-axios --release-note update
-      - cd ../puupee-api-axios/ && yarn install && git add . && git commit -a -m "update" && git push origin master
+      - cd ../puupee-api-axios/ && yarn install && git add . && git commit -a -m "update" && git push origin main
   python:
     cmds:
       - rm -rf ../puupee-api-python/*
       - java -jar openapi-generator-cli.jar generate -g python -o ../puupee-api-python -c configs/python.json -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-python --release-note update
-      - cd ../puupee-api-python/ && pip install && git add . && git commit -a -m "update" && git push origin master
+      # - cd ../puupee-api-python/ && pip3 install -r requirements.txt && git add . && git commit -a -m "update" && git push origin main
+      - cd ../puupee-api-python/ && git add . && git commit -a -m "update" && git push origin main
