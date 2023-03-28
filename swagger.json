@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Puupee API",
-    "version": "v1"
+    "version": "1.0.0"
   },
   "paths": {
     "/api/abp/api-definition": {
@@ -603,6 +603,59 @@
         }
       }
     },
+    "/api/app/account": {
+      "delete": {
+        "tags": [
+          "Account"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
     "/api/app/app": {
       "post": {
         "tags": [
@@ -1083,6 +1136,69 @@
       }
     },
     "/api/app/app/by-developer": {
+      "get": {
+        "tags": [
+          "App"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "developerAccount",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AppDtoPagedResultDto"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/app/by-developer-all": {
       "get": {
         "tags": [
           "App"
@@ -2540,27 +2656,17 @@
         "parameters": [
           {
             "in": "query",
-            "name": "appName",
+            "name": "AppName",
             "type": "string"
           },
           {
             "in": "query",
-            "name": "Name",
+            "name": "Platform",
             "type": "string"
           },
           {
             "in": "query",
-            "name": "Value",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "Name",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "Value",
+            "name": "ProductType",
             "type": "string"
           }
         ],
@@ -8008,6 +8114,12 @@
         "gitRepositoryType": {
           "type": "string"
         },
+        "isEnabled": {
+          "type": "boolean"
+        },
+        "isPublished": {
+          "type": "boolean"
+        },
         "latestReleases": {
           "type": "array",
           "items": {
@@ -8299,6 +8411,13 @@
         "version": {
           "type": "string"
         },
+        "versionName": {
+          "type": "string"
+        },
+        "versionCode": {
+          "format": "int64",
+          "type": "integer"
+        },
         "notes": {
           "type": "string"
         },
@@ -8545,7 +8664,7 @@
         },
         "extraProperties": {
           "type": "object",
-          "additionalProperties": { }
+          "additionalProperties": {}
         }
       }
     },
@@ -8831,6 +8950,12 @@
         "gitRepositoryType": {
           "type": "string"
         },
+        "isEnabled": {
+          "type": "boolean"
+        },
+        "isPublished": {
+          "type": "boolean"
+        },
         "features": {
           "type": "array",
           "items": {
@@ -8950,6 +9075,13 @@
         "version": {
           "type": "string"
         },
+        "versionName": {
+          "type": "string"
+        },
+        "versionCode": {
+          "format": "int64",
+          "type": "integer"
+        },
         "notes": {
           "type": "string"
         },
@@ -9052,6 +9184,9 @@
           "type": "string"
         },
         "text": {
+          "type": "string"
+        },
+        "content": {
           "type": "string"
         },
         "format": {
@@ -9187,6 +9322,9 @@
           "type": "string"
         },
         "lastModifierDevice": {
+          "type": "string"
+        },
+        "app": {
           "type": "string"
         }
       }
@@ -9539,7 +9677,7 @@
         },
         "configuration": {
           "type": "object",
-          "additionalProperties": { }
+          "additionalProperties": {}
         }
       }
     },
@@ -9563,7 +9701,7 @@
         "name": {
           "type": "string"
         },
-        "value": { }
+        "value": {}
       }
     },
     "ExtensionPropertyApiCreateDto": {
@@ -9612,7 +9750,7 @@
         },
         "config": {
           "type": "object",
-          "additionalProperties": { }
+          "additionalProperties": {}
         }
       }
     },
@@ -9642,9 +9780,9 @@
         },
         "configuration": {
           "type": "object",
-          "additionalProperties": { }
+          "additionalProperties": {}
         },
-        "defaultValue": { }
+        "defaultValue": {}
       }
     },
     "ExtensionPropertyUiDto": {
@@ -9810,7 +9948,7 @@
         },
         "properties": {
           "type": "object",
-          "additionalProperties": { },
+          "additionalProperties": {},
           "readOnly": true
         },
         "validator": {
@@ -9827,7 +9965,7 @@
         },
         "properties": {
           "type": "object",
-          "additionalProperties": { },
+          "additionalProperties": {},
           "readOnly": true
         }
       }
@@ -9848,7 +9986,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": { },
+          "additionalProperties": {},
           "readOnly": true
         },
         "name": {
@@ -9869,7 +10007,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": { },
+          "additionalProperties": {},
           "readOnly": true
         },
         "id": {
@@ -9927,7 +10065,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": { },
+          "additionalProperties": {},
           "readOnly": true
         },
         "name": {
@@ -9956,7 +10094,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": { },
+          "additionalProperties": {},
           "readOnly": true
         },
         "userName": {
@@ -10009,7 +10147,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": { },
+          "additionalProperties": {},
           "readOnly": true
         },
         "id": {
@@ -10107,7 +10245,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": { },
+          "additionalProperties": {},
           "readOnly": true
         },
         "userName": {
@@ -10283,7 +10421,7 @@
         "isOptional": {
           "type": "boolean"
         },
-        "defaultValue": { }
+        "defaultValue": {}
       }
     },
     "ModuleApiDescriptionModel": {
@@ -10314,7 +10452,7 @@
         },
         "configuration": {
           "type": "object",
-          "additionalProperties": { }
+          "additionalProperties": {}
         }
       }
     },
@@ -10375,7 +10513,7 @@
         "isOptional": {
           "type": "boolean"
         },
-        "defaultValue": { },
+        "defaultValue": {},
         "constraintTypes": {
           "type": "array",
           "items": {
@@ -10447,7 +10585,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": { },
+          "additionalProperties": {},
           "readOnly": true
         },
         "userName": {
@@ -10582,6 +10720,9 @@
         "text": {
           "type": "string"
         },
+        "content": {
+          "type": "string"
+        },
         "format": {
           "type": "string"
         },
@@ -10702,6 +10843,9 @@
         },
         "lastModifierDevice": {
           "type": "string"
+        },
+        "app": {
+          "type": "string"
         }
       }
     },
@@ -10742,7 +10886,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": { },
+          "additionalProperties": {},
           "readOnly": true
         },
         "userName": {
@@ -10781,7 +10925,7 @@
         },
         "data": {
           "type": "object",
-          "additionalProperties": { }
+          "additionalProperties": {}
         },
         "validationErrors": {
           "type": "array",
@@ -10922,7 +11066,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": { },
+          "additionalProperties": {},
           "readOnly": true
         },
         "id": {
@@ -11144,7 +11288,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": { },
+          "additionalProperties": {},
           "readOnly": true
         },
         "name": {
@@ -11168,7 +11312,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": { },
+          "additionalProperties": {},
           "readOnly": true
         },
         "id": {
@@ -11206,7 +11350,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": { },
+          "additionalProperties": {},
           "readOnly": true
         },
         "name": {
@@ -11296,7 +11440,7 @@
         },
         "enumValues": {
           "type": "array",
-          "items": { }
+          "items": {}
         },
         "genericArguments": {
           "type": "array",
@@ -11407,7 +11551,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": { },
+          "additionalProperties": {},
           "readOnly": true
         },
         "userName": {
@@ -11600,7 +11744,7 @@
   },
   "security": [
     {
-      "oauth2": [ ]
+      "oauth2": []
     }
   ]
 }

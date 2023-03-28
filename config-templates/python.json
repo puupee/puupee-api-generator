@@ -1,6 +1,6 @@
 {
     "packageName": "puupee-api",
     "packageUrl": "https://github.com/jiejie-dev/puupee-api-python",
-    "packageVersion": "1.0.0+3",
+    "packageVersion": "${VERSION}",
     "projectName": "puupee-api"
 }
