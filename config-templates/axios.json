@@ -1,7 +1,5 @@
 {
     "npmName": "puupee-api-axios",
     "nullSafeAdditionalProps": true,
-    "supportsES6": true,
-    "npmVersion": "${VERSION}",
-    "npmRepository": "https://github.com/puupee/puupee-api-axios"
+    "supportsES6": true
 }

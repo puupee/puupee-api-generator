@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Puupee API",
-    "version": "1.0.0"
+    "version": "1.0.0.0"
   },
   "paths": {
     "/api/abp/api-definition": {
@@ -1009,6 +1009,71 @@
         }
       }
     },
+    "/api/app/app/{id}/with-user": {
+      "get": {
+        "tags": [
+          "App"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AppWithUserDto"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
     "/api/app/app/by-name": {
       "get": {
         "tags": [
@@ -1135,7 +1200,7 @@
         }
       }
     },
-    "/api/app/app/by-developer": {
+    "/api/app/app/public": {
       "get": {
         "tags": [
           "App"
@@ -1148,7 +1213,17 @@
         "parameters": [
           {
             "in": "query",
-            "name": "developerAccount",
+            "name": "Type",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "DeveloperAccount",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "CurrentAppName",
             "type": "string"
           }
         ],
@@ -1157,6 +1232,95 @@
             "description": "Success",
             "schema": {
               "$ref": "#/definitions/AppDtoPagedResultDto"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/app/with-user": {
+      "get": {
+        "tags": [
+          "App"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "Type",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "SearchKey",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "Sorting",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "SkipCount",
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": 0
+          },
+          {
+            "in": "query",
+            "name": "MaxResultCount",
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AppWithUserDtoPagedResultDto"
             }
           },
           "403": {
@@ -2667,6 +2831,11 @@
           {
             "in": "query",
             "name": "ProductType",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "Environment",
             "type": "string"
           }
         ],
@@ -4718,6 +4887,1056 @@
         }
       }
     },
+    "/api/app/message/publish": {
+      "post": {
+        "tags": [
+          "Message"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/MessagePublishDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/message/recall": {
+      "post": {
+        "tags": [
+          "Message"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/MessageRecallDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/message/subscribe": {
+      "post": {
+        "tags": [
+          "Message"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/MessageSubscribeDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/message/unsubscribe": {
+      "post": {
+        "tags": [
+          "Message"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/MessageUnsubscribeDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/message-template": {
+      "post": {
+        "tags": [
+          "MessageTemplate"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateOrUpdateMessageTemplateDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/MessageTemplateDto"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "MessageTemplate"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MessageTemplateDto"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/message-template/{id}": {
+      "delete": {
+        "tags": [
+          "MessageTemplate"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "MessageTemplate"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/MessageTemplateDto"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "MessageTemplate"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateOrUpdateMessageTemplateDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/MessageTemplateDto"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/message-template-release": {
+      "post": {
+        "tags": [
+          "MessageTemplateRelease"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateMessageTemplateReleaseDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/MessageTemplateReleaseDto"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "MessageTemplateRelease"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "templateId",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MessageTemplateReleaseDto"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/message-template-release/{id}": {
+      "get": {
+        "tags": [
+          "MessageTemplateRelease"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/MessageTemplateReleaseDto"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/notification/bark/{apiKey}/{message}": {
+      "get": {
+        "tags": [
+          "Notification"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "apiKey",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "message",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "automaticallyCopy",
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "in": "query",
+            "name": "copy",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "url",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "isArchive",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "group",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "icon",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "Name",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "Value",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/notification": {
+      "get": {
+        "tags": [
+          "Notification"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "Sorting",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "SkipCount",
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": 0
+          },
+          {
+            "in": "query",
+            "name": "MaxResultCount",
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/NotificationInfoDtoPagedResultDto"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/notification/push": {
+      "post": {
+        "tags": [
+          "Notification"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CreatePushNotificationDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
     "/api/permission-management/permissions": {
       "get": {
         "tags": [
@@ -5063,6 +6282,11 @@
           "text/json"
         ],
         "parameters": [
+          {
+            "in": "query",
+            "name": "appName",
+            "type": "string"
+          },
           {
             "in": "query",
             "name": "afterVersion",
@@ -6177,7 +7401,7 @@
         }
       }
     },
-    "/api/app/subscription/verify-apple": {
+    "/api/app/subscription/apple-notifications": {
       "post": {
         "tags": [
           "Subscription"
@@ -6197,13 +7421,217 @@
             "in": "body",
             "name": "body",
             "schema": {
-              "$ref": "#/definitions/AppleSubscriptionVerifyDto"
+              "$ref": "#/definitions/Anv2"
             }
           }
         ],
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/subscription/order": {
+      "post": {
+        "tags": [
+          "Subscription"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateOrGetSubscriptionOrderDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SubscriptionOrderDto"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/subscription/verify-receipt": {
+      "post": {
+        "tags": [
+          "Subscription"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/VerifyReceiptDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/VerifyReceiptResult"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/subscription": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "appId",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SubscriptionDto"
+            }
           },
           "403": {
             "description": "Forbidden",
@@ -8049,6 +9477,14 @@
         }
       }
     },
+    "Anv2": {
+      "type": "object",
+      "properties": {
+        "signedPayload": {
+          "type": "string"
+        }
+      }
+    },
     "AppDto": {
       "type": "object",
       "properties": {
@@ -8119,6 +9555,21 @@
         },
         "isPublished": {
           "type": "boolean"
+        },
+        "webhookUrl": {
+          "type": "string"
+        },
+        "businessDomain": {
+          "type": "string"
+        },
+        "businessUrl": {
+          "type": "string"
+        },
+        "subscriptionEnabled": {
+          "type": "boolean"
+        },
+        "subscriptionPlatforms": {
+          "type": "string"
         },
         "latestReleases": {
           "type": "array",
@@ -8246,6 +9697,12 @@
         "naming": {
           "type": "string"
         },
+        "monthProductId": {
+          "type": "string"
+        },
+        "yearProductId": {
+          "type": "string"
+        },
         "description": {
           "type": "string"
         },
@@ -8292,6 +9749,10 @@
         "yearDiscountEndAt": {
           "format": "date-time",
           "type": "string"
+        },
+        "sortIndex": {
+          "format": "int32",
+          "type": "integer"
         },
         "items": {
           "type": "array",
@@ -8353,6 +9814,12 @@
         "name": {
           "type": "string"
         },
+        "description": {
+          "type": "string"
+        },
+        "linkUrl": {
+          "type": "string"
+        },
         "display": {
           "type": "string"
         },
@@ -8371,6 +9838,10 @@
         },
         "hasValue": {
           "type": "boolean"
+        },
+        "sortIndex": {
+          "format": "int32",
+          "type": "integer"
         }
       }
     },
@@ -8595,8 +10066,165 @@
         }
       }
     },
-    "AppleSubscriptionVerifyDto": {
-      "type": "object"
+    "AppWithUserDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "framework": {
+          "type": "string"
+        },
+        "appType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "homePage": {
+          "type": "string"
+        },
+        "sortIndex": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "gitRepository": {
+          "type": "string"
+        },
+        "gitRepositoryType": {
+          "type": "string"
+        },
+        "isEnabled": {
+          "type": "boolean"
+        },
+        "isPublished": {
+          "type": "boolean"
+        },
+        "webhookUrl": {
+          "type": "string"
+        },
+        "businessDomain": {
+          "type": "string"
+        },
+        "businessUrl": {
+          "type": "string"
+        },
+        "subscriptionEnabled": {
+          "type": "boolean"
+        },
+        "subscriptionPlatforms": {
+          "type": "string"
+        },
+        "latestReleases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AppReleaseDto"
+          }
+        },
+        "creator": {
+          "$ref": "#/definitions/IdentityUserDto"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AppFeatureDto"
+          }
+        },
+        "sdks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AppSdkDto"
+          }
+        },
+        "subscribed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "AppWithUserDtoPagedResultDto": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AppWithUserDto"
+          }
+        },
+        "totalCount": {
+          "format": "int64",
+          "type": "integer"
+        }
+      }
+    },
+    "AppleVerifyReceiptResult": {
+      "type": "object",
+      "properties": {
+        "environment": {
+          "type": "string"
+        },
+        "is_retryable": {
+          "type": "boolean"
+        },
+        "status": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "latest_receipt_info": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LatestReceiptInfo"
+          }
+        },
+        "latest_receipt": {
+          "type": "string"
+        },
+        "pending_renewal_info": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PendingRenewalInfo"
+          }
+        },
+        "receipt": {
+          "$ref": "#/definitions/Receipt"
+        }
+      }
     },
     "ApplicationApiDescriptionModel": {
       "type": "object",
@@ -8664,7 +10292,7 @@
         },
         "extraProperties": {
           "type": "object",
-          "additionalProperties": {}
+          "additionalProperties": { }
         }
       }
     },
@@ -8795,7 +10423,7 @@
         "name": {
           "type": "string"
         },
-        "type": {
+        "platform": {
           "type": "string"
         },
         "brand": {
@@ -8916,6 +10544,112 @@
         }
       }
     },
+    "CreateMessageTemplateReleaseDto": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "templateId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "CreateOpenIddictApplicationDto": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "displayNames": {
+          "type": "string"
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "postLogoutRedirectUris": {
+          "type": "string"
+        },
+        "properties": {
+          "type": "string"
+        },
+        "redirectUris": {
+          "type": "string"
+        },
+        "requirements": {
+          "type": "string"
+        },
+        "clientUri": {
+          "type": "string"
+        },
+        "logoUri": {
+          "type": "string"
+        },
+        "grantTypes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "CreateOrGetSubscriptionOrderDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "appId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "pricingId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
     "CreateOrUpdateAppDto": {
       "type": "object",
       "properties": {
@@ -8953,6 +10687,21 @@
         "isEnabled": {
           "type": "boolean"
         },
+        "webhookUrl": {
+          "type": "string"
+        },
+        "businessDomain": {
+          "type": "string"
+        },
+        "businessUrl": {
+          "type": "string"
+        },
+        "subscriptionEnabled": {
+          "type": "boolean"
+        },
+        "subscriptionPlatforms": {
+          "type": "string"
+        },
         "isPublished": {
           "type": "boolean"
         },
@@ -8967,6 +10716,9 @@
           "items": {
             "$ref": "#/definitions/AppSdkDto"
           }
+        },
+        "openClient": {
+          "$ref": "#/definitions/CreateOpenIddictApplicationDto"
         }
       }
     },
@@ -8994,6 +10746,12 @@
       "type": "object",
       "properties": {
         "naming": {
+          "type": "string"
+        },
+        "monthProductId": {
+          "type": "string"
+        },
+        "yearProductId": {
           "type": "string"
         },
         "description": {
@@ -9043,10 +10801,14 @@
           "format": "date-time",
           "type": "string"
         },
+        "sortIndex": {
+          "format": "int32",
+          "type": "integer"
+        },
         "items": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/AppPricingItemDto"
+            "$ref": "#/definitions/CreateOrUpdateAppPricingItemDto"
           }
         }
       }
@@ -9057,6 +10819,12 @@
         "name": {
           "type": "string"
         },
+        "description": {
+          "type": "string"
+        },
+        "linkUrl": {
+          "type": "string"
+        },
         "display": {
           "type": "string"
         },
@@ -9064,8 +10832,15 @@
           "format": "uuid",
           "type": "string"
         },
+        "isAvailable": {
+          "type": "boolean"
+        },
         "hasValue": {
           "type": "boolean"
+        },
+        "sortIndex": {
+          "format": "int32",
+          "type": "integer"
         }
       }
     },
@@ -9156,6 +10931,17 @@
           "type": "integer"
         },
         "comment": {
+          "type": "string"
+        }
+      }
+    },
+    "CreateOrUpdateMessageTemplateDto": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
           "type": "string"
         }
       }
@@ -9289,6 +11075,10 @@
           "format": "int32",
           "type": "integer"
         },
+        "repetitions": {
+          "format": "int32",
+          "type": "integer"
+        },
         "isDone": {
           "type": "boolean"
         },
@@ -9322,6 +11112,35 @@
           "type": "string"
         },
         "lastModifierDevice": {
+          "type": "string"
+        },
+        "appName": {
+          "type": "string"
+        },
+        "pushToUser": {
+          "type": "boolean"
+        },
+        "sortIndex": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "CreatePushNotificationDto": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "puupeeId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
           "type": "string"
         },
         "app": {
@@ -9677,7 +11496,7 @@
         },
         "configuration": {
           "type": "object",
-          "additionalProperties": {}
+          "additionalProperties": { }
         }
       }
     },
@@ -9701,7 +11520,7 @@
         "name": {
           "type": "string"
         },
-        "value": {}
+        "value": { }
       }
     },
     "ExtensionPropertyApiCreateDto": {
@@ -9750,7 +11569,7 @@
         },
         "config": {
           "type": "object",
-          "additionalProperties": {}
+          "additionalProperties": { }
         }
       }
     },
@@ -9780,9 +11599,9 @@
         },
         "configuration": {
           "type": "object",
-          "additionalProperties": {}
+          "additionalProperties": { }
         },
-        "defaultValue": {}
+        "defaultValue": { }
       }
     },
     "ExtensionPropertyUiDto": {
@@ -9948,7 +11767,7 @@
         },
         "properties": {
           "type": "object",
-          "additionalProperties": {},
+          "additionalProperties": { },
           "readOnly": true
         },
         "validator": {
@@ -9965,7 +11784,7 @@
         },
         "properties": {
           "type": "object",
-          "additionalProperties": {},
+          "additionalProperties": { },
           "readOnly": true
         }
       }
@@ -9986,7 +11805,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": {},
+          "additionalProperties": { },
           "readOnly": true
         },
         "name": {
@@ -10007,7 +11826,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": {},
+          "additionalProperties": { },
           "readOnly": true
         },
         "id": {
@@ -10065,7 +11884,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": {},
+          "additionalProperties": { },
           "readOnly": true
         },
         "name": {
@@ -10094,7 +11913,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": {},
+          "additionalProperties": { },
           "readOnly": true
         },
         "userName": {
@@ -10147,7 +11966,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": {},
+          "additionalProperties": { },
           "readOnly": true
         },
         "id": {
@@ -10245,7 +12064,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": {},
+          "additionalProperties": { },
           "readOnly": true
         },
         "userName": {
@@ -10307,6 +12126,59 @@
           "items": {
             "type": "string"
           }
+        }
+      }
+    },
+    "InApp": {
+      "type": "object",
+      "properties": {
+        "quantity": {
+          "type": "string"
+        },
+        "product_id": {
+          "type": "string"
+        },
+        "transaction_id": {
+          "type": "string"
+        },
+        "original_transaction_id": {
+          "type": "string"
+        },
+        "purchase_date": {
+          "type": "string"
+        },
+        "purchase_date_ms": {
+          "type": "string"
+        },
+        "purchase_date_pst": {
+          "type": "string"
+        },
+        "original_purchase_date": {
+          "type": "string"
+        },
+        "original_purchase_date_ms": {
+          "type": "string"
+        },
+        "original_purchase_date_pst": {
+          "type": "string"
+        },
+        "expires_date": {
+          "type": "string"
+        },
+        "expires_date_ms": {
+          "type": "string"
+        },
+        "expires_date_pst": {
+          "type": "string"
+        },
+        "web_order_line_item_id": {
+          "type": "string"
+        },
+        "is_trial_period": {
+          "type": "string"
+        },
+        "is_in_intro_offer_period": {
+          "type": "string"
         }
       }
     },
@@ -10382,6 +12254,59 @@
         }
       }
     },
+    "LatestReceiptInfo": {
+      "type": "object",
+      "properties": {
+        "quantity": {
+          "type": "string"
+        },
+        "product_id": {
+          "type": "string"
+        },
+        "transaction_id": {
+          "type": "string"
+        },
+        "original_transaction_id": {
+          "type": "string"
+        },
+        "purchase_date": {
+          "type": "string"
+        },
+        "purchase_date_ms": {
+          "type": "string"
+        },
+        "purchase_date_pst": {
+          "type": "string"
+        },
+        "original_purchase_date": {
+          "type": "string"
+        },
+        "original_purchase_date_ms": {
+          "type": "string"
+        },
+        "original_purchase_date_pst": {
+          "type": "string"
+        },
+        "expires_date": {
+          "type": "string"
+        },
+        "expires_date_ms": {
+          "type": "string"
+        },
+        "expires_date_pst": {
+          "type": "string"
+        },
+        "web_order_line_item_id": {
+          "type": "string"
+        },
+        "is_trial_period": {
+          "type": "string"
+        },
+        "is_in_intro_offer_period": {
+          "type": "string"
+        }
+      }
+    },
     "LocalizableStringDto": {
       "type": "object",
       "properties": {
@@ -10403,6 +12328,151 @@
       ],
       "type": "string"
     },
+    "MessagePublishDto": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "appId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "template": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": { }
+        }
+      }
+    },
+    "MessageRecallDto": {
+      "type": "object",
+      "properties": {
+        "puupeeId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "MessageSubscribeDto": {
+      "type": "object",
+      "properties": {
+        "appId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "MessageTemplateDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "latestVersion": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MessageTemplateReleaseDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "templateName": {
+          "type": "string"
+        },
+        "version": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "content": {
+          "type": "string"
+        },
+        "templateId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "MessageUnsubscribeDto": {
+      "type": "object",
+      "properties": {
+        "appId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
     "MethodParameterApiDescriptionModel": {
       "type": "object",
       "properties": {
@@ -10421,7 +12491,7 @@
         "isOptional": {
           "type": "boolean"
         },
-        "defaultValue": {}
+        "defaultValue": { }
       }
     },
     "ModuleApiDescriptionModel": {
@@ -10452,7 +12522,7 @@
         },
         "configuration": {
           "type": "object",
-          "additionalProperties": {}
+          "additionalProperties": { }
         }
       }
     },
@@ -10472,6 +12542,57 @@
         },
         "value": {
           "type": "string"
+        }
+      }
+    },
+    "NotificationInfoDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "NotificationInfoDtoPagedResultDto": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NotificationInfoDto"
+          }
+        },
+        "totalCount": {
+          "format": "int64",
+          "type": "integer"
         }
       }
     },
@@ -10513,7 +12634,7 @@
         "isOptional": {
           "type": "boolean"
         },
-        "defaultValue": {},
+        "defaultValue": { },
         "constraintTypes": {
           "type": "array",
           "items": {
@@ -10524,6 +12645,41 @@
           "type": "string"
         },
         "descriptorName": {
+          "type": "string"
+        }
+      }
+    },
+    "PendingRenewalInfo": {
+      "type": "object",
+      "properties": {
+        "auto_renew_product_id": {
+          "type": "string"
+        },
+        "auto_renew_status": {
+          "type": "string"
+        },
+        "is_in_billing_retry_period": {
+          "type": "string"
+        },
+        "original_transaction_id": {
+          "type": "string"
+        },
+        "product_id": {
+          "type": "string"
+        },
+        "expiration_intent": {
+          "type": "string"
+        },
+        "price_consent_status": {
+          "type": "string"
+        },
+        "grace_period_expires_date": {
+          "type": "string"
+        },
+        "grace_period_expires_date_ms": {
+          "type": "string"
+        },
+        "grace_period_expires_date_pst": {
           "type": "string"
         }
       }
@@ -10585,7 +12741,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": {},
+          "additionalProperties": { },
           "readOnly": true
         },
         "userName": {
@@ -10828,6 +12984,10 @@
           "format": "int32",
           "type": "integer"
         },
+        "repetitions": {
+          "format": "int32",
+          "type": "integer"
+        },
         "syncVersion": {
           "format": "int64",
           "type": "integer"
@@ -10844,8 +13004,12 @@
         "lastModifierDevice": {
           "type": "string"
         },
-        "app": {
+        "appName": {
           "type": "string"
+        },
+        "sortIndex": {
+          "format": "int32",
+          "type": "integer"
         }
       }
     },
@@ -10861,6 +13025,72 @@
         "totalCount": {
           "format": "int64",
           "type": "integer"
+        }
+      }
+    },
+    "Receipt": {
+      "type": "object",
+      "properties": {
+        "receipt_type": {
+          "type": "string"
+        },
+        "adam_id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "app_item_id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "bundle_id": {
+          "type": "string"
+        },
+        "application_version": {
+          "type": "string"
+        },
+        "download_id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "version_external_identifier": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "receipt_creation_date": {
+          "type": "string"
+        },
+        "receipt_creation_date_ms": {
+          "type": "string"
+        },
+        "receipt_creation_date_pst": {
+          "type": "string"
+        },
+        "request_date": {
+          "type": "string"
+        },
+        "request_date_ms": {
+          "type": "string"
+        },
+        "request_date_pst": {
+          "type": "string"
+        },
+        "original_purchase_date": {
+          "type": "string"
+        },
+        "original_purchase_date_ms": {
+          "type": "string"
+        },
+        "original_purchase_date_pst": {
+          "type": "string"
+        },
+        "original_application_version": {
+          "type": "string"
+        },
+        "in_app": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InApp"
+          }
         }
       }
     },
@@ -10886,7 +13116,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": {},
+          "additionalProperties": { },
           "readOnly": true
         },
         "userName": {
@@ -10925,7 +13155,7 @@
         },
         "data": {
           "type": "object",
-          "additionalProperties": {}
+          "additionalProperties": { }
         },
         "validationErrors": {
           "type": "array",
@@ -11066,7 +13296,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": {},
+          "additionalProperties": { },
           "readOnly": true
         },
         "id": {
@@ -11265,6 +13495,133 @@
         }
       }
     },
+    "SubscriptionDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "expireAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "appId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "priceNaming": {
+          "type": "string"
+        },
+        "pricingId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "SubscriptionOrderDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/SubscriptionOrderType"
+        },
+        "status": {
+          "$ref": "#/definitions/SubscriptionOrderStatus"
+        },
+        "appId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "pricingId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "SubscriptionOrderStatus": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "readOnly": true
+        },
+        "value": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "SubscriptionOrderType": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "readOnly": true
+        },
+        "value": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
     "SyncStateDto": {
       "type": "object",
       "properties": {
@@ -11288,7 +13645,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": {},
+          "additionalProperties": { },
           "readOnly": true
         },
         "name": {
@@ -11312,7 +13669,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": {},
+          "additionalProperties": { },
           "readOnly": true
         },
         "id": {
@@ -11350,7 +13707,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": {},
+          "additionalProperties": { },
           "readOnly": true
         },
         "name": {
@@ -11440,7 +13797,7 @@
         },
         "enumValues": {
           "type": "array",
-          "items": {}
+          "items": { }
         },
         "genericArguments": {
           "type": "array",
@@ -11551,7 +13908,7 @@
       "properties": {
         "extraProperties": {
           "type": "object",
-          "additionalProperties": {},
+          "additionalProperties": { },
           "readOnly": true
         },
         "userName": {
@@ -11722,6 +14079,72 @@
         }
       }
     },
+    "VerifyReceiptDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "orderId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "receiptData": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "deviceToken": {
+          "type": "string"
+        }
+      }
+    },
+    "VerifyReceiptResult": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "statusCode": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "appleVerifyReceiptResult": {
+          "$ref": "#/definitions/AppleVerifyReceiptResult"
+        }
+      }
+    },
     "WindowsTimeZone": {
       "type": "object",
       "properties": {
@@ -11744,7 +14167,7 @@
   },
   "security": [
     {
-      "oauth2": []
+      "oauth2": [ ]
     }
   ]
 }

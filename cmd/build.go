@@ -10,13 +10,15 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
-	"strconv"
-	"strings"
 
+	"github.com/AlecAivazis/survey/v2"
 	"github.com/spf13/cobra"
 )
 
-var supported []string = []string{"axios", "dart", "go", "python"}
+var (
+	supported []string = []string{"axios", "dart", "go", "python"}
+	lang      string
+)
 
 // buildCmd represents the build command
 var buildCmd = &cobra.Command{
@@ -24,36 +26,41 @@ var buildCmd = &cobra.Command{
 	Short: "构建",
 	Run: func(cmd *cobra.Command, args []string) {
 		// 获取 build-number
-		bts, err := ioutil.ReadFile("build-number")
+		bts, err := ioutil.ReadFile("version")
 		cobra.CheckErr(err)
-		bnStr := string(bts)
-		buildNumber, err := strconv.Atoi(bnStr)
+		latestVersion := string(bts)
+		prompt := &survey.Input{
+			Message: "输入构建版本号:",
+			Default: latestVersion,
+		}
+		var version string
+		err = survey.AskOne(prompt, &version, survey.WithValidator(survey.Required))
 		cobra.CheckErr(err)
-		buildNumber++
+		if latestVersion == version {
+			cmd.Println("版本号未变化，不需要构建")
+			return
+		}
 		swaggerBts, err := ioutil.ReadFile("swagger.json")
 		cobra.CheckErr(err)
 		swagger := make(map[string]interface{})
 		err = json.Unmarshal(swaggerBts, &swagger)
 		cobra.CheckErr(err)
 		info := swagger["info"].(map[string]interface{})
-		version := info["version"].(string)
-		buildVersion := fmt.Sprintf("%s+%d", version, buildNumber)
-		fmt.Printf("Building target version: %s\n", buildVersion)
-		for _, lang := range supported {
-			filename := fmt.Sprintf("config-templates/%s.json", lang)
-			fileBts, err := ioutil.ReadFile(filename)
-			cobra.CheckErr(err)
-			content := strings.ReplaceAll(string(fileBts), "${VERSION}", buildVersion)
-			err = ioutil.WriteFile(strings.ReplaceAll(filename, "config-templates", "configs"), []byte(content), fs.ModePerm)
-			cobra.CheckErr(err)
-		}
-		c := exec.Command("task", "all")
+		info["version"] = version
+		fmt.Printf("Building target version: %s\n", version)
+		c := exec.Command("task", lang)
 		c.Stdout = os.Stdout
 		c.Stderr = os.Stderr
 		err = c.Run()
 		cobra.CheckErr(err)
-		err = ioutil.WriteFile("build-number", []byte(fmt.Sprintf("%d", buildNumber)), fs.ModePerm)
+		err = ioutil.WriteFile("version", []byte(version), fs.ModePerm)
 		cobra.CheckErr(err)
+		cu := exec.Command("task", "update-self", "VERSION="+version)
+		cu.Stdout = os.Stdout
+		cu.Stderr = os.Stderr
+		err = cu.Run()
+		cobra.CheckErr(err)
+		cmd.Printf("构建完成! 语言: %s\n 版本: %s\n", lang, version)
 	},
 }
 
@@ -69,4 +76,7 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// buildCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	buildCmd.Flags().StringVarP(&lang, "lang", "l", "all", "目标语言")
+	buildCmd.MarkFlagRequired("lang")
+	buildCmd.Flags().SetAnnotation("lang", "survey", supported)
 }

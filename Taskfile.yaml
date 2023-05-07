@@ -2,6 +2,9 @@
 
 version: "3"
 
+vars:
+  VERSION: "1.5.8"
+
 tasks:
   all:
     cmds:
@@ -28,3 +31,6 @@ tasks:
       - java -jar openapi-generator-cli.jar generate -g python -o ../puupee-api-python -c configs/python.json -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-python --release-note update
       # - cd ../puupee-api-python/ && pip3 install -r requirements.txt && git add . && git commit -a -m "update" && git push origin main
       - cd ../puupee-api-python/ && git add . && git commit -a -m "update" && git push origin main
+  update-self:
+    cmds:
+      - git add . && git commit -a -m "update" && git tag v{{.VERSION}} && git push origin main
