@@ -60,7 +60,7 @@ var buildCmd = &cobra.Command{
 		cu.Stderr = os.Stderr
 		err = cu.Run()
 		cobra.CheckErr(err)
-		cmd.Printf("构建完成! 语言: %s\n 版本: %s\n", lang, version)
+		cmd.Printf("构建完成! 语言: %s 版本: %s\n", lang, version)
 	},
 }
 
