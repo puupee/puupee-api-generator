@@ -10181,7 +10181,7 @@
         "args": { },
         "envs": { },
         "status": {
-          "$ref": "#/definitions/AppRunStatus"
+          "type": "string"
         },
         "result": {
           "type": "string"
@@ -10244,7 +10244,7 @@
           "type": "string"
         },
         "status": {
-          "$ref": "#/definitions/AppRunStatus"
+          "type": "string"
         },
         "result": {
           "type": "string"
@@ -10264,19 +10264,6 @@
         },
         "workerName": {
           "type": "string"
-        }
-      }
-    },
-    "AppRunStatus": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "readOnly": true
-        },
-        "value": {
-          "type": "string",
-          "readOnly": true
         }
       }
     },
