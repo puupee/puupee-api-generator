@@ -10133,14 +10133,8 @@
         "appName": {
           "type": "string"
         },
-        "args": {
-          "type": "object",
-          "additionalProperties": { }
-        },
-        "envs": {
-          "type": "object",
-          "additionalProperties": { }
-        }
+        "args": { },
+        "envs": { }
       }
     },
     "AppRunRecordDto": {
@@ -10184,14 +10178,8 @@
         "appName": {
           "type": "string"
         },
-        "args": {
-          "type": "object",
-          "additionalProperties": { }
-        },
-        "envs": {
-          "type": "object",
-          "additionalProperties": { }
-        },
+        "args": { },
+        "envs": { },
         "status": {
           "$ref": "#/definitions/AppRunStatus"
         },
