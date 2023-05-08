@@ -1425,6 +1425,153 @@
         }
       }
     },
+    "/api/app/app/run": {
+      "post": {
+        "tags": [
+          "App"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/AppRunDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AppRunRecordDto"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/app/{id}/run-state": {
+      "put": {
+        "tags": [
+          "App"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/AppRunRecordUpdateDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AppRunRecordDto"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
     "/api/app/app-feature": {
       "post": {
         "tags": [
@@ -7421,7 +7568,7 @@
             "in": "body",
             "name": "body",
             "schema": {
-              "$ref": "#/definitions/Anv2"
+              "$ref": "#/definitions/AppleNotificaionDto"
             }
           }
         ],
@@ -9477,14 +9624,6 @@
         }
       }
     },
-    "Anv2": {
-      "type": "object",
-      "properties": {
-        "signedPayload": {
-          "type": "string"
-        }
-      }
-    },
     "AppDto": {
       "type": "object",
       "properties": {
@@ -9569,6 +9708,9 @@
           "type": "boolean"
         },
         "subscriptionPlatforms": {
+          "type": "string"
+        },
+        "specJsonSchema": {
           "type": "string"
         },
         "latestReleases": {
@@ -9950,6 +10092,189 @@
         }
       }
     },
+    "AppRunDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "appId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "appName": {
+          "type": "string"
+        },
+        "args": {
+          "type": "object",
+          "additionalProperties": { }
+        },
+        "envs": {
+          "type": "object",
+          "additionalProperties": { }
+        }
+      }
+    },
+    "AppRunRecordDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "appId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "appName": {
+          "type": "string"
+        },
+        "args": {
+          "type": "object",
+          "additionalProperties": { }
+        },
+        "envs": {
+          "type": "object",
+          "additionalProperties": { }
+        },
+        "status": {
+          "$ref": "#/definitions/AppRunStatus"
+        },
+        "result": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        },
+        "finishAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "output": {
+          "type": "string"
+        }
+      }
+    },
+    "AppRunRecordUpdateDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/AppRunStatus"
+        },
+        "result": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        },
+        "finishAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "output": {
+          "type": "string"
+        }
+      }
+    },
+    "AppRunStatus": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "readOnly": true
+        },
+        "value": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
     "AppSdkDto": {
       "type": "object",
       "properties": {
@@ -10152,6 +10477,9 @@
         "subscriptionPlatforms": {
           "type": "string"
         },
+        "specJsonSchema": {
+          "type": "string"
+        },
         "latestReleases": {
           "type": "array",
           "items": {
@@ -10193,6 +10521,59 @@
         }
       }
     },
+    "AppleNotificaionDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "signedPayload": {
+          "type": "string"
+        }
+      }
+    },
+    "AppleVerifyRecceiptStatus": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "readOnly": true
+        },
+        "value": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        }
+      }
+    },
     "AppleVerifyReceiptResult": {
       "type": "object",
       "properties": {
@@ -10203,8 +10584,7 @@
           "type": "boolean"
         },
         "status": {
-          "format": "int32",
-          "type": "integer"
+          "$ref": "#/definitions/AppleVerifyRecceiptStatus"
         },
         "latest_receipt_info": {
           "type": "array",
@@ -10647,6 +11027,12 @@
         "pricingId": {
           "format": "uuid",
           "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/SubscriptionOrderType"
+        },
+        "productId": {
+          "type": "string"
         }
       }
     },
@@ -10700,6 +11086,9 @@
           "type": "boolean"
         },
         "subscriptionPlatforms": {
+          "type": "string"
+        },
+        "specJsonSchema": {
           "type": "string"
         },
         "isPublished": {
@@ -11903,6 +12292,196 @@
         }
       }
     },
+    "IdentityUser": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true
+        },
+        "extraProperties": {
+          "type": "object",
+          "additionalProperties": { },
+          "readOnly": true
+        },
+        "concurrencyStamp": {
+          "type": "string"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "tenantId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "normalizedUserName": {
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "surname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "normalizedEmail": {
+          "type": "string",
+          "readOnly": true
+        },
+        "emailConfirmed": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "passwordHash": {
+          "type": "string",
+          "readOnly": true
+        },
+        "securityStamp": {
+          "type": "string",
+          "readOnly": true
+        },
+        "isExternal": {
+          "type": "boolean"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "readOnly": true
+        },
+        "phoneNumberConfirmed": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "isActive": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "twoFactorEnabled": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "lockoutEnd": {
+          "format": "date-time",
+          "type": "string",
+          "readOnly": true
+        },
+        "lockoutEnabled": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "accessFailedCount": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        },
+        "shouldChangePasswordOnNextLogin": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "entityVersion": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        },
+        "lastPasswordChangeTime": {
+          "format": "date-time",
+          "type": "string",
+          "readOnly": true
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IdentityUserRole"
+          },
+          "readOnly": true
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IdentityUserClaim"
+          },
+          "readOnly": true
+        },
+        "logins": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IdentityUserLogin"
+          },
+          "readOnly": true
+        },
+        "tokens": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IdentityUserToken"
+          },
+          "readOnly": true
+        },
+        "organizationUnits": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IdentityUserOrganizationUnit"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "IdentityUserClaim": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true
+        },
+        "tenantId": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true
+        },
+        "claimType": {
+          "type": "string",
+          "readOnly": true
+        },
+        "claimValue": {
+          "type": "string",
+          "readOnly": true
+        },
+        "userId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
     "IdentityUserCreateDto": {
       "required": [
         "email",
@@ -12037,6 +12616,10 @@
         },
         "concurrencyStamp": {
           "type": "string"
+        },
+        "entityVersion": {
+          "format": "int32",
+          "type": "integer"
         }
       }
     },
@@ -12052,6 +12635,106 @@
         "totalCount": {
           "format": "int64",
           "type": "integer"
+        }
+      }
+    },
+    "IdentityUserLogin": {
+      "type": "object",
+      "properties": {
+        "tenantId": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true
+        },
+        "userId": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true
+        },
+        "loginProvider": {
+          "type": "string",
+          "readOnly": true
+        },
+        "providerKey": {
+          "type": "string",
+          "readOnly": true
+        },
+        "providerDisplayName": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "IdentityUserOrganizationUnit": {
+      "type": "object",
+      "properties": {
+        "creationTime": {
+          "format": "date-time",
+          "type": "string",
+          "readOnly": true
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true
+        },
+        "tenantId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "organizationUnitId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "IdentityUserRole": {
+      "type": "object",
+      "properties": {
+        "tenantId": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true
+        },
+        "userId": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true
+        },
+        "roleId": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "IdentityUserToken": {
+      "type": "object",
+      "properties": {
+        "tenantId": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true
+        },
+        "userId": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true
+        },
+        "loginProvider": {
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "readOnly": true
+        },
+        "value": {
+          "type": "string"
         }
       }
     },
@@ -13593,6 +14276,9 @@
         "pricingId": {
           "format": "uuid",
           "type": "string"
+        },
+        "productId": {
+          "type": "string"
         }
       }
     },
@@ -14080,6 +14766,12 @@
       }
     },
     "VerifyReceiptDto": {
+      "required": [
+        "deviceToken",
+        "orderId",
+        "platform",
+        "receiptData"
+      ],
       "type": "object",
       "properties": {
         "id": {
@@ -14131,6 +14823,62 @@
     "VerifyReceiptResult": {
       "type": "object",
       "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string",
+          "readOnly": true
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string",
+          "readOnly": true
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "deleter": {
+          "$ref": "#/definitions/IdentityUser"
+        },
+        "creator": {
+          "$ref": "#/definitions/IdentityUser"
+        },
+        "lastModifier": {
+          "$ref": "#/definitions/IdentityUser"
+        },
+        "orderId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "receiptData": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "deviceToken": {
+          "type": "string"
+        },
         "ok": {
           "type": "boolean"
         },
@@ -14138,6 +14886,13 @@
           "type": "string"
         },
         "message": {
+          "type": "string"
+        },
+        "resultData": {
+          "type": "string"
+        },
+        "recordId": {
+          "format": "uuid",
           "type": "string"
         },
         "appleVerifyReceiptResult": {

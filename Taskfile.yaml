@@ -19,6 +19,7 @@ tasks:
       - cd ../puupee-api-dart/ && flutter pub get && flutter pub run build_runner build && git add . && git commit -a -m "update" && git push origin master
   go:
     cmds:
+      - rm -rf ../puupee-api-go/*
       - sh generate_go.sh
   axios:
     cmds:
