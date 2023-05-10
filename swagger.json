@@ -9704,10 +9704,10 @@
         "businessUrl": {
           "type": "string"
         },
-        "subscriptionEnabled": {
-          "type": "boolean"
-        },
         "subscriptionPlatforms": {
+          "type": "string"
+        },
+        "freePlatforms": {
           "type": "string"
         },
         "specJsonSchema": {
@@ -10463,10 +10463,10 @@
         "businessUrl": {
           "type": "string"
         },
-        "subscriptionEnabled": {
-          "type": "boolean"
-        },
         "subscriptionPlatforms": {
+          "type": "string"
+        },
+        "freePlatforms": {
           "type": "string"
         },
         "specJsonSchema": {
@@ -11074,14 +11074,22 @@
         "businessUrl": {
           "type": "string"
         },
-        "subscriptionEnabled": {
-          "type": "boolean"
-        },
         "subscriptionPlatforms": {
+          "type": "string"
+        },
+        "freePlatforms": {
           "type": "string"
         },
         "specJsonSchema": {
           "type": "string"
+        },
+        "defaultStorageSize": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "defaultSingleFileMaxSize": {
+          "format": "int64",
+          "type": "integer"
         },
         "isPublished": {
           "type": "boolean"
@@ -14699,7 +14707,7 @@
         "displayName": {
           "type": "string"
         },
-        "maxSize": {
+        "size": {
           "format": "int64",
           "type": "integer"
         },
