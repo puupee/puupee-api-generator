@@ -48,7 +48,7 @@ var buildCmd = &cobra.Command{
 		info := swagger["info"].(map[string]interface{})
 		info["version"] = version
 		fmt.Printf("Building target version: %s\n", version)
-		c := exec.Command("task", lang)
+		c := exec.Command("task", lang, "VERSION="+version)
 		c.Stdout = os.Stdout
 		c.Stderr = os.Stderr
 		err = c.Run()

@@ -2,6 +2,5 @@
     "npmName": "puupee-api-axios",
     "nullSafeAdditionalProps": true,
     "supportsES6": true,
-    "npmVersion": "1.0.0+5",
     "useSingleRequestParameter": true
 }

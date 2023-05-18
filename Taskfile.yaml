@@ -15,23 +15,24 @@ tasks:
   dart:
     cmds:
       - rm -rf ../puupee-api-dart/*
-      - java -jar openapi-generator-cli.jar generate -g dart-dio -o ../puupee-api-dart -c configs/dart.json -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-dart --release-note update
-      - cd ../puupee-api-dart/ && flutter pub get && flutter pub run build_runner build && git add . && git commit -a -m "update" && git push origin master
+      - java -jar openapi-generator-cli.jar generate -g dart-dio -o ../puupee-api-dart -c configs/dart.json -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-dart --release-note update --artifact-version {{.VERSION}}
+      - cd ../puupee-api-dart/ && flutter pub get && flutter pub run build_runner build && git add . && git commit -a -m "update" && git push origin master --tags
   go:
     cmds:
       - rm -rf ../puupee-api-go/*
-      - sh generate_go.sh
+      - java -jar openapi-generator-cli.jar generate -g go -o ../puupee-api-go -c configs/go.json -i swagger.json --git-user-id puupee --git-repo-id puupee-api-go --release-note update --artifact-version {{.VERSION}}
+      - cd ../puupee-api-go/ && go mod tidy && git add . && git commit -a -m "update" && git push origin master --tags
   axios:
     cmds:
       - rm -rf ../puupee-api-axios/*
-      - java -jar openapi-generator-cli.jar generate -g typescript-axios -o ../puupee-api-axios -c configs/axios.json -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-axios --release-note update
-      - cd ../puupee-api-axios/ && yarn install && git add . && git commit -a -m "update" && git push origin main
+      - java -jar openapi-generator-cli.jar generate -g typescript-axios -o ../puupee-api-axios -c configs/axios.json -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-axios --release-note update --artifact-version {{.VERSION}}
+      - cd ../puupee-api-axios/ && yarn install && git add . && git commit -a -m "update" && git push origin main --tags
   python:
     cmds:
       - rm -rf ../puupee-api-python/*
-      - java -jar openapi-generator-cli.jar generate -g python -o ../puupee-api-python -c configs/python.json -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-python --release-note update
+      - java -jar openapi-generator-cli.jar generate -g python-legacy -o ../puupee-api-python -c configs/python.json -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-python --release-note update --artifact-version {{.VERSION}}
       # - cd ../puupee-api-python/ && pip3 install -r requirements.txt && git add . && git commit -a -m "update" && git push origin main
-      - cd ../puupee-api-python/ && git add . && git commit -a -m "update" && git push origin main
+      - cd ../puupee-api-python/ && git add . && git commit -a -m "update" && git push origin main --tags
   update-self:
     cmds:
-      - git add . && git commit -a -m "update" && git tag v{{.VERSION}} && git push origin main
+      - git add . && git commit -a -m "update" && git tag v{{.VERSION}} && git push origin main --tags

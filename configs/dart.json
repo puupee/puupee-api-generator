@@ -5,6 +5,6 @@
     "pubDescription": "Api for puupee app service.",
     "pubHomepage": "https://github.com/puupee/puupee-api-dart",
     "serializationLibrary": "json_serializable",
-    "finalProperties": true,
+    "finalProperties": false,
     "useEnumExtension": true
 }
