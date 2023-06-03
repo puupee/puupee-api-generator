@@ -6,5 +6,6 @@
     "pubHomepage": "https://github.com/puupee/puupee-api-dart",
     "serializationLibrary": "json_serializable",
     "finalProperties": false,
-    "useEnumExtension": true
+    "useEnumExtension": true,
+    "prependFormOrBodyParameters": true
 }
