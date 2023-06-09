@@ -2012,14 +2012,34 @@
           "application/json",
           "text/json"
         ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "Sorting",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "SkipCount",
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": 0
+          },
+          {
+            "in": "query",
+            "name": "MaxResultCount",
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": 1
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AppFeatureDto"
-              }
+              "$ref": "#/definitions/AppFeatureDtoPagedResultDto"
             }
           },
           "403": {
@@ -3472,14 +3492,34 @@
           "application/json",
           "text/json"
         ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "Sorting",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "SkipCount",
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": 0
+          },
+          {
+            "in": "query",
+            "name": "MaxResultCount",
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": 1
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AppSdkDto"
-              }
+              "$ref": "#/definitions/AppSdkDtoPagedResultDto"
             }
           },
           "403": {
@@ -11171,17 +11211,12 @@
     },
     "ApiKeyCreateDto": {
       "required": [
-        "key",
         "name"
       ],
       "type": "object",
       "properties": {
         "name": {
           "maxLength": 32,
-          "type": "string"
-        },
-        "key": {
-          "maxLength": 128,
           "type": "string"
         },
         "active": {
@@ -11424,6 +11459,21 @@
         },
         "screenshotKeys": {
           "type": "string"
+        }
+      }
+    },
+    "AppFeatureDtoPagedResultDto": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AppFeatureDto"
+          }
+        },
+        "totalCount": {
+          "format": "int64",
+          "type": "integer"
         }
       }
     },
@@ -11940,6 +11990,21 @@
         },
         "homePage": {
           "type": "string"
+        }
+      }
+    },
+    "AppSdkDtoPagedResultDto": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AppSdkDto"
+          }
+        },
+        "totalCount": {
+          "format": "int64",
+          "type": "integer"
         }
       }
     },
