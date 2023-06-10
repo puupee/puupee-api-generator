@@ -11574,7 +11574,7 @@
         "items": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/AppPricingItemDto"
+            "$ref": "#/definitions/AppPricingItemValueDto"
           }
         }
       }
@@ -11640,11 +11640,51 @@
         "display": {
           "type": "string"
         },
-        "values": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+        "isAvailable": {
+          "type": "boolean"
+        },
+        "sortIndex": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "AppPricingItemValueDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
         },
         "appId": {
           "format": "uuid",
@@ -11656,9 +11696,19 @@
         "hasValue": {
           "type": "boolean"
         },
-        "sortIndex": {
+        "intValue": {
           "format": "int32",
           "type": "integer"
+        },
+        "decimalValue": {
+          "format": "double",
+          "type": "number"
+        },
+        "stringValue": {
+          "type": "string"
+        },
+        "boolValue": {
+          "type": "boolean"
         }
       }
     },
@@ -12903,7 +12953,7 @@
         "items": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/CreateOrUpdateAppPricingItemDto"
+            "$ref": "#/definitions/AppPricingItemValueDto"
           }
         }
       }
@@ -12922,16 +12972,6 @@
         },
         "display": {
           "type": "string"
-        },
-        "appId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "isAvailable": {
-          "type": "boolean"
-        },
-        "hasValue": {
-          "type": "boolean"
         },
         "sortIndex": {
           "format": "int32",
