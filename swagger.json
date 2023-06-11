@@ -15652,6 +15652,10 @@
     "PuupeeEto": {
       "type": "object",
       "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
         "syncVersion": {
           "format": "int64",
           "type": "integer"
