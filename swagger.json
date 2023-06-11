@@ -15451,213 +15451,6 @@
         }
       }
     },
-    "Puupee": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "uuid",
-          "type": "string",
-          "readOnly": true
-        },
-        "extraProperties": {
-          "type": "object",
-          "additionalProperties": { },
-          "readOnly": true
-        },
-        "concurrencyStamp": {
-          "type": "string"
-        },
-        "creationTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "creatorId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "lastModificationTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "lastModifierId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "isDeleted": {
-          "type": "boolean"
-        },
-        "deleterId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "deletionTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "deleter": {
-          "$ref": "#/definitions/IdentityUser"
-        },
-        "creator": {
-          "$ref": "#/definitions/IdentityUser"
-        },
-        "lastModifier": {
-          "$ref": "#/definitions/IdentityUser"
-        },
-        "syncVersion": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "url": {
-          "type": "string"
-        },
-        "parentId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "text": {
-          "type": "string"
-        },
-        "format": {
-          "type": "string"
-        },
-        "isHidden": {
-          "type": "boolean"
-        },
-        "tagging": {
-          "type": "string"
-        },
-        "parent": {
-          "$ref": "#/definitions/Puupee"
-        },
-        "children": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Puupee"
-          }
-        },
-        "password": {
-          "type": "string"
-        },
-        "key": {
-          "type": "string"
-        },
-        "size": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "md5": {
-          "type": "string"
-        },
-        "sliceMd5": {
-          "type": "string"
-        },
-        "rapidCode": {
-          "type": "string"
-        },
-        "contentType": {
-          "type": "string"
-        },
-        "extension": {
-          "type": "string"
-        },
-        "storageClass": {
-          "type": "string"
-        },
-        "storageObjectCreatedAt": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "storageObjectUpdatedAt": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "displayStyle": {
-          "type": "string"
-        },
-        "storageObjectId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "storageObject": {
-          "$ref": "#/definitions/StorageObject"
-        },
-        "priority": {
-          "type": "integer"
-        },
-        "doneAt": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "isDone": {
-          "type": "boolean"
-        },
-        "startAt": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "endAt": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "notifyAt": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "notifyTimingType": {
-          "type": "string"
-        },
-        "notifyTimingUnit": {
-          "type": "string"
-        },
-        "notifyTimingValue": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "repeat": {
-          "type": "string"
-        },
-        "repeatOffAt": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "repeatOffTimes": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "repetitions": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "lastModifierDeviceToken": {
-          "type": "string"
-        },
-        "lastModifierDevice": {
-          "type": "string"
-        },
-        "appName": {
-          "type": "string"
-        },
-        "content": {
-          "type": "string"
-        },
-        "sortIndex": {
-          "format": "int32",
-          "type": "integer"
-        }
-      }
-    },
     "PuupeeDto": {
       "type": "object",
       "properties": {
@@ -15859,55 +15652,6 @@
     "PuupeeEto": {
       "type": "object",
       "properties": {
-        "id": {
-          "format": "uuid",
-          "type": "string",
-          "readOnly": true
-        },
-        "extraProperties": {
-          "type": "object",
-          "additionalProperties": { },
-          "readOnly": true
-        },
-        "concurrencyStamp": {
-          "type": "string"
-        },
-        "creationTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "creatorId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "lastModificationTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "lastModifierId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "isDeleted": {
-          "type": "boolean"
-        },
-        "deleterId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "deletionTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "deleter": {
-          "$ref": "#/definitions/IdentityUser"
-        },
-        "creator": {
-          "$ref": "#/definitions/IdentityUser"
-        },
-        "lastModifier": {
-          "$ref": "#/definitions/IdentityUser"
-        },
         "syncVersion": {
           "format": "int64",
           "type": "integer"
@@ -15942,15 +15686,6 @@
         },
         "tagging": {
           "type": "string"
-        },
-        "parent": {
-          "$ref": "#/definitions/Puupee"
-        },
-        "children": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Puupee"
-          }
         },
         "password": {
           "type": "string"
@@ -15990,13 +15725,6 @@
         },
         "displayStyle": {
           "type": "string"
-        },
-        "storageObjectId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "storageObject": {
-          "$ref": "#/definitions/StorageObject"
         },
         "priority": {
           "type": "integer"
@@ -16060,6 +15788,33 @@
         "sortIndex": {
           "format": "int32",
           "type": "integer"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
         }
       }
     },
@@ -16363,101 +16118,6 @@
         "totalCount": {
           "format": "int64",
           "type": "integer"
-        }
-      }
-    },
-    "StorageObject": {
-      "required": [
-        "key",
-        "md5",
-        "rapidCode",
-        "size",
-        "sliceMd5",
-        "storageClass"
-      ],
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "uuid",
-          "type": "string",
-          "readOnly": true
-        },
-        "extraProperties": {
-          "type": "object",
-          "additionalProperties": { },
-          "readOnly": true
-        },
-        "concurrencyStamp": {
-          "type": "string"
-        },
-        "creationTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "creatorId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "lastModificationTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "lastModifierId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "isDeleted": {
-          "type": "boolean"
-        },
-        "deleterId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "deletionTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "key": {
-          "type": "string"
-        },
-        "size": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "md5": {
-          "type": "string"
-        },
-        "sliceMd5": {
-          "type": "string"
-        },
-        "rapidCode": {
-          "type": "string"
-        },
-        "contentType": {
-          "type": "string"
-        },
-        "extension": {
-          "type": "string"
-        },
-        "storageClass": {
-          "type": "string"
-        },
-        "puupees": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Puupee"
-          }
-        },
-        "password": {
-          "type": "string"
-        },
-        "storageObjectCreatedAt": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "storageObjectUpdatedAt": {
-          "format": "date-time",
-          "type": "string"
         }
       }
     },
