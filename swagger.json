@@ -15623,6 +15623,12 @@
           "format": "uuid",
           "type": "string"
         },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PuupeeDto"
+          }
+        },
         "key": {
           "type": "string"
         },
