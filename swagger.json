@@ -1553,6 +1553,152 @@
         }
       }
     },
+    "/api/app/app/sdks-by-id/{appId}": {
+      "get": {
+        "tags": [
+          "App"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "env",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AppSdkDto"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/app/features/{appId}": {
+      "get": {
+        "tags": [
+          "App"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "env",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AppFeatureDto"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
     "/api/app/app/upload-credentials": {
       "get": {
         "tags": [
@@ -8259,6 +8405,69 @@
         }
       }
     },
+    "/api/app/puupee/by-linked-names": {
+      "get": {
+        "tags": [
+          "Puupee"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "names",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/PuupeeDto"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
     "/api/identity/roles/all": {
       "get": {
         "tags": [
@@ -8622,129 +8831,6 @@
             "required": true,
             "type": "string",
             "format": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          },
-          "501": {
-            "description": "Server Error",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          }
-        }
-      }
-    },
-    "/api/app/settings": {
-      "get": {
-        "tags": [
-          "Settings"
-        ],
-        "produces": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/SettingsDto"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          },
-          "501": {
-            "description": "Server Error",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          }
-        }
-      }
-    },
-    "/api/app/settings/set": {
-      "post": {
-        "tags": [
-          "Settings"
-        ],
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/SettingsDto"
-            }
           }
         ],
         "responses": {
@@ -11844,13 +11930,6 @@
           "format": "date-time",
           "type": "string"
         },
-        "name": {
-          "type": "string"
-        },
-        "appId": {
-          "format": "uuid",
-          "type": "string"
-        },
         "isAvailable": {
           "type": "boolean"
         },
@@ -11860,10 +11939,6 @@
         "intValue": {
           "format": "int32",
           "type": "integer"
-        },
-        "decimalValue": {
-          "format": "double",
-          "type": "number"
         },
         "stringValue": {
           "type": "string"
@@ -12218,25 +12293,6 @@
           "type": "integer"
         }
       }
-    },
-    "AppTheme": {
-      "type": "object",
-      "properties": {
-        "sourceColor": {
-          "type": "string"
-        },
-        "themeMode": {
-          "$ref": "#/definitions/AppThemeMode"
-        }
-      }
-    },
-    "AppThemeMode": {
-      "enum": [
-        "System",
-        "Light",
-        "Dark"
-      ],
-      "type": "string"
     },
     "AppUserScoreDto": {
       "type": "object",
@@ -16190,20 +16246,6 @@
         }
       }
     },
-    "SettingsDto": {
-      "type": "object",
-      "properties": {
-        "appTheme": {
-          "$ref": "#/definitions/AppTheme"
-        },
-        "language": {
-          "type": "string"
-        },
-        "todoSettings": {
-          "$ref": "#/definitions/TodoSettingsDto"
-        }
-      }
-    },
     "SimpleDataDto": {
       "type": "object",
       "properties": {
@@ -16664,35 +16706,6 @@
       "properties": {
         "timeZone": {
           "$ref": "#/definitions/TimeZone"
-        }
-      }
-    },
-    "TodoOrderBy": {
-      "enum": [
-        "CreationTime",
-        "CreationTimeDesc",
-        "LastModificationTime",
-        "LastModificationTimeDesc",
-        "Title",
-        "TitleDesc",
-        "Priority",
-        "PriorityDesc",
-        "Tag",
-        "TagDesc"
-      ],
-      "type": "string"
-    },
-    "TodoSettingsDto": {
-      "type": "object",
-      "properties": {
-        "showCompleted": {
-          "type": "boolean"
-        },
-        "showDetails": {
-          "type": "boolean"
-        },
-        "orderBy": {
-          "$ref": "#/definitions/TodoOrderBy"
         }
       }
     },
