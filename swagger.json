@@ -3252,12 +3252,7 @@
           },
           {
             "in": "query",
-            "name": "Platform.Name",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "Platform.Value",
+            "name": "Platform",
             "type": "string"
           },
           {
@@ -13197,18 +13192,6 @@
         },
         "isPublished": {
           "type": "boolean"
-        },
-        "features": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AppFeatureDto"
-          }
-        },
-        "sdks": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AppSdkDto"
-          }
         },
         "openClient": {
           "$ref": "#/definitions/CreateOpenIddictApplicationDto"
