@@ -10,6 +10,7 @@
         "tags": [
           "AbpApiDefinition"
         ],
+        "operationId": "Get",
         "produces": [
           "text/plain",
           "application/json",
@@ -73,6 +74,7 @@
         "tags": [
           "AbpApplicationConfiguration"
         ],
+        "operationId": "Get",
         "produces": [
           "text/plain",
           "application/json",
@@ -136,6 +138,7 @@
         "tags": [
           "AbpApplicationLocalization"
         ],
+        "operationId": "Get",
         "produces": [
           "text/plain",
           "application/json",
@@ -205,6 +208,7 @@
         "tags": [
           "AbpTenant"
         ],
+        "operationId": "FindTenantByName",
         "produces": [
           "text/plain",
           "application/json",
@@ -269,6 +273,7 @@
         "tags": [
           "AbpTenant"
         ],
+        "operationId": "FindTenantById",
         "produces": [
           "text/plain",
           "application/json",
@@ -334,6 +339,7 @@
         "tags": [
           "Account"
         ],
+        "operationId": "Register",
         "consumes": [
           "application/json",
           "text/json",
@@ -404,6 +410,7 @@
         "tags": [
           "Account"
         ],
+        "operationId": "SendPasswordResetCode",
         "consumes": [
           "application/json",
           "text/json",
@@ -471,6 +478,7 @@
         "tags": [
           "Account"
         ],
+        "operationId": "VerifyPasswordResetToken",
         "consumes": [
           "application/json",
           "text/json",
@@ -541,6 +549,7 @@
         "tags": [
           "Account"
         ],
+        "operationId": "ResetPassword",
         "consumes": [
           "application/json",
           "text/json",
@@ -608,6 +617,7 @@
         "tags": [
           "Account"
         ],
+        "operationId": "Delete",
         "produces": [
           "text/plain",
           "application/json",
@@ -659,6 +669,7 @@
         "tags": [
           "Account"
         ],
+        "operationId": "Get",
         "produces": [
           "text/plain",
           "application/json",
@@ -715,6 +726,7 @@
         "tags": [
           "ApiKeys"
         ],
+        "operationId": "GetById",
         "produces": [
           "text/plain",
           "application/json",
@@ -778,6 +790,7 @@
         "tags": [
           "ApiKeys"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -853,6 +866,7 @@
         "tags": [
           "ApiKeys"
         ],
+        "operationId": "Delete",
         "produces": [
           "text/plain",
           "application/json",
@@ -915,6 +929,7 @@
         "tags": [
           "ApiKeys"
         ],
+        "operationId": "GetList",
         "produces": [
           "text/plain",
           "application/json",
@@ -992,6 +1007,7 @@
         "tags": [
           "ApiKeys"
         ],
+        "operationId": "Create",
         "consumes": [
           "application/json",
           "text/json",
@@ -1062,6 +1078,7 @@
         "tags": [
           "App"
         ],
+        "operationId": "Create",
         "consumes": [
           "application/json",
           "text/json",
@@ -1130,6 +1147,7 @@
         "tags": [
           "App"
         ],
+        "operationId": "GetList",
         "produces": [
           "text/plain",
           "application/json",
@@ -1215,6 +1233,7 @@
         "tags": [
           "App"
         ],
+        "operationId": "Delete",
         "produces": [
           "text/plain",
           "application/json",
@@ -1275,6 +1294,7 @@
         "tags": [
           "App"
         ],
+        "operationId": "Get",
         "produces": [
           "text/plain",
           "application/json",
@@ -1343,6 +1363,7 @@
         "tags": [
           "App"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -1420,6 +1441,7 @@
         "tags": [
           "App"
         ],
+        "operationId": "GetWithUser",
         "produces": [
           "text/plain",
           "application/json",
@@ -1490,6 +1512,7 @@
         "tags": [
           "App"
         ],
+        "operationId": "GetByName",
         "produces": [
           "text/plain",
           "application/json",
@@ -1558,6 +1581,7 @@
         "tags": [
           "App"
         ],
+        "operationId": "GetSdksById",
         "produces": [
           "text/plain",
           "application/json",
@@ -1631,6 +1655,7 @@
         "tags": [
           "App"
         ],
+        "operationId": "GetFeatures",
         "produces": [
           "text/plain",
           "application/json",
@@ -1704,6 +1729,7 @@
         "tags": [
           "App"
         ],
+        "operationId": "GetUploadCredentials",
         "produces": [
           "text/plain",
           "application/json",
@@ -1767,6 +1793,7 @@
         "tags": [
           "App"
         ],
+        "operationId": "GetListPublic",
         "produces": [
           "text/plain",
           "application/json",
@@ -1840,6 +1867,7 @@
         "tags": [
           "App"
         ],
+        "operationId": "GetListWithUser",
         "produces": [
           "text/plain",
           "application/json",
@@ -1929,6 +1957,7 @@
         "tags": [
           "App"
         ],
+        "operationId": "GetListByDeveloperAll",
         "produces": [
           "text/plain",
           "application/json",
@@ -1992,6 +2021,7 @@
         "tags": [
           "App"
         ],
+        "operationId": "Run",
         "consumes": [
           "application/json",
           "text/json",
@@ -2062,6 +2092,7 @@
         "tags": [
           "App"
         ],
+        "operationId": "UpdateRunState",
         "consumes": [
           "application/json",
           "text/json",
@@ -2139,6 +2170,7 @@
         "tags": [
           "AppFeature"
         ],
+        "operationId": "Create",
         "consumes": [
           "application/json",
           "text/json",
@@ -2207,6 +2239,7 @@
         "tags": [
           "AppFeature"
         ],
+        "operationId": "GetList",
         "produces": [
           "text/plain",
           "application/json",
@@ -2286,6 +2319,7 @@
         "tags": [
           "AppFeature"
         ],
+        "operationId": "Delete",
         "produces": [
           "text/plain",
           "application/json",
@@ -2346,6 +2380,7 @@
         "tags": [
           "AppFeature"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -2423,6 +2458,7 @@
         "tags": [
           "AppPricing"
         ],
+        "operationId": "Create",
         "consumes": [
           "application/json",
           "text/json",
@@ -2491,6 +2527,7 @@
         "tags": [
           "AppPricing"
         ],
+        "operationId": "GetList",
         "produces": [
           "text/plain",
           "application/json",
@@ -2570,6 +2607,7 @@
         "tags": [
           "AppPricing"
         ],
+        "operationId": "Delete",
         "produces": [
           "text/plain",
           "application/json",
@@ -2630,6 +2668,7 @@
         "tags": [
           "AppPricing"
         ],
+        "operationId": "GetById",
         "produces": [
           "text/plain",
           "application/json",
@@ -2693,6 +2732,7 @@
         "tags": [
           "AppPricing"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -2770,6 +2810,7 @@
         "tags": [
           "AppPricing"
         ],
+        "operationId": "GetListByAppId",
         "produces": [
           "text/plain",
           "application/json",
@@ -2838,6 +2879,7 @@
         "tags": [
           "AppPricingItem"
         ],
+        "operationId": "Create",
         "consumes": [
           "application/json",
           "text/json",
@@ -2906,6 +2948,7 @@
         "tags": [
           "AppPricingItem"
         ],
+        "operationId": "GetList",
         "produces": [
           "text/plain",
           "application/json",
@@ -2965,6 +3008,7 @@
         "tags": [
           "AppPricingItem"
         ],
+        "operationId": "Delete",
         "produces": [
           "text/plain",
           "application/json",
@@ -3025,6 +3069,7 @@
         "tags": [
           "AppPricingItem"
         ],
+        "operationId": "GetById",
         "produces": [
           "text/plain",
           "application/json",
@@ -3088,6 +3133,7 @@
         "tags": [
           "AppPricingItem"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -3165,6 +3211,7 @@
         "tags": [
           "AppRelease"
         ],
+        "operationId": "Create",
         "consumes": [
           "application/json",
           "text/json",
@@ -3233,6 +3280,7 @@
         "tags": [
           "AppRelease"
         ],
+        "operationId": "GetList",
         "produces": [
           "text/plain",
           "application/json",
@@ -3328,6 +3376,7 @@
         "tags": [
           "AppRelease"
         ],
+        "operationId": "Delete",
         "produces": [
           "text/plain",
           "application/json",
@@ -3388,6 +3437,7 @@
         "tags": [
           "AppRelease"
         ],
+        "operationId": "GetById",
         "produces": [
           "text/plain",
           "application/json",
@@ -3451,6 +3501,7 @@
         "tags": [
           "AppRelease"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -3528,6 +3579,7 @@
         "tags": [
           "AppRelease"
         ],
+        "operationId": "GetLatest",
         "produces": [
           "text/plain",
           "application/json",
@@ -3606,6 +3658,7 @@
         "tags": [
           "AppSdk"
         ],
+        "operationId": "Create",
         "consumes": [
           "application/json",
           "text/json",
@@ -3674,6 +3727,7 @@
         "tags": [
           "AppSdk"
         ],
+        "operationId": "GetList",
         "produces": [
           "text/plain",
           "application/json",
@@ -3753,6 +3807,7 @@
         "tags": [
           "AppSdk"
         ],
+        "operationId": "Delete",
         "produces": [
           "text/plain",
           "application/json",
@@ -3813,6 +3868,7 @@
         "tags": [
           "AppSdk"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -3890,6 +3946,7 @@
         "tags": [
           "AppUserScore"
         ],
+        "operationId": "Create",
         "consumes": [
           "application/json",
           "text/json",
@@ -3960,6 +4017,7 @@
         "tags": [
           "Avatar"
         ],
+        "operationId": "Create",
         "consumes": [
           "application/json",
           "text/json",
@@ -4030,6 +4088,7 @@
         "tags": [
           "Avatar"
         ],
+        "operationId": "GetCredentials",
         "produces": [
           "text/plain",
           "application/json",
@@ -4093,6 +4152,7 @@
         "tags": [
           "Device"
         ],
+        "operationId": "GetById",
         "produces": [
           "text/plain",
           "application/json",
@@ -4158,6 +4218,7 @@
         "tags": [
           "Device"
         ],
+        "operationId": "GetByToken",
         "produces": [
           "text/plain",
           "application/json",
@@ -4221,6 +4282,7 @@
         "tags": [
           "Device"
         ],
+        "operationId": "Bind",
         "consumes": [
           "application/json",
           "text/json",
@@ -4288,6 +4350,7 @@
         "tags": [
           "Device"
         ],
+        "operationId": "GetList",
         "produces": [
           "text/plain",
           "application/json",
@@ -4365,6 +4428,7 @@
         "tags": [
           "Device"
         ],
+        "operationId": "Remove",
         "produces": [
           "text/plain",
           "application/json",
@@ -4425,6 +4489,7 @@
         "tags": [
           "Device"
         ],
+        "operationId": "Refresh",
         "consumes": [
           "application/json",
           "text/json",
@@ -4492,6 +4557,7 @@
         "tags": [
           "EmailSettings"
         ],
+        "operationId": "Get",
         "produces": [
           "text/plain",
           "application/json",
@@ -4546,6 +4612,7 @@
         "tags": [
           "EmailSettings"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -4613,6 +4680,7 @@
         "tags": [
           "EmailSettings"
         ],
+        "operationId": "SendTestEmail",
         "consumes": [
           "application/json",
           "text/json",
@@ -4680,6 +4748,7 @@
         "tags": [
           "Features"
         ],
+        "operationId": "Get",
         "produces": [
           "text/plain",
           "application/json",
@@ -4746,6 +4815,7 @@
         "tags": [
           "Features"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -4821,6 +4891,7 @@
         "tags": [
           "Features"
         ],
+        "operationId": "Delete",
         "produces": [
           "text/plain",
           "application/json",
@@ -4886,6 +4957,7 @@
         "tags": [
           "KeyValue"
         ],
+        "operationId": "GetBool",
         "produces": [
           "text/plain",
           "application/json",
@@ -4949,6 +5021,7 @@
         "tags": [
           "KeyValue"
         ],
+        "operationId": "GetDateTime",
         "produces": [
           "text/plain",
           "application/json",
@@ -5012,6 +5085,7 @@
         "tags": [
           "KeyValue"
         ],
+        "operationId": "GetDecimal",
         "produces": [
           "text/plain",
           "application/json",
@@ -5075,6 +5149,7 @@
         "tags": [
           "KeyValue"
         ],
+        "operationId": "GetDouble",
         "produces": [
           "text/plain",
           "application/json",
@@ -5138,6 +5213,7 @@
         "tags": [
           "KeyValue"
         ],
+        "operationId": "GetInt",
         "produces": [
           "text/plain",
           "application/json",
@@ -5201,6 +5277,7 @@
         "tags": [
           "KeyValue"
         ],
+        "operationId": "GetString",
         "produces": [
           "text/plain",
           "application/json",
@@ -5264,6 +5341,7 @@
         "tags": [
           "KeyValue"
         ],
+        "operationId": "SetBool",
         "consumes": [
           "application/json",
           "text/json",
@@ -5336,6 +5414,7 @@
         "tags": [
           "KeyValue"
         ],
+        "operationId": "SetDateTime",
         "consumes": [
           "application/json",
           "text/json",
@@ -5408,6 +5487,7 @@
         "tags": [
           "KeyValue"
         ],
+        "operationId": "SetDecimal",
         "consumes": [
           "application/json",
           "text/json",
@@ -5480,6 +5560,7 @@
         "tags": [
           "KeyValue"
         ],
+        "operationId": "SetDouble",
         "consumes": [
           "application/json",
           "text/json",
@@ -5552,6 +5633,7 @@
         "tags": [
           "KeyValue"
         ],
+        "operationId": "SetInt",
         "consumes": [
           "application/json",
           "text/json",
@@ -5624,6 +5706,7 @@
         "tags": [
           "KeyValue"
         ],
+        "operationId": "SetString",
         "consumes": [
           "application/json",
           "text/json",
@@ -5696,6 +5779,7 @@
         "tags": [
           "Login"
         ],
+        "operationId": "Login",
         "consumes": [
           "application/json",
           "text/json",
@@ -5766,6 +5850,7 @@
         "tags": [
           "Login"
         ],
+        "operationId": "Logout",
         "produces": [
           "text/plain",
           "application/json",
@@ -5819,6 +5904,7 @@
         "tags": [
           "Login"
         ],
+        "operationId": "CheckPassword",
         "consumes": [
           "application/json",
           "text/json",
@@ -5889,6 +5975,7 @@
         "tags": [
           "Message"
         ],
+        "operationId": "Publish",
         "consumes": [
           "application/json",
           "text/json",
@@ -5956,6 +6043,7 @@
         "tags": [
           "Message"
         ],
+        "operationId": "Recall",
         "consumes": [
           "application/json",
           "text/json",
@@ -6023,6 +6111,7 @@
         "tags": [
           "Message"
         ],
+        "operationId": "Subscribe",
         "consumes": [
           "application/json",
           "text/json",
@@ -6090,6 +6179,7 @@
         "tags": [
           "Message"
         ],
+        "operationId": "Unsubscribe",
         "consumes": [
           "application/json",
           "text/json",
@@ -6157,6 +6247,7 @@
         "tags": [
           "MessageSource"
         ],
+        "operationId": "Create",
         "consumes": [
           "application/json",
           "text/json",
@@ -6227,6 +6318,7 @@
         "tags": [
           "MessageSource"
         ],
+        "operationId": "Delete",
         "produces": [
           "text/plain",
           "application/json",
@@ -6287,6 +6379,7 @@
         "tags": [
           "MessageSource"
         ],
+        "operationId": "GetById",
         "produces": [
           "text/plain",
           "application/json",
@@ -6350,6 +6443,7 @@
         "tags": [
           "MessageSource"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -6427,6 +6521,7 @@
         "tags": [
           "MessageSource"
         ],
+        "operationId": "GetPublishedList",
         "produces": [
           "text/plain",
           "application/json",
@@ -6495,6 +6590,7 @@
         "tags": [
           "MessageSourceCategory"
         ],
+        "operationId": "GetList",
         "produces": [
           "text/plain",
           "application/json",
@@ -6554,6 +6650,7 @@
         "tags": [
           "MessageSourceRoute"
         ],
+        "operationId": "Create",
         "consumes": [
           "application/json",
           "text/json",
@@ -6621,6 +6718,7 @@
         "tags": [
           "MessageSourceRoute"
         ],
+        "operationId": "Delete",
         "produces": [
           "text/plain",
           "application/json",
@@ -6681,6 +6779,7 @@
         "tags": [
           "MessageSourceRoute"
         ],
+        "operationId": "GetById",
         "produces": [
           "text/plain",
           "application/json",
@@ -6744,6 +6843,7 @@
         "tags": [
           "MessageSourceRoute"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -6818,6 +6918,7 @@
         "tags": [
           "MessageSourceRoute"
         ],
+        "operationId": "GetPublishedList",
         "produces": [
           "text/plain",
           "application/json",
@@ -6886,6 +6987,7 @@
         "tags": [
           "MessageSourceRouteSub"
         ],
+        "operationId": "Create",
         "consumes": [
           "application/json",
           "text/json",
@@ -6951,6 +7053,7 @@
         "tags": [
           "MessageSourceRouteSub"
         ],
+        "operationId": "GetList",
         "produces": [
           "text/plain",
           "application/json",
@@ -7010,6 +7113,7 @@
         "tags": [
           "MessageSourceRouteSub"
         ],
+        "operationId": "Delete",
         "produces": [
           "text/plain",
           "application/json",
@@ -7070,6 +7174,7 @@
         "tags": [
           "MessageSourceRouteSub"
         ],
+        "operationId": "GetById",
         "produces": [
           "text/plain",
           "application/json",
@@ -7133,6 +7238,7 @@
         "tags": [
           "MessageSourceRouteSub"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -7207,6 +7313,7 @@
         "tags": [
           "MessageTemplate"
         ],
+        "operationId": "Create",
         "consumes": [
           "application/json",
           "text/json",
@@ -7275,6 +7382,7 @@
         "tags": [
           "MessageTemplate"
         ],
+        "operationId": "GetList",
         "produces": [
           "text/plain",
           "application/json",
@@ -7334,6 +7442,7 @@
         "tags": [
           "MessageTemplate"
         ],
+        "operationId": "Delete",
         "produces": [
           "text/plain",
           "application/json",
@@ -7394,6 +7503,7 @@
         "tags": [
           "MessageTemplate"
         ],
+        "operationId": "GetById",
         "produces": [
           "text/plain",
           "application/json",
@@ -7457,6 +7567,7 @@
         "tags": [
           "MessageTemplate"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -7534,6 +7645,7 @@
         "tags": [
           "MessageTemplateRelease"
         ],
+        "operationId": "Create",
         "consumes": [
           "application/json",
           "text/json",
@@ -7602,6 +7714,7 @@
         "tags": [
           "MessageTemplateRelease"
         ],
+        "operationId": "GetList",
         "produces": [
           "text/plain",
           "application/json",
@@ -7669,6 +7782,7 @@
         "tags": [
           "MessageTemplateRelease"
         ],
+        "operationId": "GetById",
         "produces": [
           "text/plain",
           "application/json",
@@ -7734,6 +7848,7 @@
         "tags": [
           "Notification"
         ],
+        "operationId": "Bark",
         "produces": [
           "text/plain",
           "application/json",
@@ -7843,6 +7958,7 @@
         "tags": [
           "Notification"
         ],
+        "operationId": "GetList",
         "produces": [
           "text/plain",
           "application/json",
@@ -7922,6 +8038,7 @@
         "tags": [
           "Notification"
         ],
+        "operationId": "Push",
         "consumes": [
           "application/json",
           "text/json",
@@ -7989,6 +8106,7 @@
         "tags": [
           "Permissions"
         ],
+        "operationId": "Get",
         "produces": [
           "text/plain",
           "application/json",
@@ -8055,6 +8173,7 @@
         "tags": [
           "Permissions"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -8132,6 +8251,7 @@
         "tags": [
           "Profile"
         ],
+        "operationId": "Get",
         "produces": [
           "text/plain",
           "application/json",
@@ -8186,6 +8306,7 @@
         "tags": [
           "Profile"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -8256,6 +8377,7 @@
         "tags": [
           "Profile"
         ],
+        "operationId": "ChangePassword",
         "consumes": [
           "application/json",
           "text/json",
@@ -8323,6 +8445,7 @@
         "tags": [
           "Puupee"
         ],
+        "operationId": "GetPull",
         "produces": [
           "text/plain",
           "application/json",
@@ -8404,6 +8527,7 @@
         "tags": [
           "Puupee"
         ],
+        "operationId": "Push",
         "consumes": [
           "application/json",
           "text/json",
@@ -8419,7 +8543,7 @@
             "in": "body",
             "name": "body",
             "schema": {
-              "$ref": "#/definitions/CreateOrUpdatePuupeeDto"
+              "$ref": "#/definitions/PuupeeDto"
             }
           }
         ],
@@ -8469,70 +8593,12 @@
         }
       }
     },
-    "/api/app/puupee/drivers-with-roots": {
-      "get": {
-        "tags": [
-          "Puupee"
-        ],
-        "produces": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/PuupeeDto"
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          },
-          "501": {
-            "description": "Server Error",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "schema": {
-              "$ref": "#/definitions/RemoteServiceErrorResponse"
-            }
-          }
-        }
-      }
-    },
     "/api/app/puupee/by-linked-names": {
       "get": {
         "tags": [
           "Puupee"
         ],
+        "operationId": "GetByLinkedNames",
         "produces": [
           "text/plain",
           "application/json",
@@ -8596,6 +8662,7 @@
         "tags": [
           "Role"
         ],
+        "operationId": "GetAllList",
         "produces": [
           "text/plain",
           "application/json",
@@ -8652,6 +8719,7 @@
         "tags": [
           "Role"
         ],
+        "operationId": "GetList",
         "produces": [
           "text/plain",
           "application/json",
@@ -8734,6 +8802,7 @@
         "tags": [
           "Role"
         ],
+        "operationId": "Create",
         "consumes": [
           "application/json",
           "text/json",
@@ -8804,6 +8873,7 @@
         "tags": [
           "Role"
         ],
+        "operationId": "GetById",
         "produces": [
           "text/plain",
           "application/json",
@@ -8867,6 +8937,7 @@
         "tags": [
           "Role"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -8942,6 +9013,7 @@
         "tags": [
           "Role"
         ],
+        "operationId": "Delete",
         "produces": [
           "text/plain",
           "application/json",
@@ -9004,6 +9076,7 @@
         "tags": [
           "SimpleData"
         ],
+        "operationId": "Delete",
         "produces": [
           "text/plain",
           "application/json",
@@ -9064,6 +9137,7 @@
         "tags": [
           "SimpleData"
         ],
+        "operationId": "GetById",
         "produces": [
           "text/plain",
           "application/json",
@@ -9129,6 +9203,7 @@
         "tags": [
           "SimpleData"
         ],
+        "operationId": "GetList",
         "produces": [
           "text/plain",
           "application/json",
@@ -9213,6 +9288,7 @@
         "tags": [
           "SimpleData"
         ],
+        "operationId": "Save",
         "consumes": [
           "application/json",
           "text/json",
@@ -9283,6 +9359,7 @@
         "tags": [
           "StorageObject"
         ],
+        "operationId": "MyFile",
         "parameters": [
           {
             "in": "query",
@@ -9302,6 +9379,7 @@
         "tags": [
           "StorageObject"
         ],
+        "operationId": "Thumb",
         "parameters": [
           {
             "in": "query",
@@ -9321,6 +9399,7 @@
         "tags": [
           "StorageObject"
         ],
+        "operationId": "GetFileOrCredentials",
         "produces": [
           "text/plain",
           "application/json",
@@ -9389,6 +9468,7 @@
         "tags": [
           "StorageObject"
         ],
+        "operationId": "PreSignUrl",
         "produces": [
           "text/plain",
           "application/json",
@@ -9452,6 +9532,7 @@
         "tags": [
           "Subscription"
         ],
+        "operationId": "AppleNotifications",
         "consumes": [
           "application/json",
           "text/json",
@@ -9519,6 +9600,7 @@
         "tags": [
           "Subscription"
         ],
+        "operationId": "CreateOrder",
         "consumes": [
           "application/json",
           "text/json",
@@ -9589,6 +9671,7 @@
         "tags": [
           "Subscription"
         ],
+        "operationId": "VerifyReceipt",
         "consumes": [
           "application/json",
           "text/json",
@@ -9659,6 +9742,7 @@
         "tags": [
           "Subscription"
         ],
+        "operationId": "GetById",
         "produces": [
           "text/plain",
           "application/json",
@@ -9723,6 +9807,7 @@
         "tags": [
           "SyncState"
         ],
+        "operationId": "Get",
         "produces": [
           "text/plain",
           "application/json",
@@ -9779,6 +9864,7 @@
         "tags": [
           "SyncState"
         ],
+        "operationId": "PuupeeChangedEto",
         "produces": [
           "text/plain",
           "application/json",
@@ -9835,6 +9921,7 @@
         "tags": [
           "SyncState"
         ],
+        "operationId": "DeviceConnectedEto",
         "produces": [
           "text/plain",
           "application/json",
@@ -9891,6 +9978,7 @@
         "tags": [
           "Tenant"
         ],
+        "operationId": "GetById",
         "produces": [
           "text/plain",
           "application/json",
@@ -9954,6 +10042,7 @@
         "tags": [
           "Tenant"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -10029,6 +10118,7 @@
         "tags": [
           "Tenant"
         ],
+        "operationId": "Delete",
         "produces": [
           "text/plain",
           "application/json",
@@ -10091,6 +10181,7 @@
         "tags": [
           "Tenant"
         ],
+        "operationId": "GetList",
         "produces": [
           "text/plain",
           "application/json",
@@ -10173,6 +10264,7 @@
         "tags": [
           "Tenant"
         ],
+        "operationId": "Create",
         "consumes": [
           "application/json",
           "text/json",
@@ -10243,6 +10335,7 @@
         "tags": [
           "Tenant"
         ],
+        "operationId": "GetDefaultConnectionString",
         "produces": [
           "text/plain",
           "application/json",
@@ -10306,6 +10399,7 @@
         "tags": [
           "Tenant"
         ],
+        "operationId": "UpdateDefaultConnectionString",
         "produces": [
           "text/plain",
           "application/json",
@@ -10371,6 +10465,7 @@
         "tags": [
           "Tenant"
         ],
+        "operationId": "DeleteDefaultConnectionString",
         "produces": [
           "text/plain",
           "application/json",
@@ -10433,6 +10528,7 @@
         "tags": [
           "Test"
         ],
+        "operationId": "GetTestDate",
         "produces": [
           "text/plain",
           "application/json",
@@ -10453,6 +10549,7 @@
         "tags": [
           "User"
         ],
+        "operationId": "GetById",
         "produces": [
           "text/plain",
           "application/json",
@@ -10516,6 +10613,7 @@
         "tags": [
           "User"
         ],
+        "operationId": "Update",
         "consumes": [
           "application/json",
           "text/json",
@@ -10591,6 +10689,7 @@
         "tags": [
           "User"
         ],
+        "operationId": "Delete",
         "produces": [
           "text/plain",
           "application/json",
@@ -10653,6 +10752,7 @@
         "tags": [
           "User"
         ],
+        "operationId": "GetList",
         "produces": [
           "text/plain",
           "application/json",
@@ -10735,6 +10835,7 @@
         "tags": [
           "User"
         ],
+        "operationId": "Create",
         "consumes": [
           "application/json",
           "text/json",
@@ -10805,6 +10906,7 @@
         "tags": [
           "User"
         ],
+        "operationId": "GetRoles",
         "produces": [
           "text/plain",
           "application/json",
@@ -10868,6 +10970,7 @@
         "tags": [
           "User"
         ],
+        "operationId": "UpdateRoles",
         "consumes": [
           "application/json",
           "text/json",
@@ -10942,6 +11045,7 @@
         "tags": [
           "User"
         ],
+        "operationId": "GetAssignableRoles",
         "produces": [
           "text/plain",
           "application/json",
@@ -10998,6 +11102,7 @@
         "tags": [
           "User"
         ],
+        "operationId": "FindByUsername",
         "produces": [
           "text/plain",
           "application/json",
@@ -11062,6 +11167,7 @@
         "tags": [
           "User"
         ],
+        "operationId": "FindByEmail",
         "produces": [
           "text/plain",
           "application/json",
@@ -11126,6 +11232,7 @@
         "tags": [
           "UserLookup"
         ],
+        "operationId": "FindById",
         "produces": [
           "text/plain",
           "application/json",
@@ -11191,6 +11298,7 @@
         "tags": [
           "UserLookup"
         ],
+        "operationId": "FindByUserName",
         "produces": [
           "text/plain",
           "application/json",
@@ -11255,6 +11363,7 @@
         "tags": [
           "UserLookup"
         ],
+        "operationId": "Search",
         "produces": [
           "text/plain",
           "application/json",
@@ -11339,6 +11448,7 @@
         "tags": [
           "UserLookup"
         ],
+        "operationId": "GetCount",
         "produces": [
           "text/plain",
           "application/json",
@@ -11403,6 +11513,7 @@
         "tags": [
           "UserStorage"
         ],
+        "operationId": "Get",
         "produces": [
           "text/plain",
           "application/json",
@@ -11459,6 +11570,7 @@
         "tags": [
           "Verification"
         ],
+        "operationId": "SendCode",
         "consumes": [
           "application/json",
           "text/json",
@@ -13409,186 +13521,6 @@
         },
         "description": {
           "type": "string"
-        }
-      }
-    },
-    "CreateOrUpdatePuupeeDto": {
-      "required": [
-        "id",
-        "name"
-      ],
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        },
-        "isHidden": {
-          "type": "boolean"
-        },
-        "description": {
-          "type": "string"
-        },
-        "text": {
-          "type": "string"
-        },
-        "content": {
-          "type": "string"
-        },
-        "format": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        },
-        "parentId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "key": {
-          "type": "string"
-        },
-        "md5": {
-          "type": "string"
-        },
-        "sliceMd5": {
-          "type": "string"
-        },
-        "rapidCode": {
-          "type": "string"
-        },
-        "contentType": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        },
-        "displayStyle": {
-          "type": "string"
-        },
-        "extension": {
-          "type": "string"
-        },
-        "storageClass": {
-          "type": "string"
-        },
-        "storageObjectCreatedAt": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "storageObjectUpdatedAt": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "syncVersion": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "isDeleted": {
-          "type": "boolean"
-        },
-        "deletionTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "creationTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "lastModificationTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "priority": {
-          "type": "integer"
-        },
-        "startAt": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "endAt": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "notifyAt": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "notifyTimingType": {
-          "type": "string"
-        },
-        "notifyTimingUnit": {
-          "type": "string"
-        },
-        "notifyTimingValue": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "repeat": {
-          "type": "string"
-        },
-        "repeatOffAt": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "repeatOffTimes": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "repetitions": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "isDone": {
-          "type": "boolean"
-        },
-        "doneAt": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "creatorId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "lastModifierId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "deleterId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "tagging": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        },
-        "size": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "lastModifierDeviceToken": {
-          "type": "string"
-        },
-        "lastModifierDevice": {
-          "type": "string"
-        },
-        "appName": {
-          "type": "string"
-        },
-        "pushToUser": {
-          "type": "boolean"
-        },
-        "sortIndex": {
-          "format": "int32",
-          "type": "integer"
         }
       }
     },
@@ -15737,35 +15669,8 @@
     "PuupeeDto": {
       "type": "object",
       "properties": {
-        "id": {
+        "gid": {
           "format": "uuid",
-          "type": "string"
-        },
-        "creationTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "creatorId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "lastModificationTime": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "lastModifierId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "isDeleted": {
-          "type": "boolean"
-        },
-        "deleterId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "deletionTime": {
-          "format": "date-time",
           "type": "string"
         },
         "name": {
@@ -15819,9 +15724,6 @@
           "type": "string"
         },
         "contentType": {
-          "type": "string"
-        },
-        "type": {
           "type": "string"
         },
         "displayStyle": {
@@ -15920,6 +15822,98 @@
         "sortIndex": {
           "format": "int32",
           "type": "integer"
+        },
+        "isAutoUpload": {
+          "type": "boolean"
+        },
+        "isBabyAlbum": {
+          "type": "boolean"
+        },
+        "babyName": {
+          "type": "string"
+        },
+        "babyGender": {
+          "type": "string"
+        },
+        "babyBirthday": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "billType": {
+          "type": "string"
+        },
+        "billAccountId": {
+          "type": "string"
+        },
+        "billOwnerName": {
+          "type": "string"
+        },
+        "billImportedCount": {
+          "type": "string"
+        },
+        "exportTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "transactionType": {
+          "type": "string"
+        },
+        "peerAccountName": {
+          "type": "string"
+        },
+        "peerAccountId": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "type": "number"
+        },
+        "category": {
+          "type": "string"
+        },
+        "transactionId": {
+          "type": "string"
+        },
+        "merchantOrderId": {
+          "type": "string"
+        },
+        "transactionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "creationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "creatorId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifierId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModificationTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "deleterId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "deletionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
         }
       }
     },
@@ -15941,7 +15935,7 @@
     "PuupeeEto": {
       "type": "object",
       "properties": {
-        "id": {
+        "gid": {
           "format": "uuid",
           "type": "string"
         },
@@ -15954,9 +15948,6 @@
         },
         "parentId": {
           "format": "uuid",
-          "type": "string"
-        },
-        "type": {
           "type": "string"
         },
         "name": {
@@ -16108,6 +16099,71 @@
         },
         "isDeleted": {
           "type": "boolean"
+        },
+        "isAutoUpload": {
+          "type": "boolean"
+        },
+        "isBabyAlbum": {
+          "type": "boolean"
+        },
+        "babyName": {
+          "type": "string"
+        },
+        "babyGender": {
+          "type": "string"
+        },
+        "babyBirthday": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "billType": {
+          "type": "string"
+        },
+        "billAccountId": {
+          "type": "string"
+        },
+        "billOwnerName": {
+          "type": "string"
+        },
+        "billImportedCount": {
+          "type": "string"
+        },
+        "exportTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "transactionType": {
+          "type": "string"
+        },
+        "peerAccountName": {
+          "type": "string"
+        },
+        "peerAccountId": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "type": "number"
+        },
+        "category": {
+          "type": "string"
+        },
+        "transactionId": {
+          "type": "string"
+        },
+        "merchantOrderId": {
+          "type": "string"
+        },
+        "transactionTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
         }
       }
     },
