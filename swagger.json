@@ -12747,20 +12747,6 @@
         }
       }
     },
-    "AppleVerifyRecceiptStatus": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "readOnly": true
-        },
-        "value": {
-          "format": "int32",
-          "type": "integer",
-          "readOnly": true
-        }
-      }
-    },
     "AppleVerifyReceiptResult": {
       "type": "object",
       "properties": {
@@ -12771,7 +12757,7 @@
           "type": "boolean"
         },
         "status": {
-          "$ref": "#/definitions/AppleVerifyRecceiptStatus"
+          "type": "integer"
         },
         "latest_receipt_info": {
           "type": "array",
@@ -13232,7 +13218,7 @@
           "type": "string"
         },
         "type": {
-          "$ref": "#/definitions/SubscriptionOrderType"
+          "type": "string"
         },
         "productId": {
           "type": "string"
@@ -16706,10 +16692,10 @@
           "type": "string"
         },
         "type": {
-          "$ref": "#/definitions/SubscriptionOrderType"
+          "type": "string"
         },
         "status": {
-          "$ref": "#/definitions/SubscriptionOrderStatus"
+          "type": "string"
         },
         "appId": {
           "format": "uuid",
@@ -16721,32 +16707,6 @@
         },
         "productId": {
           "type": "string"
-        }
-      }
-    },
-    "SubscriptionOrderStatus": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "readOnly": true
-        },
-        "value": {
-          "type": "string",
-          "readOnly": true
-        }
-      }
-    },
-    "SubscriptionOrderType": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "readOnly": true
-        },
-        "value": {
-          "type": "string",
-          "readOnly": true
         }
       }
     },
