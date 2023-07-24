@@ -15897,10 +15897,10 @@
           "type": "boolean"
         },
         "thumbKey": {
-          "type": "boolean"
+          "type": "string"
         },
         "thumbMd5": {
-          "type": "boolean"
+          "type": "string"
         },
         "thumbSliceMd5": {
           "type": "string"
@@ -16171,10 +16171,10 @@
           "type": "string"
         },
         "thumbKey": {
-          "type": "boolean"
+          "type": "string"
         },
         "thumbMd5": {
-          "type": "boolean"
+          "type": "string"
         },
         "thumbSliceMd5": {
           "type": "string"
