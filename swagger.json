@@ -15895,6 +15895,30 @@
         },
         "isDeleted": {
           "type": "boolean"
+        },
+        "thumbKey": {
+          "type": "boolean"
+        },
+        "thumbMd5": {
+          "type": "boolean"
+        },
+        "thumbSliceMd5": {
+          "type": "string"
+        },
+        "thumbRapidCode": {
+          "type": "string"
+        },
+        "thumbSize": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "thumbWidth": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "thumbHeight": {
+          "format": "int32",
+          "type": "integer"
         }
       }
     },
@@ -16145,6 +16169,30 @@
         "id": {
           "format": "uuid",
           "type": "string"
+        },
+        "thumbKey": {
+          "type": "boolean"
+        },
+        "thumbMd5": {
+          "type": "boolean"
+        },
+        "thumbSliceMd5": {
+          "type": "string"
+        },
+        "thumbRapidCode": {
+          "type": "string"
+        },
+        "thumbSize": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "thumbWidth": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "thumbHeight": {
+          "format": "int32",
+          "type": "integer"
         }
       }
     },
