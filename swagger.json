@@ -612,16 +612,30 @@
         }
       }
     },
-    "/api/app/account": {
-      "delete": {
+    "/api/app/account/destroy-account": {
+      "post": {
         "tags": [
           "Account"
         ],
-        "operationId": "Delete",
+        "operationId": "DestroyAccount",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
         "produces": [
           "text/plain",
           "application/json",
           "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/AccountDeletionDto"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -664,7 +678,77 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/app/account/send-deletion-code": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "operationId": "SendDeletionCode",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/SendDeletionCodeDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/account": {
       "get": {
         "tags": [
           "Account"
@@ -11778,6 +11862,14 @@
         }
       }
     },
+    "AccountDeletionDto": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        }
+      }
+    },
     "ActionApiDescriptionModel": {
       "type": "object",
       "properties": {
@@ -16533,6 +16625,17 @@
       }
     },
     "SendChangePasswordCodeDto": {
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "type": "string"
+        },
+        "codeSender": {
+          "type": "string"
+        }
+      }
+    },
+    "SendDeletionCodeDto": {
       "type": "object",
       "properties": {
         "phoneNumber": {
