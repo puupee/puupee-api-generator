@@ -11711,6 +11711,74 @@
           }
         }
       }
+    },
+    "/api/app/verification/send-code-anonymous": {
+      "post": {
+        "tags": [
+          "Verification"
+        ],
+        "operationId": "SendCodeAnonymous",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/SendVerificationCodeDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
