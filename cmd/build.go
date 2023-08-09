@@ -6,18 +6,23 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/fs"
-	"io/ioutil"
+	"net/http"
 	"os"
 	"os/exec"
 
-	"github.com/AlecAivazis/survey/v2"
 	"github.com/spf13/cobra"
 )
 
 var (
-	supported []string = []string{"axios", "dart", "go", "python"}
-	lang      string
+	supported []string = []string{
+		"axios",
+		"dart",
+		"go",
+		"python",
+	}
+	verbose bool
 )
 
 // buildCmd represents the build command
@@ -25,42 +30,38 @@ var buildCmd = &cobra.Command{
 	Use:   "build",
 	Short: "构建",
 	Run: func(cmd *cobra.Command, args []string) {
-		// 获取 build-number
-		bts, err := ioutil.ReadFile("version")
+		cmd.Println("Using https://dev.api.puupee.com/swagger/v1/swagger.json")
+		resp, err := http.Get("https://dev.api.puupee.com/swagger/v1/swagger.json")
 		cobra.CheckErr(err)
-		latestVersion := string(bts)
-		prompt := &survey.Input{
-			Message: "输入构建版本号:",
-			Default: latestVersion,
-		}
-		var version string
-		err = survey.AskOne(prompt, &version, survey.WithValidator(survey.Required))
-		cobra.CheckErr(err)
-		if latestVersion == version {
-			cmd.Println("版本号未变化，不需要构建")
-			return
-		}
-		swaggerBts, err := ioutil.ReadFile("swagger.json")
+		defer resp.Body.Close()
+		bts, err := io.ReadAll(resp.Body)
 		cobra.CheckErr(err)
 		swagger := make(map[string]interface{})
-		err = json.Unmarshal(swaggerBts, &swagger)
+		err = json.Unmarshal(bts, &swagger)
 		cobra.CheckErr(err)
 		info := swagger["info"].(map[string]interface{})
-		info["version"] = version
+		version := info["version"].(string)
 		fmt.Printf("Building target version: %s\n", version)
-		c := exec.Command("task", lang, "VERSION="+version)
-		c.Stdout = os.Stdout
-		c.Stderr = os.Stderr
-		err = c.Run()
-		cobra.CheckErr(err)
-		err = ioutil.WriteFile("version", []byte(version), fs.ModePerm)
+		for _, lang := range supported {
+			c := exec.Command("task", lang, "VERSION="+version)
+			if verbose {
+				c.Stdout = os.Stdout
+				c.Stderr = os.Stderr
+			}
+			err = c.Run()
+			cobra.CheckErr(err)
+			cmd.Printf("Built! Lang: %s Version: %s\n", lang, version)
+		}
+		err = os.WriteFile("version.lock", []byte(version), fs.ModePerm)
 		cobra.CheckErr(err)
 		cu := exec.Command("task", "update-self", "VERSION="+version)
-		cu.Stdout = os.Stdout
-		cu.Stderr = os.Stderr
+		if verbose {
+			cu.Stdout = os.Stdout
+			cu.Stderr = os.Stderr
+		}
 		err = cu.Run()
 		cobra.CheckErr(err)
-		cmd.Printf("构建完成! 语言: %s 版本: %s\n", lang, version)
+		cmd.Printf("Built ! Version: %s\n", version)
 	},
 }
 
@@ -76,7 +77,6 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// buildCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	buildCmd.Flags().StringVarP(&lang, "lang", "l", "all", "目标语言")
+	buildCmd.Flags().BoolVarP(&verbose, "verbose", "v", false, "verbose output")
 	buildCmd.MarkFlagRequired("lang")
-	buildCmd.Flags().SetAnnotation("lang", "survey", supported)
 }
