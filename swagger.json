@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Puupee API",
-    "version": "1.0.0.0"
+    "version": "1.7.27"
   },
   "paths": {
     "/api/abp/api-definition": {
@@ -2916,6 +2916,75 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/AppPricingDto"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/app/app-pricing/pricing-items-by-app-id/{appId}": {
+      "get": {
+        "tags": [
+          "AppPricing"
+        ],
+        "operationId": "GetPricingItemsByAppId",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AppPricingItemDto"
               }
             }
           },
@@ -11644,6 +11713,66 @@
         }
       }
     },
+    "/list": {
+      "get": {
+        "tags": [
+          "UserStorage"
+        ],
+        "operationId": "GetList",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserStorageDto"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/RemoteServiceErrorResponse"
+            }
+          }
+        }
+      }
+    },
     "/api/app/verification/send-code": {
       "post": {
         "tags": [
@@ -12010,6 +12139,14 @@
         "specJsonSchema": {
           "type": "string"
         },
+        "defaultStorageSize": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "defaultSingleFileMaxSize": {
+          "format": "int64",
+          "type": "integer"
+        },
         "latestReleases": {
           "type": "array",
           "items": {
@@ -12265,6 +12402,9 @@
           "format": "date-time",
           "type": "string"
         },
+        "key": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         },
@@ -12327,7 +12467,7 @@
           "type": "boolean"
         },
         "intValue": {
-          "format": "int32",
+          "format": "int64",
           "type": "integer"
         },
         "stringValue": {
@@ -12821,6 +12961,14 @@
         },
         "specJsonSchema": {
           "type": "string"
+        },
+        "defaultStorageSize": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "defaultSingleFileMaxSize": {
+          "format": "int64",
+          "type": "integer"
         },
         "latestReleases": {
           "type": "array",
@@ -16374,11 +16522,11 @@
           "type": "string"
         },
         "adam_id": {
-          "format": "int32",
+          "format": "int64",
           "type": "integer"
         },
         "app_item_id": {
-          "format": "int32",
+          "format": "int64",
           "type": "integer"
         },
         "bundle_id": {
@@ -16388,7 +16536,7 @@
           "type": "string"
         },
         "download_id": {
-          "format": "int32",
+          "format": "int64",
           "type": "integer"
         },
         "version_external_identifier": {
@@ -17315,10 +17463,14 @@
     "UserStorageDto": {
       "type": "object",
       "properties": {
-        "name": {
+        "appId": {
+          "format": "uuid",
           "type": "string"
         },
-        "displayName": {
+        "appName": {
+          "type": "string"
+        },
+        "priceNaming": {
           "type": "string"
         },
         "size": {
@@ -17336,6 +17488,10 @@
         "singleFileMaxSize": {
           "format": "int64",
           "type": "integer"
+        },
+        "expireAt": {
+          "format": "date-time",
+          "type": "string"
         },
         "items": {
           "type": "array",

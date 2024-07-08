@@ -31,38 +31,59 @@ var buildCmd = &cobra.Command{
 	Short: "构建",
 	Run: func(cmd *cobra.Command, args []string) {
 		cmd.Println("Using https://dev.api.puupee.com/swagger/v1/swagger.json")
+
+		// 获取远程声明
 		resp, err := http.Get("https://dev.api.puupee.com/swagger/v1/swagger.json")
-		cobra.CheckErr(err)
+		checkError(err)
 		defer resp.Body.Close()
 		bts, err := io.ReadAll(resp.Body)
-		cobra.CheckErr(err)
+		checkError(err)
+
+		// 写入本地文件
+		err = os.WriteFile("swagger.json", bts, fs.ModePerm)
+		checkError(err)
+
+		// 获取版本信息
 		swagger := make(map[string]interface{})
 		err = json.Unmarshal(bts, &swagger)
-		cobra.CheckErr(err)
+		checkError(err)
 		info := swagger["info"].(map[string]interface{})
 		version := info["version"].(string)
 		fmt.Printf("Building target version: %s\n", version)
+
+		// 根据不同语言生成代码
 		for _, lang := range supported {
+			cmd.Printf("Building lang: %s\n", lang)
 			c := exec.Command("task", lang, "VERSION="+version)
 			if verbose {
 				c.Stdout = os.Stdout
 				c.Stderr = os.Stderr
 			}
 			err = c.Run()
-			cobra.CheckErr(err)
-			cmd.Printf("Built! Lang: %s Version: %s\n", lang, version)
+			checkError(err)
 		}
+		cmd.Println("Locking into version.lock")
+		// 写入版本锁
 		err = os.WriteFile("version.lock", []byte(version), fs.ModePerm)
-		cobra.CheckErr(err)
+		checkError(err)
+
+		cmd.Println("Updating generator version")
 		cu := exec.Command("task", "update-self", "VERSION="+version)
 		if verbose {
 			cu.Stdout = os.Stdout
 			cu.Stderr = os.Stderr
 		}
 		err = cu.Run()
-		cobra.CheckErr(err)
-		cmd.Printf("Built ! Version: %s\n", version)
+		checkError(err)
+		cmd.Printf("Complete! Version: %s\n", version)
 	},
+}
+
+func checkError(err error) {
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
 }
 
 func init() {
