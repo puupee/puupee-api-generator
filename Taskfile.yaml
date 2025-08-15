@@ -3,7 +3,7 @@
 version: "3"
 
 vars:
-  VERSION: "1.5.8"
+  VERSION: "1.14.0"
 
 tasks:
   all:
@@ -11,7 +11,7 @@ tasks:
       - task dart
       - task go
       - task axios
-      - task python
+      # - task python
   dart:
     cmds:
       - rm -rf ../puupee-api-dart/*
