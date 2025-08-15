@@ -11,16 +11,17 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"runtime"
 
 	"github.com/spf13/cobra"
 )
 
 var (
 	supported []string = []string{
-		"axios",
+		// "axios",
 		"dart",
-		"go",
-		"python",
+		// "go",
+		// "python",
 	}
 	verbose bool
 )
@@ -82,6 +83,10 @@ var buildCmd = &cobra.Command{
 func checkError(err error) {
 	if err != nil {
 		fmt.Println(err.Error())
+		// 打印错误堆栈
+		buf := make([]byte, 1024)
+		runtime.Stack(buf, true)
+		fmt.Println(string(buf))
 		os.Exit(1)
 	}
 }
