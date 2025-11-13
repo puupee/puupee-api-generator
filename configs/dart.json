@@ -7,5 +7,7 @@
     "serializationLibrary": "json_serializable",
     "finalProperties": false,
     "useEnumExtension": true,
-    "prependFormOrBodyParameters": true
+    "prependFormOrBodyParameters": true,
+    "skipCopyWith": true,
+    "templateDirectory": "templates/dart"
 }

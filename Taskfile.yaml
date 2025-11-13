@@ -15,7 +15,7 @@ tasks:
   dart:
     cmds:
       - rm -rf ../puupee-api-dart/*
-      - java -jar openapi-generator-cli.jar generate -g dart-dio -o ../puupee-api-dart -c configs/dart.json -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-dart --release-note update --artifact-version {{.VERSION}}
+      - java -jar openapi-generator-cli.jar generate -g dart-dio -o ../puupee-api-dart -c configs/dart.json -t templates/dart/libraries/dio -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-dart --release-note update --artifact-version {{.VERSION}}
       - cd ../puupee-api-dart/ && flutter pub get && flutter pub run build_runner build && git add . && git commit -a -m "update" && git tag v{{.VERSION}} && git push origin master --tags
   go:
     cmds:
