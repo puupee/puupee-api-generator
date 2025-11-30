@@ -18,7 +18,7 @@ import (
 
 var (
 	supported []string = []string{
-		// "axios",
+		"axios",
 		"dart",
 		// "go",
 		// "python",
