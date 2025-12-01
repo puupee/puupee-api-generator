@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Puupee API",
-    "version": "1.17.52"
+    "version": "1.17.53"
   },
   "paths": {
     "/api/abp/api-definition": {
@@ -33388,6 +33388,12 @@
           },
           "environment": {
             "type": "string",
+            "nullable": true
+          },
+          "buildRecordId": {
+            "type": "string",
+            "description": "构建记录ID（可选，如果提供则使用对应构建的BuildNumber作为VersionCode）",
+            "format": "uuid",
             "nullable": true
           }
         },
