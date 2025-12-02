@@ -12,11 +12,15 @@ tasks:
       - task go
       - task axios
       # - task python
+  build:
+    desc: "使用 Dart 工具构建所有 SDK"
+    cmds:
+      - dart pub get
+      - dart run bin/puupee_sdk_generator.dart build
   dart:
     cmds:
-      - rm -rf ../puupee-api-dart/*
-      - java -jar openapi-generator-cli.jar generate -g dart-dio -o ../puupee-api-dart -c configs/dart.json -t templates/dart/libraries/dio -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-dart --release-note update --artifact-version {{.VERSION}}
-      - cd ../puupee-api-dart/ && flutter pub get && flutter pub run build_runner build && git add . && git commit -a -m "update" && git tag v{{.VERSION}} && git push origin master --tags
+      - dart pub get
+      - dart run bin/puupee_sdk_generator.dart dart --output-dir ../puupee_api_client
   go:
     cmds:
       - rm -rf ../puupee-api-go/*

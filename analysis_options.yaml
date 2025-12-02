@@ -1,0 +1,7 @@
+linter:
+  rules:
+    - prefer_const_constructors
+    - prefer_const_literals_to_create_immutables
+    # 命令行工具允许使用 print
+    - avoid_print: false
+

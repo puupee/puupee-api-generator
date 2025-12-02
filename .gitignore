@@ -1,2 +1,14 @@
 fcr/fcr.bin
 logs.txt
+.dart_tool/
+.pub-cache/
+.pub/
+/build/
+/coverage/
+/doc/api/
+/ios/Flutter/.last_build_id
+/lib/generated/
+/lib/generated_helper/
+/lib/generated_test/
+/lib/generated_test_helper/
+/lib/generated_test_helper_test/

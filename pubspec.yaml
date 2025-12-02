@@ -1,0 +1,18 @@
+name: puupee_sdk_generator
+resolution: workspace
+description: A generator for puupee api to generate client code in different programming languages.
+version: 1.0.0
+homepage: https://github.com/puupee/puupee-apps
+
+environment:
+  sdk: '>=3.8.0 <4.0.0'
+
+dependencies:
+  args: ^2.5.0
+  http: ^1.2.2
+  path: ^1.9.0
+  yaml: ^3.1.2
+
+dev_dependencies:
+  test: ^1.24.0
+
