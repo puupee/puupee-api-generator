@@ -7,8 +7,10 @@
 - 从远程 API 下载 Swagger JSON 规范
 - 自动解析版本号
 - 使用 OpenAPI Generator 生成客户端代码
+- 支持多种编程语言：Dart、TypeScript (Axios)、Go
 - 自动修复生成的 pubspec.yaml 文件（确保 `resolution: workspace` 字段存在，确保版本号正确）
-- 自动运行 `dart run build_runner build --delete-conflicting-outputs` 生成序列化代码
+- 自动运行 `dart run build_runner build --delete-conflicting-outputs` 生成 Dart 序列化代码
+- 自动安装依赖（Dart: `dart pub get`，TypeScript: `yarn install`，Go: `go mod tidy`）
 
 ## 安装
 
@@ -23,6 +25,18 @@ dart pub get
 
 ```bash
 dart run bin/puupee_sdk_generator.dart dart
+```
+
+### 构建 TypeScript Axios SDK
+
+```bash
+dart run bin/puupee_sdk_generator.dart axios
+```
+
+### 构建 Go SDK
+
+```bash
+dart run bin/puupee_sdk_generator.dart go
 ```
 
 ### 构建所有支持的 SDK
@@ -43,7 +57,16 @@ dart run bin/puupee_sdk_generator.dart build
 # 使用默认设置构建 Dart SDK
 dart run bin/puupee_sdk_generator.dart dart
 
-# 使用自定义 URL 和输出目录
+# 构建 TypeScript Axios SDK
+dart run bin/puupee_sdk_generator.dart axios
+
+# 构建 Go SDK
+dart run bin/puupee_sdk_generator.dart go
+
+# 构建所有 SDK
+dart run bin/puupee_sdk_generator.dart build
+
+# 使用自定义 URL 和输出目录（仅适用于 dart 命令）
 dart run bin/puupee_sdk_generator.dart dart \
   --swagger-url https://api.puupee.com/swagger/v1/swagger.json \
   --output-dir ../my_api_client

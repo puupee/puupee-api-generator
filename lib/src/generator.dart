@@ -27,7 +27,7 @@ class SdkGenerator {
   /// 生成 Dart SDK
   Future<void> generateDart() async {
     print('正在生成 Dart SDK...');
-    
+
     final args = [
       '-jar',
       openApiGeneratorJar,
@@ -56,18 +56,14 @@ class SdkGenerator {
       args.add('--skip-validate-spec');
     }
 
-    final process = await Process.start(
-      'java',
-      args,
-      runInShell: false,
-    );
+    final process = await Process.start('java', args, runInShell: false);
 
     // 输出标准输出和标准错误
     await stdout.addStream(process.stdout);
     await stderr.addStream(process.stderr);
 
     final exitCode = await process.exitCode;
-    
+
     if (exitCode != 0) {
       throw Exception('生成 Dart SDK 失败，退出码: $exitCode');
     }
@@ -83,7 +79,7 @@ class SdkGenerator {
     String? templateDir,
   }) async {
     print('正在生成 $generator SDK...');
-    
+
     final args = [
       '-jar',
       openApiGeneratorJar,
@@ -106,7 +102,7 @@ class SdkGenerator {
       version,
     ];
 
-    if (templateDir != null) {
+    if (templateDir != null && templateDir.isNotEmpty) {
       args.addAll(['-t', templateDir]);
     }
 
@@ -114,17 +110,13 @@ class SdkGenerator {
       args.add('--skip-validate-spec');
     }
 
-    final process = await Process.start(
-      'java',
-      args,
-      runInShell: false,
-    );
+    final process = await Process.start('java', args, runInShell: false);
 
     await stdout.addStream(process.stdout);
     await stderr.addStream(process.stderr);
 
     final exitCode = await process.exitCode;
-    
+
     if (exitCode != 0) {
       throw Exception('生成 $generator SDK 失败，退出码: $exitCode');
     }
@@ -132,4 +124,3 @@ class SdkGenerator {
     print('$generator SDK 生成完成');
   }
 }
-

@@ -34,6 +34,8 @@ void main(List<String> args) async {
     print('命令:');
     print('  build    构建所有支持的 SDK');
     print('  dart     仅构建 Dart SDK');
+    print('  axios    仅构建 TypeScript Axios SDK');
+    print('  go       仅构建 Go SDK');
     print('');
     print('选项:');
     print(parser.usage);
@@ -60,6 +62,12 @@ void main(List<String> args) async {
           swaggerUrl: swaggerUrl,
           outputDir: outputDir,
         );
+        break;
+      case 'axios':
+        await buildAxios(verbose: verbose, swaggerUrl: swaggerUrl);
+        break;
+      case 'go':
+        await buildGo(verbose: verbose, swaggerUrl: swaggerUrl);
         break;
       default:
         print('未知命令: $command');
@@ -91,9 +99,11 @@ Future<void> buildAll({
     outputDir: outputDir,
   );
 
-  // TODO: 可以添加其他语言的构建
-  // await buildGo(verbose: verbose, swaggerUrl: swaggerUrl);
-  // await buildAxios(verbose: verbose, swaggerUrl: swaggerUrl);
+  // 构建 Axios SDK
+  await buildAxios(verbose: verbose, swaggerUrl: swaggerUrl);
+
+  // 构建 Go SDK
+  await buildGo(verbose: verbose, swaggerUrl: swaggerUrl);
 
   print('所有 SDK 构建完成');
 }
@@ -204,4 +214,166 @@ Future<void> buildDart({
   await File(versionLockPath).writeAsString(swaggerInfo.version);
 
   print('Dart SDK 构建完成！版本: ${swaggerInfo.version}');
+}
+
+/// 构建 TypeScript Axios SDK
+Future<void> buildAxios({
+  required bool verbose,
+  required String swaggerUrl,
+}) async {
+  // 获取当前脚本所在目录
+  final scriptDir = path.dirname(Platform.script.toFilePath());
+  final packageDir = path.dirname(scriptDir);
+
+  final swaggerJsonPath = path.join(packageDir, 'swagger.json');
+  final openApiGeneratorJar = path.join(
+    packageDir,
+    'openapi-generator-cli.jar',
+  );
+  final configPath = path.join(packageDir, 'configs', 'axios.json');
+  final outputDir = path.absolute('../../../sdk/puupee-api-axios');
+  final versionLockPath = path.join(packageDir, 'version.lock');
+
+  // 检查必要文件是否存在
+  if (!await File(openApiGeneratorJar).exists()) {
+    throw Exception('找不到 openapi-generator-cli.jar: $openApiGeneratorJar');
+  }
+
+  if (!await File(configPath).exists()) {
+    throw Exception('找不到配置文件: $configPath');
+  }
+
+  // 1. 下载 Swagger JSON
+  final downloader = SwaggerDownloader(swaggerUrl: swaggerUrl);
+  final swaggerInfo = await downloader.download();
+  await downloader.saveToFile(swaggerJsonPath, swaggerInfo.json);
+
+  print('构建目标版本: ${swaggerInfo.version}');
+
+  // 2. 清理输出目录
+  if (await Directory(outputDir).exists()) {
+    print('清理输出目录: $outputDir');
+    await Directory(outputDir).delete(recursive: true);
+  }
+
+  // 3. 生成 TypeScript Axios SDK
+  final generator = SdkGenerator(
+    openApiGeneratorJar: openApiGeneratorJar,
+    swaggerJsonPath: swaggerJsonPath,
+    configPath: configPath,
+    templateDirectory: '', // Axios 不需要自定义模板
+    outputDirectory: outputDir,
+    version: swaggerInfo.version,
+    gitUserId: 'puupee',
+    gitRepoId: 'puupee-api-axios',
+    skipValidateSpec: true,
+  );
+
+  await generator.generate(
+    generator: 'typescript-axios',
+    outputDir: outputDir,
+    configFile: configPath,
+  );
+
+  // 4. 安装依赖
+  print('安装依赖...');
+  final yarnProcess = await Process.start(
+    'yarn',
+    ['install'],
+    workingDirectory: outputDir,
+    runInShell: false,
+  );
+  await stdout.addStream(yarnProcess.stdout);
+  await stderr.addStream(yarnProcess.stderr);
+  final yarnExitCode = await yarnProcess.exitCode;
+  if (yarnExitCode != 0) {
+    throw Exception('安装依赖失败，退出码: $yarnExitCode');
+  }
+
+  // 5. 保存版本锁
+  print('保存版本锁到: $versionLockPath');
+  await File(versionLockPath).writeAsString(swaggerInfo.version);
+
+  print('TypeScript Axios SDK 构建完成！版本: ${swaggerInfo.version}');
+}
+
+/// 构建 Go SDK
+Future<void> buildGo({
+  required bool verbose,
+  required String swaggerUrl,
+}) async {
+  // 获取当前脚本所在目录
+  final scriptDir = path.dirname(Platform.script.toFilePath());
+  final packageDir = path.dirname(scriptDir);
+
+  final swaggerJsonPath = path.join(packageDir, 'swagger.json');
+  final openApiGeneratorJar = path.join(
+    packageDir,
+    'openapi-generator-cli.jar',
+  );
+  final configPath = path.join(packageDir, 'configs', 'go.json');
+  final outputDir = path.absolute('../../../sdk/puupee-api-go');
+  final versionLockPath = path.join(packageDir, 'version.lock');
+
+  // 检查必要文件是否存在
+  if (!await File(openApiGeneratorJar).exists()) {
+    throw Exception('找不到 openapi-generator-cli.jar: $openApiGeneratorJar');
+  }
+
+  if (!await File(configPath).exists()) {
+    throw Exception('找不到配置文件: $configPath');
+  }
+
+  // 1. 下载 Swagger JSON
+  final downloader = SwaggerDownloader(swaggerUrl: swaggerUrl);
+  final swaggerInfo = await downloader.download();
+  await downloader.saveToFile(swaggerJsonPath, swaggerInfo.json);
+
+  print('构建目标版本: ${swaggerInfo.version}');
+
+  // 2. 清理输出目录
+  if (await Directory(outputDir).exists()) {
+    print('清理输出目录: $outputDir');
+    await Directory(outputDir).delete(recursive: true);
+  }
+
+  // 3. 生成 Go SDK
+  final generator = SdkGenerator(
+    openApiGeneratorJar: openApiGeneratorJar,
+    swaggerJsonPath: swaggerJsonPath,
+    configPath: configPath,
+    templateDirectory: '', // Go 不需要自定义模板
+    outputDirectory: outputDir,
+    version: swaggerInfo.version,
+    gitUserId: 'puupee',
+    gitRepoId: 'puupee-api-go',
+    skipValidateSpec: false, // Go 不需要跳过验证
+  );
+
+  await generator.generate(
+    generator: 'go',
+    outputDir: outputDir,
+    configFile: configPath,
+  );
+
+  // 4. 运行 go mod tidy
+  print('运行 go mod tidy...');
+  final goModTidyProcess = await Process.start(
+    'go',
+    ['mod', 'tidy'],
+    workingDirectory: outputDir,
+    runInShell: false,
+  );
+  await stdout.addStream(goModTidyProcess.stdout);
+  await stderr.addStream(goModTidyProcess.stderr);
+  final goModTidyExitCode = await goModTidyProcess.exitCode;
+  if (goModTidyExitCode != 0) {
+    throw Exception('go mod tidy 失败，退出码: $goModTidyExitCode');
+  }
+
+  // 5. 保存版本锁
+  print('保存版本锁到: $versionLockPath');
+  await File(versionLockPath).writeAsString(swaggerInfo.version);
+
+  print('Go SDK 构建完成！版本: ${swaggerInfo.version}');
 }
