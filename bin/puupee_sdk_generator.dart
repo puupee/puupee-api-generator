@@ -108,6 +108,30 @@ Future<void> buildAll({
   print('所有 SDK 构建完成');
 }
 
+/// 清理输出目录，但保留 .git 文件夹
+Future<void> cleanOutputDirectory(String dirPath) async {
+  final directory = Directory(dirPath);
+  if (!await directory.exists()) {
+    return;
+  }
+
+  print('清理输出目录: $dirPath');
+
+  await for (final entity in directory.list()) {
+    // 跳过 .git 文件夹
+    if (entity is Directory && path.basename(entity.path) == '.git') {
+      continue;
+    }
+
+    // 删除其他所有文件和文件夹
+    if (entity is File) {
+      await entity.delete();
+    } else if (entity is Directory) {
+      await entity.delete(recursive: true);
+    }
+  }
+}
+
 /// 构建 Dart SDK
 Future<void> buildDart({
   required bool verbose,
@@ -151,10 +175,7 @@ Future<void> buildDart({
 
   // 2. 清理输出目录
   final outputDirPath = path.absolute(outputDir);
-  if (await Directory(outputDirPath).exists()) {
-    print('清理输出目录: $outputDirPath');
-    await Directory(outputDirPath).delete(recursive: true);
-  }
+  await cleanOutputDirectory(outputDirPath);
 
   // 3. 生成 Dart SDK
   final generator = SdkGenerator(
@@ -251,10 +272,7 @@ Future<void> buildAxios({
   print('构建目标版本: ${swaggerInfo.version}');
 
   // 2. 清理输出目录
-  if (await Directory(outputDir).exists()) {
-    print('清理输出目录: $outputDir');
-    await Directory(outputDir).delete(recursive: true);
-  }
+  await cleanOutputDirectory(outputDir);
 
   // 3. 生成 TypeScript Axios SDK
   final generator = SdkGenerator(
@@ -332,10 +350,7 @@ Future<void> buildGo({
   print('构建目标版本: ${swaggerInfo.version}');
 
   // 2. 清理输出目录
-  if (await Directory(outputDir).exists()) {
-    print('清理输出目录: $outputDir');
-    await Directory(outputDir).delete(recursive: true);
-  }
+  await cleanOutputDirectory(outputDir);
 
   // 3. 生成 Go SDK
   final generator = SdkGenerator(
