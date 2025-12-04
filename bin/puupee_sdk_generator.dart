@@ -119,7 +119,7 @@ Future<void> cleanOutputDirectory(String dirPath) async {
 
   await for (final entity in directory.list()) {
     // 跳过 .git 文件夹
-    if (entity is Directory && path.basename(entity.path) == '.git') {
+    if (path.basename(entity.path) == '.git') {
       continue;
     }
 
