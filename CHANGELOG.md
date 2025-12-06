@@ -1,3 +1,7 @@
+## 1.1.1
+
+ - **REFACTOR**: simplify directory cleanup logic by removing unnecessary type check for .git folder.
+
 ## 1.1.0
 
  - **REFACTOR**: 删除Go模块文件，并使用SDK生成器的详细信息更新README.
