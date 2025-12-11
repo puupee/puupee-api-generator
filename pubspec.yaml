@@ -5,7 +5,7 @@ version: 1.1.1
 homepage: https://github.com/puupee/puupee-apps
 
 environment:
-  sdk: '>=3.8.0 <4.0.0'
+  sdk: ^3.8.1
 
 dependencies:
   args: ^2.5.0
