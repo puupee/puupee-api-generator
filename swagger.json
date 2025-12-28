@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Puupee API",
-    "version": "1.17.58"
+    "version": "1.17.73"
   },
   "paths": {
     "/api/abp/api-definition": {
@@ -9291,10 +9291,10 @@
             }
           },
           {
-            "name": "Environment",
+            "name": "Channel",
             "in": "query",
             "schema": {
-              "type": "string"
+              "$ref": "#/components/schemas/ReleaseChannel"
             }
           },
           {
@@ -9988,13 +9988,6 @@
           },
           {
             "name": "ProductType",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Environment",
             "in": "query",
             "schema": {
               "type": "string"
@@ -31458,12 +31451,7 @@
             "type": "boolean"
           },
           "channel": {
-            "type": "string",
-            "nullable": true
-          },
-          "environment": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/ReleaseChannel"
           }
         },
         "additionalProperties": false
@@ -33383,12 +33371,7 @@
             "type": "boolean"
           },
           "channel": {
-            "type": "string",
-            "nullable": true
-          },
-          "environment": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/ReleaseChannel"
           },
           "buildRecordId": {
             "type": "string",
@@ -36190,6 +36173,16 @@
           }
         },
         "additionalProperties": false
+      },
+      "ReleaseChannel": {
+        "enum": [
+          "Internal",
+          "Alpha",
+          "Beta",
+          "Production"
+        ],
+        "type": "string",
+        "description": "发布渠道枚举"
       },
       "RemoteServiceErrorInfo": {
         "type": "object",
