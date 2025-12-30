@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Puupee API",
-    "version": "1.17.76"
+    "version": "1.17.77"
   },
   "paths": {
     "/api/abp/api-definition": {
@@ -36614,6 +36614,10 @@
             "format": "int64"
           },
           "appId": {
+            "type": "string",
+            "nullable": true
+          },
+          "cdnDomain": {
             "type": "string",
             "nullable": true
           }
