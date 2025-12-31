@@ -21,7 +21,11 @@ void main(List<String> args) async {
       help: 'Swagger JSON URL',
       defaultsTo: 'https://dev.api.puupee.com/swagger/v1/swagger.json',
     )
-    ..addOption('output-dir', help: '输出目录', defaultsTo: '../puupee_api_client')
+    ..addOption(
+      'output-dir',
+      help:
+          '输出目录（dart 默认: ../puupee_api_client, axios 默认: ../puupee-api-axios, go 默认: ../puupee-api-go）',
+    )
     ..addFlag('help', abbr: 'h', help: '显示帮助信息');
 
   final results = parser.parse(args);
@@ -45,7 +49,27 @@ void main(List<String> args) async {
   final command = results.rest[0];
   final verbose = results['verbose'] as bool;
   final swaggerUrl = results['swagger-url'] as String;
-  final outputDir = results['output-dir'] as String;
+
+  // 根据命令设置默认输出目录
+  String getDefaultOutputDir(String cmd) {
+    if (results.wasParsed('output-dir')) {
+      // 用户显式指定了输出目录，使用用户指定的值
+      return results['output-dir'] as String;
+    }
+    // 根据命令返回默认值
+    switch (cmd) {
+      case 'dart':
+        return '../puupee_api_client';
+      case 'axios':
+        return '../puupee-api-axios';
+      case 'go':
+        return '../puupee-api-go';
+      default:
+        return '../puupee_api_client';
+    }
+  }
+
+  final outputDir = getDefaultOutputDir(command);
 
   try {
     switch (command) {
@@ -64,10 +88,18 @@ void main(List<String> args) async {
         );
         break;
       case 'axios':
-        await buildAxios(verbose: verbose, swaggerUrl: swaggerUrl);
+        await buildAxios(
+          verbose: verbose,
+          swaggerUrl: swaggerUrl,
+          outputDir: outputDir,
+        );
         break;
       case 'go':
-        await buildGo(verbose: verbose, swaggerUrl: swaggerUrl);
+        await buildGo(
+          verbose: verbose,
+          swaggerUrl: swaggerUrl,
+          outputDir: outputDir,
+        );
         break;
       default:
         print('未知命令: $command');
@@ -100,10 +132,18 @@ Future<void> buildAll({
   );
 
   // 构建 Axios SDK
-  await buildAxios(verbose: verbose, swaggerUrl: swaggerUrl);
+  await buildAxios(
+    verbose: verbose,
+    swaggerUrl: swaggerUrl,
+    outputDir: '../puupee-api-axios',
+  );
 
   // 构建 Go SDK
-  await buildGo(verbose: verbose, swaggerUrl: swaggerUrl);
+  await buildGo(
+    verbose: verbose,
+    swaggerUrl: swaggerUrl,
+    outputDir: '../puupee-api-go',
+  );
 
   print('所有 SDK 构建完成');
 }
@@ -241,6 +281,7 @@ Future<void> buildDart({
 Future<void> buildAxios({
   required bool verbose,
   required String swaggerUrl,
+  required String outputDir,
 }) async {
   // 获取当前脚本所在目录
   final scriptDir = path.dirname(Platform.script.toFilePath());
@@ -252,7 +293,7 @@ Future<void> buildAxios({
     'openapi-generator-cli.jar',
   );
   final configPath = path.join(packageDir, 'configs', 'axios.json');
-  final outputDir = path.absolute('../../../sdk/puupee-api-axios');
+  final outputDirPath = path.absolute(packageDir, outputDir);
   final versionLockPath = path.join(packageDir, 'version.lock');
 
   // 检查必要文件是否存在
@@ -272,7 +313,7 @@ Future<void> buildAxios({
   print('构建目标版本: ${swaggerInfo.version}');
 
   // 2. 清理输出目录
-  await cleanOutputDirectory(outputDir);
+  await cleanOutputDirectory(outputDirPath);
 
   // 3. 生成 TypeScript Axios SDK
   final generator = SdkGenerator(
@@ -280,7 +321,7 @@ Future<void> buildAxios({
     swaggerJsonPath: swaggerJsonPath,
     configPath: configPath,
     templateDirectory: '', // Axios 不需要自定义模板
-    outputDirectory: outputDir,
+    outputDirectory: outputDirPath,
     version: swaggerInfo.version,
     gitUserId: 'puupee',
     gitRepoId: 'puupee-api-axios',
@@ -289,7 +330,7 @@ Future<void> buildAxios({
 
   await generator.generate(
     generator: 'typescript-axios',
-    outputDir: outputDir,
+    outputDir: outputDirPath,
     configFile: configPath,
   );
 
@@ -298,7 +339,7 @@ Future<void> buildAxios({
   final yarnProcess = await Process.start(
     'yarn',
     ['install'],
-    workingDirectory: outputDir,
+    workingDirectory: outputDirPath,
     runInShell: false,
   );
   await stdout.addStream(yarnProcess.stdout);
@@ -319,6 +360,7 @@ Future<void> buildAxios({
 Future<void> buildGo({
   required bool verbose,
   required String swaggerUrl,
+  required String outputDir,
 }) async {
   // 获取当前脚本所在目录
   final scriptDir = path.dirname(Platform.script.toFilePath());
@@ -330,7 +372,7 @@ Future<void> buildGo({
     'openapi-generator-cli.jar',
   );
   final configPath = path.join(packageDir, 'configs', 'go.json');
-  final outputDir = path.absolute('../../../sdk/puupee-api-go');
+  final outputDirPath = path.absolute(packageDir, outputDir);
   final versionLockPath = path.join(packageDir, 'version.lock');
 
   // 检查必要文件是否存在
@@ -350,7 +392,7 @@ Future<void> buildGo({
   print('构建目标版本: ${swaggerInfo.version}');
 
   // 2. 清理输出目录
-  await cleanOutputDirectory(outputDir);
+  await cleanOutputDirectory(outputDirPath);
 
   // 3. 生成 Go SDK
   final generator = SdkGenerator(
@@ -358,7 +400,7 @@ Future<void> buildGo({
     swaggerJsonPath: swaggerJsonPath,
     configPath: configPath,
     templateDirectory: '', // Go 不需要自定义模板
-    outputDirectory: outputDir,
+    outputDirectory: outputDirPath,
     version: swaggerInfo.version,
     gitUserId: 'puupee',
     gitRepoId: 'puupee-api-go',
@@ -367,7 +409,7 @@ Future<void> buildGo({
 
   await generator.generate(
     generator: 'go',
-    outputDir: outputDir,
+    outputDir: outputDirPath,
     configFile: configPath,
   );
 
@@ -376,7 +418,7 @@ Future<void> buildGo({
   final goModTidyProcess = await Process.start(
     'go',
     ['mod', 'tidy'],
-    workingDirectory: outputDir,
+    workingDirectory: outputDirPath,
     runInShell: false,
   );
   await stdout.addStream(goModTidyProcess.stdout);

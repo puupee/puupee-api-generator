@@ -49,7 +49,10 @@ dart run bin/puupee_sdk_generator.dart build
 
 - `--verbose` / `-v`: 显示详细输出
 - `--swagger-url <url>`: 指定 Swagger JSON URL（默认: https://dev.api.puupee.com/swagger/v1/swagger.json）
-- `--output-dir <dir>`: 指定输出目录（默认: ../puupee_api_client）
+- `--output-dir <dir>`: 指定输出目录
+  - `dart` 命令默认: `../puupee_api_client`
+  - `axios` 命令默认: `../puupee-api-axios`
+  - `go` 命令默认: `../puupee-api-go`
 
 ### 示例
 
@@ -66,10 +69,18 @@ dart run bin/puupee_sdk_generator.dart go
 # 构建所有 SDK
 dart run bin/puupee_sdk_generator.dart build
 
-# 使用自定义 URL 和输出目录（仅适用于 dart 命令）
+# 使用自定义 URL 和输出目录
 dart run bin/puupee_sdk_generator.dart dart \
   --swagger-url https://api.puupee.com/swagger/v1/swagger.json \
   --output-dir ../my_api_client
+
+# 使用自定义输出目录构建 Axios SDK
+dart run bin/puupee_sdk_generator.dart axios \
+  --output-dir ../my_axios_client
+
+# 使用自定义输出目录构建 Go SDK
+dart run bin/puupee_sdk_generator.dart go \
+  --output-dir ../my_go_client
 
 # 显示详细输出
 dart run bin/puupee_sdk_generator.dart build --verbose
