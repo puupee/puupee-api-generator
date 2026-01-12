@@ -12,6 +12,7 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:path/path.dart' as path;
 import 'package:puupee_sdk_generator/puupee_sdk_generator.dart';
+import 'package:puupee_sdk_generator/src/pubspec_fixer.dart';
 
 void main(List<String> args) async {
   final parser = ArgParser()
@@ -211,20 +212,31 @@ Future<void> buildDart({
   final swaggerInfo = await downloader.download();
   await downloader.saveToFile(swaggerJsonPath, swaggerInfo.json);
 
-  print('构建目标版本: ${swaggerInfo.version}');
+  // 2. 从现有的 puupee_api_client/pubspec.yaml 读取版本号（在清理之前）
+  final outputDirPath = path.isAbsolute(outputDir)
+      ? outputDir
+      : path.absolute(packageDir, outputDir);
+  final existingPubspecPath = path.join(outputDirPath, 'pubspec.yaml');
+  final existingVersion = await PubspecFixer.readVersionFromPubspec(existingPubspecPath);
+  
+  if (existingVersion == null) {
+    throw Exception('无法从 $existingPubspecPath 读取版本号。请确保文件存在且包含版本号。');
+  }
 
-  // 2. 清理输出目录
-  final outputDirPath = path.absolute(outputDir);
+  print('从现有 pubspec.yaml 读取版本号: $existingVersion');
+  print('Swagger JSON 版本: ${swaggerInfo.version}（仅用于参考，不会更新到 pubspec.yaml）');
+
+  // 3. 清理输出目录
   await cleanOutputDirectory(outputDirPath);
 
-  // 3. 生成 Dart SDK
+  // 4. 生成 Dart SDK（使用现有版本号）
   final generator = SdkGenerator(
     openApiGeneratorJar: openApiGeneratorJar,
     swaggerJsonPath: swaggerJsonPath,
     configPath: configPath,
     templateDirectory: templateDirectory,
     outputDirectory: outputDirPath,
-    version: swaggerInfo.version,
+    version: existingVersion,
     gitUserId: 'puupee',
     gitRepoId: 'puupee-api-dart',
     skipValidateSpec: true,
@@ -232,15 +244,15 @@ Future<void> buildDart({
 
   await generator.generateDart();
 
-  // 4. 修复生成的 pubspec.yaml
+  // 5. 修复生成的 pubspec.yaml（恢复为之前读取的版本号）
   final pubspecPath = path.join(outputDirPath, 'pubspec.yaml');
   final fixer = PubspecFixer();
   await fixer.fixPubspec(
     pubspecPath: pubspecPath,
-    expectedVersion: swaggerInfo.version,
+    expectedVersion: existingVersion, // 明确设置为之前读取的版本号
   );
 
-  // 5. 安装依赖
+  // 6. 安装依赖
   print('安装依赖...');
   final pubGetProcess = await Process.start(
     'dart',
@@ -255,7 +267,7 @@ Future<void> buildDart({
     throw Exception('安装依赖失败，退出码: $pubGetExitCode');
   }
 
-  // 6. 运行 build_runner 生成代码
+  // 7. 运行 build_runner 生成代码
   print('运行 build_runner 生成代码...');
   final buildRunnerProcess = await Process.start(
     'dart',
@@ -270,11 +282,11 @@ Future<void> buildDart({
     throw Exception('运行 build_runner 失败，退出码: $buildRunnerExitCode');
   }
 
-  // 7. 保存版本锁
+  // 8. 保存版本锁（保存实际使用的版本号）
   print('保存版本锁到: $versionLockPath');
-  await File(versionLockPath).writeAsString(swaggerInfo.version);
+  await File(versionLockPath).writeAsString(existingVersion);
 
-  print('Dart SDK 构建完成！版本: ${swaggerInfo.version}');
+  print('Dart SDK 构建完成！版本: $existingVersion');
 }
 
 /// 构建 TypeScript Axios SDK
