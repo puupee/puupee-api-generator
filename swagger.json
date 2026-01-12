@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Puupee API",
-    "version": "1.17.77"
+    "version": "1.17.80"
   },
   "paths": {
     "/api/abp/api-definition": {
@@ -31056,24 +31056,49 @@
             "format": "date-time",
             "nullable": true
           },
+          "appId": {
+            "type": "string",
+            "description": "所属应用ID",
+            "format": "uuid"
+          },
           "name": {
             "type": "string",
+            "description": "功能名称（唯一标识）",
             "nullable": true
           },
           "displayName": {
             "type": "string",
+            "description": "显示名称（默认语言）",
             "nullable": true
           },
           "description": {
             "type": "string",
+            "description": "描述（默认语言）",
             "nullable": true
           },
           "details": {
             "type": "string",
+            "description": "详情（默认语言）",
             "nullable": true
           },
           "screenshotKeys": {
             "type": "string",
+            "description": "截图键值，多个用逗号分隔",
+            "nullable": true
+          },
+          "displayNameLocalized": {
+            "type": "string",
+            "description": "多语言显示名称，JSON格式：{\"en\": \"Feature Name\", \"zh-Hans\": \"功能名称\", ...}",
+            "nullable": true
+          },
+          "descriptionLocalized": {
+            "type": "string",
+            "description": "多语言描述，JSON格式：{\"en\": \"Description\", \"zh-Hans\": \"描述\", ...}",
+            "nullable": true
+          },
+          "detailsLocalized": {
+            "type": "string",
+            "description": "多语言详情，JSON格式：{\"en\": \"Details\", \"zh-Hans\": \"详情\", ...}",
             "nullable": true
           }
         },
@@ -33364,24 +33389,49 @@
       "CreateOrUpdateAppFeatureDto": {
         "type": "object",
         "properties": {
+          "appId": {
+            "type": "string",
+            "description": "所属应用ID",
+            "format": "uuid"
+          },
           "name": {
             "type": "string",
+            "description": "功能名称（唯一标识）",
             "nullable": true
           },
           "displayName": {
             "type": "string",
+            "description": "显示名称（默认语言）",
             "nullable": true
           },
           "description": {
             "type": "string",
+            "description": "描述（默认语言）",
             "nullable": true
           },
           "details": {
             "type": "string",
+            "description": "详情（默认语言）",
             "nullable": true
           },
           "screenshotKeys": {
             "type": "string",
+            "description": "截图键值，多个用逗号分隔",
+            "nullable": true
+          },
+          "displayNameLocalized": {
+            "type": "string",
+            "description": "多语言显示名称，JSON格式：{\"en\": \"Feature Name\", \"zh-Hans\": \"功能名称\", ...}",
+            "nullable": true
+          },
+          "descriptionLocalized": {
+            "type": "string",
+            "description": "多语言描述，JSON格式：{\"en\": \"Description\", \"zh-Hans\": \"描述\", ...}",
+            "nullable": true
+          },
+          "detailsLocalized": {
+            "type": "string",
+            "description": "多语言详情，JSON格式：{\"en\": \"Details\", \"zh-Hans\": \"详情\", ...}",
             "nullable": true
           }
         },
