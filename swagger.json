@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Puupee API",
-    "version": "1.17.82"
+    "version": "1.17.84"
   },
   "paths": {
     "/api/abp/api-definition": {
@@ -9305,6 +9305,13 @@
             }
           },
           {
+            "name": "Publisher",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "Sorting",
             "in": "query",
             "schema": {
@@ -9995,6 +10002,13 @@
             }
           },
           {
+            "name": "Publisher",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "Sorting",
             "in": "query",
             "schema": {
@@ -10190,6 +10204,13 @@
           },
           {
             "name": "ArtifactType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Publisher",
             "in": "query",
             "schema": {
               "type": "string"
@@ -31733,6 +31754,28 @@
         },
         "additionalProperties": false
       },
+      "AppPublisher": {
+        "enum": [
+          "Web",
+          "Service",
+          "AppStore",
+          "PlayStore",
+          "MacAppStore",
+          "MicrosoftStore",
+          "AppGallery",
+          "Fir",
+          "FirebaseHosting",
+          "Firebase",
+          "GitHub",
+          "Pgyer",
+          "Qiniu",
+          "Vercel",
+          "Puupee",
+          "Other"
+        ],
+        "type": "string",
+        "description": "Represents the publisher of an app."
+      },
       "AppReleaseDto": {
         "type": "object",
         "properties": {
@@ -31816,6 +31859,9 @@
           },
           "artifactType": {
             "$ref": "#/components/schemas/ArtifactType"
+          },
+          "publisher": {
+            "$ref": "#/components/schemas/AppPublisher"
           },
           "isForceUpdate": {
             "type": "boolean"
@@ -32768,19 +32814,21 @@
       },
       "ArtifactType": {
         "enum": [
+          "Aab",
           "Apk",
-          "Ipa",
-          "Exe",
-          "Msi",
-          "Dmg",
-          "Pkg",
+          "App",
           "AppImage",
-          "Web",
-          "Service",
-          "AppStore",
-          "GooglePlay",
-          "MacAppStore",
-          "MicrosoftStore",
+          "Deb",
+          "Dmg",
+          "Docker",
+          "Exe",
+          "Hap",
+          "Ipa",
+          "Msi",
+          "Msix",
+          "Pkg",
+          "Rpm",
+          "Zip",
           "Other"
         ],
         "type": "string",
@@ -33772,6 +33820,9 @@
           },
           "artifactType": {
             "$ref": "#/components/schemas/ArtifactType"
+          },
+          "publisher": {
+            "$ref": "#/components/schemas/AppPublisher"
           },
           "isForceUpdate": {
             "type": "boolean"
