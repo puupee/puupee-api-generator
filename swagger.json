@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Puupee API",
-    "version": "1.17.86"
+    "version": "1.17.87"
   },
   "paths": {
     "/api/abp/api-definition": {
@@ -32829,6 +32829,7 @@
           "Pkg",
           "Rpm",
           "Zip",
+          "Bin",
           "Other"
         ],
         "type": "string",
