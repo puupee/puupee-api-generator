@@ -1,5 +1,5 @@
 {
-    "npmName": "puupee-api-axios",
+    "npmName": "puupee-api",
     "nullSafeAdditionalProps": true,
     "supportsES6": true,
     "useSingleRequestParameter": true
