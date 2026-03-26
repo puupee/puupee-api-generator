@@ -9,17 +9,30 @@ class SwaggerDownloader {
 
   SwaggerDownloader({this.swaggerUrl = 'https://dev.api.puupee.com/swagger/v1/swagger.json'});
 
-  /// 下载 Swagger JSON
+  /// 下载或读取本地 Swagger JSON
   Future<SwaggerInfo> download() async {
-    print('正在从 $swaggerUrl 下载 Swagger JSON...');
-    
-    final response = await http.get(Uri.parse(swaggerUrl));
-    
-    if (response.statusCode != 200) {
-      throw Exception('下载 Swagger JSON 失败: HTTP ${response.statusCode}');
-    }
+    final String swaggerJson;
+    if (swaggerUrl.startsWith('http://') || swaggerUrl.startsWith('https://')) {
+      print('正在从 $swaggerUrl 下载 Swagger JSON...');
 
-    final swaggerJson = utf8.decode(response.bodyBytes);
+      final response = await http.get(Uri.parse(swaggerUrl));
+
+      if (response.statusCode != 200) {
+        throw Exception('下载 Swagger JSON 失败: HTTP ${response.statusCode}');
+      }
+
+      swaggerJson = utf8.decode(response.bodyBytes);
+    } else {
+      final filePath = swaggerUrl.startsWith('file:')
+          ? Uri.parse(swaggerUrl).toFilePath()
+          : swaggerUrl;
+      print('正在从本地文件读取 Swagger JSON: $filePath');
+      final file = File(filePath);
+      if (!await file.exists()) {
+        throw Exception('Swagger JSON 文件不存在: $filePath');
+      }
+      swaggerJson = await file.readAsString();
+    }
     
     // 解析版本信息
     final swagger = jsonDecode(swaggerJson) as Map<String, dynamic>;

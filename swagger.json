@@ -32842,14 +32842,13 @@
       },
       "AppAssetDeviceType": {
         "enum": [
-          0,
-          1,
-          2,
-          3
+          "Phone",
+          "Pad",
+          "Tv",
+          "Desktop"
         ],
-        "type": "integer",
-        "description": "素材面向的设备类型（可空表示不限）。",
-        "format": "int32"
+        "type": "string",
+        "description": "素材面向的设备类型（可空表示不限）。"
       },
       "AppAssetDto": {
         "type": "object",
@@ -32922,14 +32921,13 @@
       },
       "AppAssetType": {
         "enum": [
-          0,
-          1,
-          2,
-          3
+          "Icon",
+          "Screenshot",
+          "FeatureGraphic",
+          "Video"
         ],
-        "type": "integer",
-        "description": "应用商店素材类型。",
-        "format": "int32"
+        "type": "string",
+        "description": "应用商店素材类型。"
       },
       "AppDto": {
         "type": "object",
@@ -33068,28 +33066,6 @@
           },
           "creator": {
             "$ref": "#/components/schemas/IdentityUserDto"
-          },
-          "features": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AppFeatureDto"
-            },
-            "nullable": true
-          },
-          "locales": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AppLocaleDto"
-            },
-            "description": "全部商店语言包（含素材）。",
-            "nullable": true
-          },
-          "sdks": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AppSdkDto"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -33486,13 +33462,6 @@
           },
           "releaseNote": {
             "type": "string",
-            "nullable": true
-          },
-          "assets": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AppAssetDto"
-            },
             "nullable": true
           }
         },
@@ -34545,28 +34514,6 @@
           },
           "creator": {
             "$ref": "#/components/schemas/IdentityUserDto"
-          },
-          "features": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AppFeatureDto"
-            },
-            "nullable": true
-          },
-          "locales": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AppLocaleDto"
-            },
-            "description": "全部商店语言包（含素材）。",
-            "nullable": true
-          },
-          "sdks": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AppSdkDto"
-            },
-            "nullable": true
           },
           "subscribed": {
             "type": "boolean",
