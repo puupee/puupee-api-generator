@@ -4725,6 +4725,169 @@
         }
       }
     },
+    "/api/app/app/set-linked-sdks/{appId}": {
+      "post": {
+        "tags": [
+          "App"
+        ],
+        "operationId": "SetLinkedSdks",
+        "parameters": [
+          {
+            "name": "appId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetAppLinkedSdksDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetAppLinkedSdksDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetAppLinkedSdksDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/app/app/feature-list/{appId}": {
       "get": {
         "tags": [
@@ -32848,7 +33011,7 @@
           "Desktop"
         ],
         "type": "string",
-        "description": "素材面向的设备类型（可空表示不限）。"
+        "description": "素材面向的设备类型（可空表示不限；JSON / 数据库存储均为枚举名字符串）。"
       },
       "AppAssetDto": {
         "type": "object",
@@ -32927,7 +33090,7 @@
           "Video"
         ],
         "type": "string",
-        "description": "应用商店素材类型。"
+        "description": "应用商店素材类型（JSON / 数据库存储均为枚举名字符串，与 Puupees.Apps.AppPlatform 一致）。"
       },
       "AppDto": {
         "type": "object",
@@ -33318,6 +33481,14 @@
             "type": "string",
             "description": "回复时间",
             "format": "date-time",
+            "nullable": true
+          },
+          "attachmentKeys": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "附件对象存储 key 列表",
             "nullable": true
           }
         },
@@ -33757,6 +33928,11 @@
           "deletionTime": {
             "type": "string",
             "format": "date-time",
+            "nullable": true
+          },
+          "key": {
+            "type": "string",
+            "description": "收费点键，与 AppPricingItem.Key 对应（如 MaxListCount）",
             "nullable": true
           },
           "isAvailable": {
@@ -35264,6 +35440,14 @@
             "type": "string",
             "description": "应用版本（可选）",
             "nullable": true
+          },
+          "attachmentKeys": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "截图/图片附件（对象存储 key，最多 5 个）",
+            "nullable": true
           }
         },
         "additionalProperties": false,
@@ -35869,6 +36053,17 @@
       "CreateOrUpdateAppPricingItemDto": {
         "type": "object",
         "properties": {
+          "key": {
+            "type": "string",
+            "description": "键值, 例如: Seat, MaxListCount（见 AppPricingItemKeys）",
+            "nullable": true
+          },
+          "appId": {
+            "type": "string",
+            "description": "所属应用",
+            "format": "uuid",
+            "nullable": true
+          },
           "name": {
             "type": "string",
             "description": "名称: 坐席",
@@ -38986,6 +39181,21 @@
           "purpose": {
             "type": "string",
             "description": "验证码用途",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SetAppLinkedSdksDto": {
+        "type": "object",
+        "properties": {
+          "sdkIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "要关联到应用的 SDK Id 列表（顺序保留）；空列表表示清除全部关联。",
             "nullable": true
           }
         },
