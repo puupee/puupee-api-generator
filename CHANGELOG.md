@@ -1,3 +1,7 @@
+## 1.1.2
+
+ - **DOCS**(puupee_sdk_generator): 补齐文档目录分层.
+
 ## 1.1.1
 
  - **REFACTOR**: simplify directory cleanup logic by removing unnecessary type check for .git folder.
