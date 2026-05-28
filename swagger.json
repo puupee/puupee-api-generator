@@ -42031,7 +42031,7 @@
             "format": "uuid"
           },
           "period": {
-            "$ref": "#/components/schemas/BillingPeriod"
+            "$ref": "#/components/schemas/SubBillingPeriod"
           },
           "mode": {
             "$ref": "#/components/schemas/BillingMode"
@@ -43617,16 +43617,6 @@
         ],
         "type": "string"
       },
-      "BillingPeriod": {
-        "enum": [
-          "Unknown",
-          "Month",
-          "Year",
-          "ThreeYears",
-          "Lifetime"
-        ],
-        "type": "string"
-      },
       "BillingProvider": {
         "enum": [
           "Unknown",
@@ -45010,7 +45000,7 @@
             "format": "uuid"
           },
           "period": {
-            "$ref": "#/components/schemas/BillingPeriod"
+            "$ref": "#/components/schemas/SubBillingPeriod"
           },
           "mode": {
             "$ref": "#/components/schemas/BillingMode"
@@ -45355,7 +45345,7 @@
             "$ref": "#/components/schemas/AppPlatform"
           },
           "period": {
-            "$ref": "#/components/schemas/BillingPeriod"
+            "$ref": "#/components/schemas/SubBillingPeriod"
           },
           "storeProductId": {
             "type": "string",
@@ -48787,7 +48777,7 @@
             "$ref": "#/components/schemas/AppPlatform"
           },
           "period": {
-            "$ref": "#/components/schemas/BillingPeriod"
+            "$ref": "#/components/schemas/SubBillingPeriod"
           },
           "storeProductId": {
             "type": "string",
@@ -48806,6 +48796,16 @@
           }
         },
         "additionalProperties": false
+      },
+      "SubBillingPeriod": {
+        "enum": [
+          "Unknown",
+          "Month",
+          "Year",
+          "ThreeYears",
+          "Lifetime"
+        ],
+        "type": "string"
       },
       "SubscriptionDto": {
         "type": "object",
@@ -48873,7 +48873,7 @@
             "$ref": "#/components/schemas/BillingProvider"
           },
           "billingPeriod": {
-            "$ref": "#/components/schemas/BillingPeriod"
+            "$ref": "#/components/schemas/SubBillingPeriod"
           },
           "billingMode": {
             "$ref": "#/components/schemas/BillingMode"
@@ -48972,7 +48972,7 @@
             "$ref": "#/components/schemas/BillingProvider"
           },
           "billingPeriod": {
-            "$ref": "#/components/schemas/BillingPeriod"
+            "$ref": "#/components/schemas/SubBillingPeriod"
           },
           "billingMode": {
             "$ref": "#/components/schemas/BillingMode"
