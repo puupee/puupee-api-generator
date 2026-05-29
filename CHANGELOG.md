@@ -1,3 +1,7 @@
+## 1.1.3
+
+ - **FIX**(puupee_sdk_generator): 修正 Dart 客户端生成导入.
+
 ## 1.1.2
 
  - **DOCS**(puupee_sdk_generator): 补齐文档目录分层.
