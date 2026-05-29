@@ -38452,7 +38452,9 @@
           "ImageLabel",
           "ProductDetect",
           "StructuredExtraction",
-          "Caption"
+          "Caption",
+          "ImageGeneration",
+          "VideoGeneration"
         ],
         "type": "string"
       },
@@ -38564,6 +38566,10 @@
           "provider_id": {
             "type": "string",
             "format": "uuid"
+          },
+          "route_name": {
+            "type": "string",
+            "nullable": true
           },
           "name": {
             "type": "string",
@@ -41871,6 +41877,10 @@
       "CreateOrUpdateAiModelDto": {
         "type": "object",
         "properties": {
+          "route_name": {
+            "type": "string",
+            "nullable": true
+          },
           "name": {
             "type": "string",
             "nullable": true
