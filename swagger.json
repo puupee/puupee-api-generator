@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Puupee API",
-    "version": "1.0.0"
+    "version": "1.29.5"
   },
   "paths": {
     "/api/abp/api-definition": {
@@ -46833,6 +46833,25 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://dev.auth.puupee.com/connect/authorize",
+            "tokenUrl": "https://dev.auth.puupee.com/connect/token",
+            "scopes": {
+              "Puupees": "Puupees API"
+            }
+          }
+        }
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "oauth2": [ ]
+    }
+  ]
 }
