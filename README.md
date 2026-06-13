@@ -15,7 +15,7 @@
 ## 安装
 
 ```bash
-cd packages/puupee_sdk_generator
+cd packages/api/puupee_sdk_generator
 dart pub get
 ```
 
