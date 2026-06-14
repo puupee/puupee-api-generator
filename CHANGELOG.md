@@ -1,3 +1,7 @@
+## 1.1.6
+
+ - **DOCS**(puupee_sdk_generator): 同步版本日志.
+
 ## 1.1.5
 
  - **DOCS**(puupee_sdk_generator): 同步版本日志.
