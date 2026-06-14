@@ -1,3 +1,7 @@
+## 1.1.4
+
+ - **DOCS**(puupee_sdk_generator): 同步包目录路径说明.
+
 ## 1.1.3
 
  - **FIX**(puupee_sdk_generator): 修正 Dart 客户端生成导入.
