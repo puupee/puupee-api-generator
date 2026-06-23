@@ -7,9 +7,7 @@ import 'package:http/http.dart' as http;
 class SwaggerDownloader {
   final String swaggerUrl;
 
-  SwaggerDownloader({
-    this.swaggerUrl = 'https://dev.api.felorx.com/swagger/v1/swagger.json',
-  });
+  SwaggerDownloader({this.swaggerUrl = 'https://dev.api.felorx.com/swagger/v1/swagger.json'});
 
   /// 下载或读取本地 Swagger JSON
   Future<SwaggerInfo> download() async {
@@ -35,15 +33,18 @@ class SwaggerDownloader {
       }
       swaggerJson = await file.readAsString();
     }
-
+    
     // 解析版本信息
     final swagger = jsonDecode(swaggerJson) as Map<String, dynamic>;
     final info = swagger['info'] as Map<String, dynamic>;
     final version = info['version'] as String;
-
+    
     print('检测到版本: $version');
-
-    return SwaggerInfo(json: swaggerJson, version: version);
+    
+    return SwaggerInfo(
+      json: swaggerJson,
+      version: version,
+    );
   }
 
   /// 保存 Swagger JSON 到文件
@@ -59,5 +60,9 @@ class SwaggerInfo {
   final String json;
   final String version;
 
-  SwaggerInfo({required this.json, required this.version});
+  SwaggerInfo({
+    required this.json,
+    required this.version,
+  });
 }
+
