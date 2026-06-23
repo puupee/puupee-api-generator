@@ -46839,8 +46839,8 @@
         "type": "oauth2",
         "flows": {
           "authorizationCode": {
-            "authorizationUrl": "https://dev.auth.puupee.com/connect/authorize",
-            "tokenUrl": "https://dev.auth.puupee.com/connect/token",
+            "authorizationUrl": "https://dev.auth.felorx.com/connect/authorize",
+            "tokenUrl": "https://dev.auth.felorx.com/connect/token",
             "scopes": {
               "Puupees": "Puupees API"
             }

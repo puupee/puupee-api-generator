@@ -20,7 +20,7 @@ void main(List<String> args) async {
     ..addOption(
       'swagger-url',
       help: 'Swagger JSON URL',
-      defaultsTo: 'https://dev.api.puupee.com/swagger/v1/swagger.json',
+      defaultsTo: 'https://dev.api.felorx.com/swagger/v1/swagger.json',
     )
     ..addOption(
       'output-dir',
@@ -217,8 +217,10 @@ Future<void> buildDart({
       ? outputDir
       : path.absolute(packageDir, outputDir);
   final existingPubspecPath = path.join(outputDirPath, 'pubspec.yaml');
-  final existingVersion = await PubspecFixer.readVersionFromPubspec(existingPubspecPath);
-  
+  final existingVersion = await PubspecFixer.readVersionFromPubspec(
+    existingPubspecPath,
+  );
+
   if (existingVersion == null) {
     throw Exception('无法从 $existingPubspecPath 读取版本号。请确保文件存在且包含版本号。');
   }
