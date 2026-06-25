@@ -33,10 +33,10 @@ tasks:
       - cd ../felorx-api-axios/ && yarn install && git add . && git commit -a -m "update" && git push origin main --tags
   python:
     cmds:
-      - rm -rf ../puupee-api-python/*
-      - java -jar openapi-generator-cli.jar generate -g python-legacy -o ../puupee-api-python -c configs/python.json -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-python --release-note update --artifact-version {{.VERSION}}
-      # - cd ../puupee-api-python/ && pip3 install -r requirements.txt && git add . && git commit -a -m "update" && git push origin main
-      - cd ../puupee-api-python/ && git add . && git commit -a -m "update" && git push origin main --tags
+      - rm -rf ../felorx-api-python/*
+      - java -jar openapi-generator-cli.jar generate -g python-legacy -o ../felorx-api-python -c configs/python.json -i swagger.json --skip-validate-spec --git-user-id felorx --git-repo-id felorx-api-python --release-note update --artifact-version {{.VERSION}}
+      # - cd ../felorx-api-python/ && pip3 install -r requirements.txt && git add . && git commit -a -m "update" && git push origin main
+      - cd ../felorx-api-python/ && git add . && git commit -a -m "update" && git push origin main --tags
   update-self:
     cmds:
       - git add . && git commit -a -m "update" && git tag v{{.VERSION}} && git push origin main --tags
