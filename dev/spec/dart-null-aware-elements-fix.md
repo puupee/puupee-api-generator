@@ -23,11 +23,11 @@ This requires the 'null-aware-elements' language feature to be enabled.
 ### 修改前
 ```json
 {
-    "pubLibrary": "puupee_api_client",
-    "pubName": "puupee_api_client",
+    "pubLibrary": "felorx_api_client",
+    "pubName": "felorx_api_client",
     "pubAuthor": "jerloo",
     "pubDescription": "Api for Felorx app service.",
-    "pubHomepage": "https://github.com/puupee/puupee-api-dart",
+    "pubHomepage": "https://github.com/felorx/felorx-api-dart",
     "serializationLibrary": "json_serializable",
     "finalProperties": false,
     "useEnumExtension": true,
@@ -38,11 +38,11 @@ This requires the 'null-aware-elements' language feature to be enabled.
 ### 修改后
 ```json
 {
-    "pubLibrary": "puupee_api_client",
-    "pubName": "puupee_api_client",
+    "pubLibrary": "felorx_api_client",
+    "pubName": "felorx_api_client",
     "pubAuthor": "jerloo",
     "pubDescription": "Api for Felorx app service.",
-    "pubHomepage": "https://github.com/puupee/puupee-api-dart",
+    "pubHomepage": "https://github.com/felorx/felorx-api-dart",
     "serializationLibrary": "json_serializable",
     "finalProperties": true,
     "useEnumExtension": true,

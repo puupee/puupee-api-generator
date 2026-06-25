@@ -12,7 +12,6 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:path/path.dart' as path;
 import 'package:puupee_sdk_generator/puupee_sdk_generator.dart';
-import 'package:puupee_sdk_generator/src/pubspec_fixer.dart';
 
 void main(List<String> args) async {
   final parser = ArgParser()
@@ -25,7 +24,7 @@ void main(List<String> args) async {
     ..addOption(
       'output-dir',
       help:
-          '输出目录（dart 默认: ../puupee_api_client, axios 默认: ../puupee-api-axios, go 默认: ../puupee-api-go）',
+          '输出目录（dart 默认: ../felorx_api_client, axios 默认: ../puupee-api-axios, go 默认: ../puupee-api-go）',
     )
     ..addFlag('help', abbr: 'h', help: '显示帮助信息');
 
@@ -60,13 +59,13 @@ void main(List<String> args) async {
     // 根据命令返回默认值
     switch (cmd) {
       case 'dart':
-        return '../puupee_api_client';
+        return '../felorx_api_client';
       case 'axios':
         return '../puupee-api-axios';
       case 'go':
         return '../puupee-api-go';
       default:
-        return '../puupee_api_client';
+        return '../felorx_api_client';
     }
   }
 
@@ -212,13 +211,15 @@ Future<void> buildDart({
   final swaggerInfo = await downloader.download();
   await downloader.saveToFile(swaggerJsonPath, swaggerInfo.json);
 
-  // 2. 从现有的 puupee_api_client/pubspec.yaml 读取版本号（在清理之前）
+  // 2. 从现有的 felorx_api_client/pubspec.yaml 读取版本号（在清理之前）
   final outputDirPath = path.isAbsolute(outputDir)
       ? outputDir
       : path.absolute(packageDir, outputDir);
   final existingPubspecPath = path.join(outputDirPath, 'pubspec.yaml');
-  final existingVersion = await PubspecFixer.readVersionFromPubspec(existingPubspecPath);
-  
+  final existingVersion = await PubspecFixer.readVersionFromPubspec(
+    existingPubspecPath,
+  );
+
   if (existingVersion == null) {
     throw Exception('无法从 $existingPubspecPath 读取版本号。请确保文件存在且包含版本号。');
   }
@@ -237,8 +238,8 @@ Future<void> buildDart({
     templateDirectory: templateDirectory,
     outputDirectory: outputDirPath,
     version: existingVersion,
-    gitUserId: 'puupee',
-    gitRepoId: 'puupee-api-dart',
+    gitUserId: 'felorx',
+    gitRepoId: 'felorx-api-dart',
     skipValidateSpec: true,
   );
 

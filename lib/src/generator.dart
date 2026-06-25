@@ -19,8 +19,8 @@ class SdkGenerator {
     required this.templateDirectory,
     required this.outputDirectory,
     required this.version,
-    this.gitUserId = 'puupee',
-    this.gitRepoId = 'puupee-api-dart',
+    this.gitUserId = 'felorx',
+    this.gitRepoId = 'felorx-api-dart',
     this.skipValidateSpec = true,
   });
 

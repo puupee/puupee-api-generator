@@ -7,7 +7,7 @@
 - 从远程 API 下载 Swagger JSON 规范
 - 使用 OpenAPI Generator 生成客户端代码
 - 支持多种编程语言：Dart、TypeScript (Axios)、Go
-- **Dart SDK 版本号管理**：生成前从 `puupee_api_client/pubspec.yaml` 读取版本号，生成后保持版本号不变
+- **Dart SDK 版本号管理**：生成前从 `felorx_api_client/pubspec.yaml` 读取版本号，生成后保持版本号不变
 - 自动修复生成的 pubspec.yaml 文件（确保 `resolution: workspace` 字段存在）
 - 自动运行 `dart run build_runner build --delete-conflicting-outputs` 生成 Dart 序列化代码
 - 自动安装依赖（Dart: `dart pub get`，TypeScript: `yarn install`，Go: `go mod tidy`）
@@ -50,7 +50,7 @@ dart run bin/puupee_sdk_generator.dart build
 - `--verbose` / `-v`: 显示详细输出
 - `--swagger-url <url>`: 指定 Swagger JSON URL（默认: https://dev.api.felorx.com/swagger/v1/swagger.json）
 - `--output-dir <dir>`: 指定输出目录
-  - `dart` 命令默认: `../puupee_api_client`
+  - `dart` 命令默认: `../felorx_api_client`
   - `axios` 命令默认: `../puupee-api-axios`
   - `go` 命令默认: `../puupee-api-go`
 
@@ -91,7 +91,7 @@ dart run bin/puupee_sdk_generator.dart build --verbose
 ### 版本号问题（Dart SDK）
 
 对于 Dart SDK，版本号处理逻辑如下：
-- **生成前**：从 `puupee_api_client/pubspec.yaml` 中读取现有版本号
+- **生成前**：从 `felorx_api_client/pubspec.yaml` 中读取现有版本号
 - **生成后**：保持版本号不变，不会从 Swagger JSON 更新版本号
 - 这样可以确保版本号由开发者手动管理，而不是自动从 API 版本更新
 
