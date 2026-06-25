@@ -1,8 +1,8 @@
-name: puupee_sdk_generator
+name: felorx_sdk_generator
 resolution: workspace
-description: A generator for puupee api to generate client code in different programming languages.
+description: A generator for Felorx API clients in different programming languages.
 version: 1.1.7
-homepage: https://github.com/puupee/puupee-apps
+homepage: https://github.com/felorx/felorx-apps
 
 environment:
   sdk: ^3.8.1
@@ -15,4 +15,3 @@ dependencies:
 
 dev_dependencies:
   test: ^1.24.0
-

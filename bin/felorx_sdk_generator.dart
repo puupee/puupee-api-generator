@@ -1,17 +1,17 @@
 #!/usr/bin/env dart
 
-/// Puupee SDK 生成器命令行工具
+/// Felorx SDK 生成器命令行工具
 ///
 /// 使用示例：
 /// ```bash
-/// dart run puupee_sdk_generator build
-/// dart run puupee_sdk_generator build --verbose
+/// dart run felorx_sdk_generator build
+/// dart run felorx_sdk_generator build --verbose
 /// ```
 
 import 'dart:io';
 import 'package:args/args.dart';
 import 'package:path/path.dart' as path;
-import 'package:puupee_sdk_generator/puupee_sdk_generator.dart';
+import 'package:felorx_sdk_generator/felorx_sdk_generator.dart';
 
 void main(List<String> args) async {
   final parser = ArgParser()
@@ -31,9 +31,9 @@ void main(List<String> args) async {
   final results = parser.parse(args);
 
   if (results['help'] as bool || results.rest.isEmpty) {
-    print('Puupee SDK 生成器');
+    print('Felorx SDK 生成器');
     print('');
-    print('用法: dart run puupee_sdk_generator <command> [选项]');
+    print('用法: dart run felorx_sdk_generator <command> [选项]');
     print('');
     print('命令:');
     print('  build    构建所有支持的 SDK');

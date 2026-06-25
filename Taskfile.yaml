@@ -16,11 +16,11 @@ tasks:
     desc: "使用 Dart 工具构建所有 SDK"
     cmds:
       - dart pub get
-      - dart run bin/puupee_sdk_generator.dart build
+      - dart run bin/felorx_sdk_generator.dart build
   dart:
     cmds:
       - dart pub get
-      - dart run bin/puupee_sdk_generator.dart dart --output-dir ../felorx_api_client
+      - dart run bin/felorx_sdk_generator.dart dart --output-dir ../felorx_api_client
   go:
     cmds:
       - rm -rf ../puupee-api-go/*

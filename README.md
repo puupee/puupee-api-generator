@@ -1,4 +1,4 @@
-# Puupee SDK Generator
+# Felorx SDK Generator
 
 一个用于生成 Felorx API 客户端代码的工具，支持多种编程语言。
 
@@ -15,7 +15,7 @@
 ## 安装
 
 ```bash
-cd packages/api/puupee_sdk_generator
+cd packages/api/felorx_sdk_generator
 dart pub get
 ```
 
@@ -24,25 +24,25 @@ dart pub get
 ### 构建 Dart SDK
 
 ```bash
-dart run bin/puupee_sdk_generator.dart dart
+dart run bin/felorx_sdk_generator.dart dart
 ```
 
 ### 构建 TypeScript Axios SDK
 
 ```bash
-dart run bin/puupee_sdk_generator.dart axios
+dart run bin/felorx_sdk_generator.dart axios
 ```
 
 ### 构建 Go SDK
 
 ```bash
-dart run bin/puupee_sdk_generator.dart go
+dart run bin/felorx_sdk_generator.dart go
 ```
 
 ### 构建所有支持的 SDK
 
 ```bash
-dart run bin/puupee_sdk_generator.dart build
+dart run bin/felorx_sdk_generator.dart build
 ```
 
 ### 选项
@@ -58,32 +58,32 @@ dart run bin/puupee_sdk_generator.dart build
 
 ```bash
 # 使用默认设置构建 Dart SDK
-dart run bin/puupee_sdk_generator.dart dart
+dart run bin/felorx_sdk_generator.dart dart
 
 # 构建 TypeScript Axios SDK
-dart run bin/puupee_sdk_generator.dart axios
+dart run bin/felorx_sdk_generator.dart axios
 
 # 构建 Go SDK
-dart run bin/puupee_sdk_generator.dart go
+dart run bin/felorx_sdk_generator.dart go
 
 # 构建所有 SDK
-dart run bin/puupee_sdk_generator.dart build
+dart run bin/felorx_sdk_generator.dart build
 
 # 使用自定义 URL 和输出目录
-dart run bin/puupee_sdk_generator.dart dart \
+dart run bin/felorx_sdk_generator.dart dart \
   --swagger-url https://api.felorx.com/swagger/v1/swagger.json \
   --output-dir ../my_api_client
 
 # 使用自定义输出目录构建 Axios SDK
-dart run bin/puupee_sdk_generator.dart axios \
+dart run bin/felorx_sdk_generator.dart axios \
   --output-dir ../my_axios_client
 
 # 使用自定义输出目录构建 Go SDK
-dart run bin/puupee_sdk_generator.dart go \
+dart run bin/felorx_sdk_generator.dart go \
   --output-dir ../my_go_client
 
 # 显示详细输出
-dart run bin/puupee_sdk_generator.dart build --verbose
+dart run bin/felorx_sdk_generator.dart build --verbose
 ```
 
 ## 修复的问题
@@ -104,11 +104,11 @@ dart run bin/puupee_sdk_generator.dart build --verbose
 ### 项目结构
 
 ```
-puupee_sdk_generator/
+felorx_sdk_generator/
 ├── bin/
-│   └── puupee_sdk_generator.dart  # 命令行入口
+│   └── felorx_sdk_generator.dart  # 命令行入口
 ├── lib/
-│   ├── puupee_sdk_generator.dart  # 库导出
+│   ├── felorx_sdk_generator.dart  # 库导出
 │   └── src/
 │       ├── generator.dart         # SDK 生成器
 │       ├── swagger_downloader.dart # Swagger 下载器
