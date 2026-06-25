@@ -51,7 +51,7 @@ dart run bin/felorx_sdk_generator.dart build
 - `--swagger-url <url>`: 指定 Swagger JSON URL（默认: https://dev.api.felorx.com/swagger/v1/swagger.json）
 - `--output-dir <dir>`: 指定输出目录
   - `dart` 命令默认: `../felorx_api_client`
-  - `axios` 命令默认: `../puupee-api-axios`
+  - `axios` 命令默认: `../felorx-api-axios`
   - `go` 命令默认: `../felorx-api-go`
 
 ### 示例

@@ -28,9 +28,9 @@ tasks:
       - cd ../felorx-api-go/ && go mod tidy && git add . && git commit -a -m "update" && git push origin master --tags
   axios:
     cmds:
-      - rm -rf ../puupee-api-axios/*
-      - java -jar openapi-generator-cli.jar generate -g typescript-axios -o ../puupee-api-axios -c configs/axios.json -i swagger.json --skip-validate-spec --git-user-id puupee --git-repo-id puupee-api-axios --release-note update --artifact-version {{.VERSION}}
-      - cd ../puupee-api-axios/ && yarn install && git add . && git commit -a -m "update" && git push origin main --tags
+      - rm -rf ../felorx-api-axios/*
+      - java -jar openapi-generator-cli.jar generate -g typescript-axios -o ../felorx-api-axios -c configs/axios.json -i swagger.json --skip-validate-spec --git-user-id felorx --git-repo-id felorx-api-axios --release-note update --artifact-version {{.VERSION}}
+      - cd ../felorx-api-axios/ && yarn install && git add . && git commit -a -m "update" && git push origin main --tags
   python:
     cmds:
       - rm -rf ../puupee-api-python/*

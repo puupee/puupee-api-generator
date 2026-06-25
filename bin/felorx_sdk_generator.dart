@@ -24,7 +24,7 @@ void main(List<String> args) async {
     ..addOption(
       'output-dir',
       help:
-          '输出目录（dart 默认: ../felorx_api_client, axios 默认: ../puupee-api-axios, go 默认: ../felorx-api-go）',
+          '输出目录（dart 默认: ../felorx_api_client, axios 默认: ../felorx-api-axios, go 默认: ../felorx-api-go）',
     )
     ..addFlag('help', abbr: 'h', help: '显示帮助信息');
 
@@ -61,7 +61,7 @@ void main(List<String> args) async {
       case 'dart':
         return '../felorx_api_client';
       case 'axios':
-        return '../puupee-api-axios';
+        return '../felorx-api-axios';
       case 'go':
         return '../felorx-api-go';
       default:
@@ -135,7 +135,7 @@ Future<void> buildAll({
   await buildAxios(
     verbose: verbose,
     swaggerUrl: swaggerUrl,
-    outputDir: '../puupee-api-axios',
+    outputDir: '../felorx-api-axios',
   );
 
   // 构建 Go SDK
@@ -336,8 +336,8 @@ Future<void> buildAxios({
     templateDirectory: '', // Axios 不需要自定义模板
     outputDirectory: outputDirPath,
     version: swaggerInfo.version,
-    gitUserId: 'puupee',
-    gitRepoId: 'puupee-api-axios',
+    gitUserId: 'felorx',
+    gitRepoId: 'felorx-api-axios',
     skipValidateSpec: true,
   );
 
