@@ -23,9 +23,9 @@ tasks:
       - dart run bin/felorx_sdk_generator.dart dart --output-dir ../felorx_api_client
   go:
     cmds:
-      - rm -rf ../puupee-api-go/*
-      - java -jar openapi-generator-cli.jar generate -g go -o ../puupee-api-go -c configs/go.json -i swagger.json --git-user-id puupee --git-repo-id puupee-api-go --release-note update --artifact-version {{.VERSION}}
-      - cd ../puupee-api-go/ && go mod tidy && git add . && git commit -a -m "update" && git push origin master --tags
+      - rm -rf ../felorx-api-go/*
+      - java -jar openapi-generator-cli.jar generate -g go -o ../felorx-api-go -c configs/go.json -i swagger.json --git-user-id felorx --git-repo-id felorx-api-go --release-note update --artifact-version {{.VERSION}}
+      - cd ../felorx-api-go/ && go mod tidy && git add . && git commit -a -m "update" && git push origin master --tags
   axios:
     cmds:
       - rm -rf ../puupee-api-axios/*

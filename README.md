@@ -52,7 +52,7 @@ dart run bin/felorx_sdk_generator.dart build
 - `--output-dir <dir>`: 指定输出目录
   - `dart` 命令默认: `../felorx_api_client`
   - `axios` 命令默认: `../puupee-api-axios`
-  - `go` 命令默认: `../puupee-api-go`
+  - `go` 命令默认: `../felorx-api-go`
 
 ### 示例
 
