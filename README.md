@@ -1,6 +1,6 @@
 # Puupee SDK Generator
 
-一个用于生成 Puupee API 客户端代码的工具，支持多种编程语言。
+一个用于生成 Felorx API 客户端代码的工具，支持多种编程语言。
 
 ## 功能
 

@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Puupee API",
+    "title": "Felorx API",
     "version": "1.29.5"
   },
   "paths": {
@@ -46842,7 +46842,7 @@
             "authorizationUrl": "https://dev.auth.felorx.com/connect/authorize",
             "tokenUrl": "https://dev.auth.felorx.com/connect/token",
             "scopes": {
-              "Puupees": "Puupees API"
+              "Puupees": "Felorx API"
             }
           }
         }
