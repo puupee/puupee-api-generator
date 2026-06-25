@@ -2,7 +2,7 @@
     "pubLibrary": "puupee_api_client",
     "pubName": "puupee_api_client",
     "pubAuthor": "jerloo",
-    "pubDescription": "Api for puupee app service.",
+    "pubDescription": "Api for Felorx app service.",
     "pubHomepage": "https://github.com/puupee/puupee-api-dart",
     "serializationLibrary": "json_serializable",
     "finalProperties": false,
