@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Felorx API",
-    "version": "1.29.5"
+    "version": "1.0.0"
   },
   "paths": {
     "/api/abp/api-definition": {
@@ -3707,7 +3707,7 @@
         "tags": [
           "AiProviders"
         ],
-        "operationId": "SetEnabled",
+        "operationId": "AiProvidersSetEnabled",
         "parameters": [
           {
             "name": "id",
@@ -3767,7 +3767,7 @@
         "tags": [
           "AiProviders"
         ],
-        "operationId": "SetDefaultModel",
+        "operationId": "AiProvidersSetDefaultModel",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3816,7 +3816,7 @@
         "tags": [
           "AiProviders"
         ],
-        "operationId": "Test",
+        "operationId": "AiProvidersTest",
         "parameters": [
           {
             "name": "id",
@@ -11413,7 +11413,7 @@
           "AppPricing"
         ],
         "summary": "获取应用定价方案列表，允许匿名访问供未登录用户查看订阅计划",
-        "operationId": "GetListByAppId",
+        "operationId": "AppPricingGetListByAppId",
         "parameters": [
           {
             "name": "appId",
@@ -18145,7 +18145,7 @@
         "tags": [
           "BuildRecord"
         ],
-        "operationId": "GetLatest",
+        "operationId": "BuildRecordGetLatest",
         "parameters": [
           {
             "name": "appId",
@@ -18188,6 +18188,1013 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BuildRecordDto"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/credit/account/{appId}": {
+      "get": {
+        "tags": [
+          "Credit"
+        ],
+        "operationId": "CreditGetAccount",
+        "parameters": [
+          {
+            "name": "appId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreditAccountDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreditAccountDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreditAccountDto"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/credit/packages/{appId}": {
+      "get": {
+        "tags": [
+          "Credit"
+        ],
+        "operationId": "GetPackages",
+        "parameters": [
+          {
+            "name": "appId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CreditPackageDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CreditPackageDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CreditPackageDto"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/credit/spend": {
+      "post": {
+        "tags": [
+          "Credit"
+        ],
+        "operationId": "Spend",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdjustCreditsDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdjustCreditsDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdjustCreditsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdjustCreditsResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdjustCreditsResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdjustCreditsResultDto"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/credit/refund": {
+      "post": {
+        "tags": [
+          "Credit"
+        ],
+        "operationId": "Refund",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdjustCreditsDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdjustCreditsDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdjustCreditsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdjustCreditsResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdjustCreditsResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdjustCreditsResultDto"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/credit/alipay-order": {
+      "post": {
+        "tags": [
+          "Credit"
+        ],
+        "operationId": "CreateAlipayOrder",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCreditAlipayOrderDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCreditAlipayOrderDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCreditAlipayOrderDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCreditAlipayOrderResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCreditAlipayOrderResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCreditAlipayOrderResultDto"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoteServiceErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/credit/pay-pal-order": {
+      "post": {
+        "tags": [
+          "Credit"
+        ],
+        "operationId": "CreatePayPalOrder",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCreditPayPalOrderDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCreditPayPalOrderDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCreditPayPalOrderDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCreditPayPalOrderResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCreditPayPalOrderResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCreditPayPalOrderResultDto"
                 }
               }
             }
@@ -19358,7 +20365,7 @@
         "tags": [
           "DeployRecord"
         ],
-        "operationId": "MarkAsSucceeded",
+        "operationId": "DeployRecordMarkAsSucceeded",
         "parameters": [
           {
             "name": "id",
@@ -19526,7 +20533,7 @@
         "tags": [
           "DeployRecord"
         ],
-        "operationId": "MarkAsFailed",
+        "operationId": "DeployRecordMarkAsFailed",
         "parameters": [
           {
             "name": "id",
@@ -19694,7 +20701,7 @@
         "tags": [
           "DeployRecord"
         ],
-        "operationId": "MarkAsCanceled",
+        "operationId": "DeployRecordMarkAsCanceled",
         "parameters": [
           {
             "name": "id",
@@ -20185,7 +21192,7 @@
         "tags": [
           "DeployRecord"
         ],
-        "operationId": "GetLatest",
+        "operationId": "DeployRecordGetLatest",
         "parameters": [
           {
             "name": "appId",
@@ -27663,7 +28670,7 @@
         "tags": [
           "OpenAiCompatibleChat"
         ],
-        "operationId": "Create",
+        "operationId": "OpenAiCompatibleChatCreate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -30612,7 +31619,7 @@
         }
       }
     },
-    "/api/app/subscription/paypal-webhook": {
+    "/api/app/paypal/notify": {
       "post": {
         "tags": [
           "Subscription"
@@ -30761,9 +31768,7 @@
             }
           }
         }
-      }
-    },
-    "/api/app/subscription/paypal-return": {
+      },
       "get": {
         "tags": [
           "Subscription"
@@ -31745,7 +32750,7 @@
           "Subscription"
         ],
         "summary": "创建支付宝一次性支付订单",
-        "operationId": "CreateAlipayOrder",
+        "operationId": "SubscriptionCreateAlipayOrder",
         "requestBody": {
           "content": {
             "application/json": {
@@ -31909,7 +32914,7 @@
         }
       }
     },
-    "/api/app/subscription/alipay-notify": {
+    "/api/app/alipay/notify": {
       "post": {
         "tags": [
           "Subscription"
@@ -32066,7 +33071,7 @@
           "Subscription"
         ],
         "summary": "创建 PayPal 订单",
-        "operationId": "CreatePayPalOrder",
+        "operationId": "SubscriptionCreatePayPalOrder",
         "requestBody": {
           "content": {
             "application/json": {
@@ -38444,6 +39449,50 @@
         },
         "additionalProperties": false
       },
+      "AdjustCreditsDto": {
+        "required": [
+          "appId",
+          "description",
+          "referenceId"
+        ],
+        "type": "object",
+        "properties": {
+          "appId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "amount": {
+            "maximum": 100000,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "referenceId": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AdjustCreditsResultDto": {
+        "type": "object",
+        "properties": {
+          "balance": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ledgerEntry": {
+            "$ref": "#/components/schemas/CreditLedgerEntryDto"
+          }
+        },
+        "additionalProperties": false
+      },
       "AiCapability": {
         "enum": [
           "Chat",
@@ -38910,7 +39959,7 @@
           "Video"
         ],
         "type": "string",
-        "description": "应用商店素材类型（JSON / 数据库存储均为枚举名字符串，与 Puupees.Apps.AppPlatform 一致）。"
+        "description": "应用商店素材类型（JSON / 数据库存储均为枚举名字符串，与 Felorx.Apps.AppPlatform 一致）。"
       },
       "AppDto": {
         "type": "object",
@@ -39772,7 +40821,7 @@
           },
           "key": {
             "type": "string",
-            "description": "键值, 例如: Seat, SingleFileMaxSize, UserStorageSize, MaxPuupeeCount, 见 AppPricingItemKeys.cs",
+            "description": "键值, 例如: Seat, SingleFileMaxSize, UserStorageSize, MaxFelorxCount, 见 AppPricingItemKeys.cs",
             "nullable": true
           },
           "name": {
@@ -39895,7 +40944,6 @@
           "Qiniu",
           "Vercel",
           "Felorx",
-          "Puupee",
           "Other"
         ],
         "type": "string",
@@ -40849,7 +41897,7 @@
           },
           "extraProperties": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true
           }
         },
@@ -41665,6 +42713,115 @@
         },
         "additionalProperties": false,
         "description": "创建构建记录DTO"
+      },
+      "CreateCreditAlipayOrderDto": {
+        "required": [
+          "appId",
+          "packageId"
+        ],
+        "type": "object",
+        "properties": {
+          "appId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "packageId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "checkoutMode": {
+            "maxLength": 16,
+            "type": "string",
+            "nullable": true
+          },
+          "returnUrl": {
+            "maxLength": 512,
+            "type": "string",
+            "nullable": true
+          },
+          "quitUrl": {
+            "maxLength": 512,
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateCreditAlipayOrderResultDto": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "outTradeNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "checkoutMode": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentForm": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderString": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateCreditPayPalOrderDto": {
+        "required": [
+          "appId",
+          "packageId"
+        ],
+        "type": "object",
+        "properties": {
+          "appId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "packageId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "returnUrl": {
+            "maxLength": 512,
+            "type": "string",
+            "nullable": true
+          },
+          "cancelUrl": {
+            "maxLength": 512,
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateCreditPayPalOrderResultDto": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "payPalOrderId": {
+            "type": "string",
+            "nullable": true
+          },
+          "approvalUrl": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
       },
       "CreateDeployRecordDto": {
         "required": [
@@ -42651,7 +43808,7 @@
             "type": "string",
             "nullable": true
           },
-          "puupeeId": {
+          "felorxId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
@@ -42770,6 +43927,106 @@
             "nullable": true
           },
           "values": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreditAccountDto": {
+        "type": "object",
+        "properties": {
+          "appId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "balance": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "recentLedger": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreditLedgerEntryDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreditLedgerEntryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "balanceAfter": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "referenceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "creationTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreditPackageDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "appId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "credits": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "currency": {
+            "type": "string",
+            "nullable": true
+          },
+          "isPopular": {
+            "type": "boolean"
+          },
+          "storeProductId": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -43238,7 +44495,7 @@
           },
           "configuration": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true
           }
         },
@@ -43325,7 +44582,7 @@
           },
           "config": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true
           }
         },
@@ -43360,7 +44617,7 @@
           },
           "configuration": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true
           },
           "defaultValue": {
@@ -43598,7 +44855,7 @@
           },
           "properties": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true,
             "readOnly": true
           }
@@ -43623,7 +44880,7 @@
         "properties": {
           "extraProperties": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true,
             "readOnly": true
           },
@@ -43646,7 +44903,7 @@
         "properties": {
           "extraProperties": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true,
             "readOnly": true
           },
@@ -43712,7 +44969,7 @@
         "properties": {
           "extraProperties": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true,
             "readOnly": true
           },
@@ -43744,7 +45001,7 @@
           },
           "extraProperties": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true,
             "readOnly": true
           },
@@ -43963,7 +45220,7 @@
         "properties": {
           "extraProperties": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true,
             "readOnly": true
           },
@@ -44022,7 +45279,7 @@
         "properties": {
           "extraProperties": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true,
             "readOnly": true
           },
@@ -44265,7 +45522,7 @@
         "properties": {
           "extraProperties": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true,
             "readOnly": true
           },
@@ -44557,12 +45814,12 @@
           },
           "template": {
             "type": "string",
-            "description": "模板名称, 包含版本号\r\npuupee/wechat-app-msg?version=1 微信应用消息模板\r\npuupee/wechat-official-msg?version=2 微信公众号消息模板",
+            "description": "模板名称, 包含版本号\r\nfelorx/wechat-app-msg?version=1 微信应用消息模板\r\nfelorx/wechat-official-msg?version=2 微信公众号消息模板",
             "nullable": true
           },
           "data": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "description": "JSON格式数据",
             "nullable": true
           }
@@ -44572,7 +45829,7 @@
       "MessageRecallDto": {
         "type": "object",
         "properties": {
-          "puupeeId": {
+          "felorxId": {
             "type": "string",
             "format": "uuid"
           }
@@ -44894,7 +46151,7 @@
           },
           "configuration": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true
           }
         },
@@ -45046,7 +46303,7 @@
             "nullable": true
           }
         },
-        "additionalProperties": { }
+        "additionalProperties": {}
       },
       "OpsCryptoVaultDto": {
         "type": "object",
@@ -45249,7 +46506,7 @@
         "properties": {
           "extraProperties": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true,
             "readOnly": true
           },
@@ -45452,7 +46709,7 @@
         "properties": {
           "extraProperties": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true,
             "readOnly": true
           },
@@ -45507,7 +46764,7 @@
           },
           "data": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true
           },
           "validationErrors": {
@@ -46071,7 +47328,7 @@
         "properties": {
           "extraProperties": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true,
             "readOnly": true
           },
@@ -46099,7 +47356,7 @@
         "properties": {
           "extraProperties": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true,
             "readOnly": true
           },
@@ -46143,7 +47400,7 @@
         "properties": {
           "extraProperties": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true,
             "readOnly": true
           },
@@ -46216,7 +47473,7 @@
           },
           "enumValues": {
             "type": "array",
-            "items": { },
+            "items": {},
             "nullable": true
           },
           "genericArguments": {
@@ -46409,7 +47666,7 @@
         "properties": {
           "extraProperties": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true,
             "readOnly": true
           },
@@ -46526,7 +47783,7 @@
           },
           "extraProperties": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true,
             "readOnly": true
           }
@@ -46834,25 +48091,6 @@
         },
         "additionalProperties": false
       }
-    },
-    "securitySchemes": {
-      "oauth2": {
-        "type": "oauth2",
-        "flows": {
-          "authorizationCode": {
-            "authorizationUrl": "https://dev.auth.felorx.com/connect/authorize",
-            "tokenUrl": "https://dev.auth.felorx.com/connect/token",
-            "scopes": {
-              "Puupees": "Felorx API"
-            }
-          }
-        }
-      }
     }
-  },
-  "security": [
-    {
-      "oauth2": [ ]
-    }
-  ]
+  }
 }

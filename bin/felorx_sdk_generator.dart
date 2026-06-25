@@ -417,7 +417,7 @@ Future<void> buildGo({
     version: swaggerInfo.version,
     gitUserId: 'felorx',
     gitRepoId: 'felorx-api-go',
-    skipValidateSpec: false, // Go 不需要跳过验证
+    skipValidateSpec: false, // Go 生成前保留 OpenAPI 规范校验
   );
 
   await generator.generate(
