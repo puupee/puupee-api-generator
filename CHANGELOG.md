@@ -1,26 +1,26 @@
 ## 1.1.7
 
- - **DOCS**(puupee_sdk_generator): 同步版本日志.
+ - **DOCS**(felorx_sdk_generator): 同步版本日志.
 
 ## 1.1.6
 
- - **DOCS**(puupee_sdk_generator): 同步版本日志.
+ - **DOCS**(felorx_sdk_generator): 同步版本日志.
 
 ## 1.1.5
 
- - **DOCS**(puupee_sdk_generator): 同步版本日志.
+ - **DOCS**(felorx_sdk_generator): 同步版本日志.
 
 ## 1.1.4
 
- - **DOCS**(puupee_sdk_generator): 同步包目录路径说明.
+ - **DOCS**(felorx_sdk_generator): 同步包目录路径说明.
 
 ## 1.1.3
 
- - **FIX**(puupee_sdk_generator): 修正 Dart 客户端生成导入.
+ - **FIX**(felorx_sdk_generator): 修正 Dart 客户端生成导入.
 
 ## 1.1.2
 
- - **DOCS**(puupee_sdk_generator): 补齐文档目录分层.
+ - **DOCS**(felorx_sdk_generator): 补齐文档目录分层.
 
 ## 1.1.1
 
